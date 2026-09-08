@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<title>מי צודק בחשבון של המכללה · המכללה הטכנולוגית · 08.09.2026</title>
+<style>
+*{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Assistant:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --ground:#F6F7F9;
+  --surface:#FFFFFF;
+  --sunken:#EDF0F4;
+  --ink:#15202B;
+  --ink-2:#3D4E5F;
+  --muted:#6B7C8D;
+  --line:#DCE3EA;
+  --line-strong:#C2CDD8;
+  --accent:#1D6FA5;
+  --ours:#AE3B24;
+  --ours-bg:#FBEEEA;
+  --theirs:#1F618D;
+  --theirs-bg:#EAF1F7;
+  --outside:#7A6410;
+  --outside-bg:#F7F2E0;
+  --win:#1B6D53;
+  --win-bg:#E7F2EE;
+  --shadow:0 1px 2px rgba(21,32,43,.05),0 8px 24px -12px rgba(21,32,43,.18);
+  direction:rtl;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#111820;
+    --surface:#18212B;
+    --sunken:#131C25;
+    --ink:#E8EDF2;
+    --ink-2:#B9C6D2;
+    --muted:#8A9AA9;
+    --line:#2A3742;
+    --line-strong:#3B4A57;
+    --accent:#5FAEDC;
+    --ours:#E8836A;
+    --ours-bg:#2C1B17;
+    --theirs:#6FAEDA;
+    --theirs-bg:#16232E;
+    --outside:#D3B551;
+    --outside-bg:#282314;
+    --win:#5FC2A0;
+    --win-bg:#13261F;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#111820;
+  --surface:#18212B;
+  --sunken:#131C25;
+  --ink:#E8EDF2;
+  --ink-2:#B9C6D2;
+  --muted:#8A9AA9;
+  --line:#2A3742;
+  --line-strong:#3B4A57;
+  --accent:#5FAEDC;
+  --ours:#E8836A;
+  --ours-bg:#2C1B17;
+  --theirs:#6FAEDA;
+  --theirs-bg:#16232E;
+  --outside:#D3B551;
+  --outside-bg:#282314;
+  --win:#5FC2A0;
+  --win-bg:#13261F;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box}
+body{
+  direction:rtl;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"Assistant","Segoe UI",system-ui,sans-serif;
+  font-size:16.5px;
+  line-height:1.62;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:940px;margin:0 auto;padding:0 24px 96px}
+@media(max-width:640px){.wrap{padding:0 16px 64px}}
+
+/* ---------- header ---------- */
+header{padding:56px 0 40px;border-bottom:2px solid var(--ink);margin-bottom:0}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:22px;
+}
+.eyebrow span{white-space:nowrap}
+h1{
+  font-family:"Frank Ruhl Libre",Georgia,serif;
+  font-weight:900;font-size:clamp(34px,6.2vw,54px);line-height:1.08;
+  margin:0 0 20px;text-wrap:balance;letter-spacing:-.01em;
+}
+.deck{font-size:19px;line-height:1.6;color:var(--ink-2);max-width:62ch;margin:0;font-weight:300}
+.deck b{font-weight:700;color:var(--ink)}
+
+/* ---------- verdict trio ---------- */
+.verdict{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-bottom:1px solid var(--line);}
+@media(max-width:720px){.verdict{grid-template-columns:1fr}}
+.v{padding:28px 24px 30px;border-inline-start:1px solid var(--line)}
+.v:first-child{border-inline-start:0;padding-inline-start:0}
+@media(max-width:720px){.v{border-inline-start:0;border-top:1px solid var(--line);padding-inline-start:0}.v:first-child{border-top:0}}
+.v-key{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:10px;font-weight:600;
+}
+.v-head{font-family:"Frank Ruhl Libre",Georgia,serif;font-size:25px;font-weight:700;line-height:1.2;margin:0 0 8px}
+.v-body{font-size:15px;color:var(--ink-2);margin:0;line-height:1.55}
+.v.ok .v-key{color:var(--theirs)}
+.v.no .v-key{color:var(--win)}
+.v.us .v-key{color:var(--ours)}
+.v.us .v-head{color:var(--ours)}
+
+/* ---------- sections ---------- */
+section{padding-top:52px}
+h2{
+  font-family:"Frank Ruhl Libre",Georgia,serif;
+  font-size:29px;font-weight:700;line-height:1.22;margin:0 0 6px;text-wrap:balance;
+}
+.sec-num{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+  color:var(--muted);text-transform:uppercase;display:block;margin-bottom:12px;font-weight:600;
+}
+.lede{font-size:17px;color:var(--ink-2);max-width:66ch;margin:0 0 26px;font-weight:300}
+p{max-width:68ch}
+strong{font-weight:700}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto;margin:0 0 26px;border:1px solid var(--line);border-radius:3px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:520px}
+caption{
+  text-align:start;padding:14px 18px 12px;font-family:"IBM Plex Mono",monospace;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  border-bottom:1px solid var(--line);font-weight:600;
+}
+th,td{padding:11px 18px;text-align:start;border-bottom:1px solid var(--line)}
+thead th{
+  font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;background:var(--sunken);border-bottom:1px solid var(--line-strong);
+}
+tbody tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:end;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:14px}
+tr.total td{font-weight:700;background:var(--sunken);border-top:1px solid var(--line-strong)}
+.big{color:var(--ours);font-weight:600}
+.good{color:var(--win);font-weight:600}
+.zero{color:var(--ours);font-weight:600}
+
+/* ---------- swing ---------- */
+.swing{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 26px}
+@media(max-width:720px){.swing{grid-template-columns:1fr}}
+.sw{background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:20px 20px 18px}
+.sw-t{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-weight:600}
+.sw-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-size:14px;padding:5px 0}
+.sw-row + .sw-row{border-top:1px dotted var(--line)}
+.sw-y{color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:12.5px}
+.sw-v{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-weight:600;font-size:17px}
+.sw-v.old{color:var(--muted);font-weight:400}
+.sw-v.new{color:var(--win)}
+.sw-note{margin-top:12px;font-size:13.5px;color:var(--ink-2);line-height:1.45}
+
+/* ---------- findings ---------- */
+.find{background:var(--surface);border:1px solid var(--line);border-radius:3px;margin-bottom:14px;overflow:hidden;box-shadow:var(--shadow)}
+.find-h{display:flex;gap:14px;align-items:flex-start;padding:20px 22px 16px;border-bottom:1px solid var(--line)}
+.tag{
+  flex:none;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.09em;
+  text-transform:uppercase;font-weight:600;padding:4px 9px;border-radius:2px;margin-top:4px;
+}
+.tag.us{background:var(--ours-bg);color:var(--ours)}
+.tag.them{background:var(--theirs-bg);color:var(--theirs)}
+.tag.out{background:var(--outside-bg);color:var(--outside)}
+.find-t{font-family:"Frank Ruhl Libre",Georgia,serif;font-size:21px;font-weight:700;line-height:1.28;margin:0}
+.find-b{padding:18px 22px 20px}
+.find-b p{margin:0 0 12px}
+.find-b p:last-child{margin-bottom:0}
+.quote{
+  border-inline-start:3px solid var(--line-strong);padding:2px 16px;margin:14px 0;
+  font-size:15px;color:var(--ink-2);font-style:italic;
+}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.9em;background:var(--sunken);padding:1px 5px;border-radius:2px}
+
+/* metric strip inside finding */
+.strip{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line);background:var(--sunken)}
+.strip div{flex:1 1 120px;padding:14px 18px;border-inline-start:1px solid var(--line)}
+.strip div:first-child{border-inline-start:0}
+.strip dt{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px}
+.strip dd{margin:0;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:21px;font-weight:600;line-height:1.1}
+.strip dd.hot{color:var(--ours)}
+
+/* ---------- split list ---------- */
+.split{display:grid;gap:11px;margin-bottom:26px}
+.si{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:16px 18px}
+.si-n{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:var(--muted);padding-top:2px}
+.si h3{font-size:16.5px;font-weight:700;margin:0 0 4px;line-height:1.35}
+.si p{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.5;max-width:none}
+
+/* ---------- responsibility ---------- */
+.resp{border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--surface);margin-bottom:26px}
+.r{display:grid;grid-template-columns:5px 1fr auto;gap:0;align-items:center;border-bottom:1px solid var(--line)}
+.r:last-child{border-bottom:0}
+.r-bar{align-self:stretch}
+.r.us .r-bar{background:var(--ours)}
+.r.them .r-bar{background:var(--theirs)}
+.r.out .r-bar{background:var(--outside)}
+.r-main{padding:14px 18px}
+.r-main h4{margin:0 0 2px;font-size:16px;font-weight:700}
+.r-main p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.4;max-width:none}
+.r-who{
+  padding:14px 18px;font-family:"IBM Plex Mono",monospace;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;font-weight:600;white-space:nowrap;
+}
+.r.us .r-who{color:var(--ours)}
+.r.them .r-who{color:var(--theirs)}
+.r.out .r-who{color:var(--outside)}
+
+/* ---------- actions ---------- */
+ol.act{list-style:none;padding:0;margin:0 0 26px;counter-reset:a}
+ol.act li{
+  counter-increment:a;display:grid;grid-template-columns:auto 1fr;gap:16px;
+  padding:15px 0;border-bottom:1px solid var(--line);align-items:baseline;
+}
+ol.act li:last-child{border-bottom:0}
+ol.act li::before{
+  content:counter(a);font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+  color:var(--surface);background:var(--ink);width:22px;height:22px;border-radius:50%;
+  display:grid;place-items:center;align-self:start;margin-top:2px;
+}
+ol.act b{display:block;font-size:16.5px;margin-bottom:2px}
+ol.act span{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+
+/* ---------- callout ---------- */
+.call{
+  background:var(--ours-bg);border:1px solid var(--ours);border-radius:3px;
+  padding:22px 24px;margin:26px 0;
+}
+.call p{margin:0;font-size:17px;line-height:1.55;color:var(--ink)}
+.call .k{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ours);font-weight:600;display:block;margin-bottom:8px;
+}
+
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+footer p{max-width:none;margin:0 0 6px}
+footer code{font-family:"IBM Plex Mono",monospace;font-size:12px}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">
+    <span>08 · 09 · 2026</span>
+    <span>act_320020712285732</span>
+    <span>Graph API v21.0 · קריאה בלבד</span>
+    <span>לא בוצע שינוי בחשבון</span>
+    <span>9 טענות עברו אימות אדברסרי</span>
+  </div>
+  <h1>מי צודק בחשבון של המכללה</h1>
+  <p class="deck">הלקוח שלח את פרוטוקול ישיבת השיווק ובצידו טענה: מאז 1.9 הקמפיין מביא ליד אחד לכל מגמה, <b>"נתונים שלא הולמים מוסד אקדמי"</b>, ושאלה ישירה, <b>"על מה נשרף הכסף? על למידה?"</b> כל מספר כאן נמשך היום מחשבון המודעות, ולא מדוח.</p>
+</header>
+
+<div class="verdict">
+  <div class="v ok">
+    <div class="v-key">במספרים</div>
+    <p class="v-head">הוא מדייק</p>
+    <p class="v-body">מנה 15 לידים, מטא מאשר 17 מטופס. הוא סופר את הערוץ היחיד שנוחת אצלו ישירות.</p>
+  </div>
+  <div class="v no">
+    <div class="v-key">במסקנה</div>
+    <p class="v-head">הוא טועה</p>
+    <p class="v-body">בשנה שקדמה לנו הביא החשבון 236 לידים ב־587 ש"ח לליד. השנה 720 ב־260. פי 3, בחצי מהמחיר. אבל ב־2024 הליד עלה 170 ש"ח, ולשם עוד לא חזרנו.</p>
+  </div>
+  <div class="v us">
+    <div class="v-key">בשאלה על הלמידה</div>
+    <p class="v-head">קלע בול</p>
+    <p class="v-body">14 מתוך 16 קבוצות הלידים בשלב למידה, והן מחזיקות 100% מתקציב הלידים הפעיל. זה קרה ביום ראשון בבוקר, אצלנו.</p>
+  </div>
+</div>
+
+<section>
+  <span class="sec-num">חלק א</span>
+  <h2>הספירה שלו נכונה, והפער מוסבר</h2>
+  <p class="lede">הוא סופר לידי טופס לידים של פייסבוק. אלה היחידים שנוחתים אצלו ישירות. 35 הלידים הנוספים הם המרות מדפי נחיתה, ומתוכם 17 הרשמות לכנס תקשורת חזותית של 8.9 שנרשמות באתר האירועים ולא נספרות אצלו כליד למגמה.</p>
+
+  <div class="tw">
+    <table>
+      <caption>01 עד 08 בספטמבר 2026 · טענת הלקוח מול החשבון</caption>
+      <thead><tr><th>מגמה</th><th class="n">הלקוח טוען</th><th class="n">לידי טופס</th><th class="n">סה"כ במטא</th></tr></thead>
+      <tbody>
+        <tr><td>קירור ומיזוג אוויר</td><td class="n">8</td><td class="n good">8</td><td class="n">8</td></tr>
+        <tr><td>עיצוב תעשייתי</td><td class="n">1</td><td class="n">2</td><td class="n">3</td></tr>
+        <tr><td>אדריכלות נוף</td><td class="n">1</td><td class="n">2</td><td class="n">3</td></tr>
+        <tr><td>תקשורת חזותית</td><td class="n">1</td><td class="n">1</td><td class="n">4</td></tr>
+        <tr><td>כימיה</td><td class="n">1</td><td class="n">1</td><td class="n">4</td></tr>
+        <tr><td>מכונות</td><td class="n">1</td><td class="n">0</td><td class="n">1</td></tr>
+        <tr><td>יום פתוח 17.9</td><td class="n">2</td><td class="n">3</td><td class="n">6</td></tr>
+        <tr class="total"><td>סך הכל</td><td class="n">15</td><td class="n">17</td><td class="n">52</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>ההצלבה שסוגרת את הדיון על הדיוק:</strong> בתקופה שהפרוטוקול שלו עצמו מדווח עליה, 26.8 עד 8.9, מטא רשם 48 לידי טופס. הפרוטוקול מדווח 60 לידים למגמות המאתגרות. כלומר פייסבוק מספק כ־58% מכלל הלידים שנכנסים אליהם, ושני המקורות מסתדרים זה עם זה כמעט לליד.</p>
+
+  <div class="find">
+    <div class="find-h">
+      <span class="tag out">לברר לפני שעונים</span>
+      <h3 class="find-t">שני לידים שאנחנו סופרים והוא לא, ואי אפשר לענות בלי לדעת מה קרה להם</h3>
+    </div>
+    <div class="find-b">
+      <p>הוא מנה 15, מטא מראה 17. הפער הוא בדיוק שני לידים, ושניהם משני הקמפיינים שנבנו מחדש ב־31/08 ושמם נגמר ב"בדיקה", תקשורת חזותית וכימיה.</p>
+      <p><strong>אלה שתי אפשרויות שונות לגמרי:</strong> אם הלידים אמיתיים ולא הגיעו אליו, יש לנו כשל מסירה והוא חמור בהרבה מהתלונה המקורית. אם הם כפילויות או רשומות בדיקה, אסור לנו לספור אותם בדוח. <strong>בלי לבדוק את שתי הרשומות האלה בשם, אי אפשר לומר לו שהספירה שלו מדויקת</strong>, כי הוא ישאל איפה השניים ואין לנו תשובה.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="sec-num">חלק ב</span>
+  <h2>אותה עונה, שנה קודם</h2>
+  <p class="lede">אותו חשבון, אותו חלון תאריכים, אותה עונת רישום. זה הנתון שהופך את התמונה, ואי אפשר להתווכח איתו כי הוא מהחשבון של המכללה עצמה.</p>
+
+  <div class="swing">
+    <div class="sw">
+      <div class="sw-t">יולי · עלות לליד</div>
+      <div class="sw-row"><span class="sw-y">2025</span><span class="sw-v old">504 ₪</span></div>
+      <div class="sw-row"><span class="sw-y">2026</span><span class="sw-v new">157 ₪</span></div>
+      <p class="sw-note">73 לידים אז, 282 היום.</p>
+    </div>
+    <div class="sw">
+      <div class="sw-t">אוגוסט · עלות לליד</div>
+      <div class="sw-row"><span class="sw-y">2025</span><span class="sw-v old">598 ₪</span></div>
+      <div class="sw-row"><span class="sw-y">2026</span><span class="sw-v new">216 ₪</span></div>
+      <p class="sw-note">55 לידים אז, 195 היום.</p>
+    </div>
+    <div class="sw">
+      <div class="sw-t">1 עד 8 בספטמבר</div>
+      <div class="sw-row"><span class="sw-y">2025</span><span class="sw-v old">488 ₪</span></div>
+      <div class="sw-row"><span class="sw-y">2026</span><span class="sw-v new">242 ₪</span></div>
+      <p class="sw-note">9 לידים אז, 52 היום.</p>
+    </div>
+  </div>
+
+  <div class="tw">
+    <table>
+      <caption>אותו חלון, 01 עד 08 בספטמבר</caption>
+      <thead><tr><th>מדד</th><th class="n">2025</th><th class="n">2026</th><th class="n">שינוי</th></tr></thead>
+      <tbody>
+        <tr><td>הוצאה</td><td class="n">4,396 ₪</td><td class="n">12,588 ₪</td><td class="n">+186%</td></tr>
+        <tr><td>לידים</td><td class="n">9</td><td class="n">52</td><td class="n good">+478%</td></tr>
+        <tr><td>עלות לליד</td><td class="n">488 ₪</td><td class="n">242 ₪</td><td class="n good">−50%</td></tr>
+        <tr><td>מחיר לאלף חשיפות</td><td class="n">20.6 ₪</td><td class="n">44.3 ₪</td><td class="n big">+115%</td></tr>
+        <tr><td>טווח הגעה</td><td class="n">71,062</td><td class="n">126,044</td><td class="n">+77%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="call">
+    <span class="k">תשובה נקודתית לטענה על היום הפתוח · מחוץ להשוואות שלמטה</span>
+    <p>הלקוח מתלונן על <b>"יום פתוח, 2 לידים בלבד"</b>. שנה שעברה, תשעה ימים לפני היום הפתוח של 18.9, היו לו <b>בדיוק 2 לידים</b> ובתקציב גדול יותר: 1,176 ש"ח. השנה, באותה נקודה מול היום הפתוח של 17.9: <b>6 לידים ב־910 ש"ח</b>. הקמפיין כולו של אשתקד סיכם 3,999 ש"ח וחמישה לידים.<br><br>זו תשובה לטענה הספציפית שלו בלבד. בכל טבלאות ההשוואה שבהמשך קמפייני יום פתוח מוחרגים, כי האירוע נופל בתאריך אחר בכל שנה.</p>
+  </div>
+</section>
+
+<section>
+  <span class="sec-num">חלק ב־2</span>
+  <h2>ארבע שנים אחורה, כולל לפני המלחמה</h2>
+  <p class="lede">אותו חשבון, אותה עונה, ארבע שנים. <strong>קמפייני יום פתוח מוחרגים מכל הטבלאות בחלק הזה</strong>, כי הם אירוע חד־פעמי שנופל בתאריך אחר בכל שנה ומעוות את ההשוואה. ההחרגה מורידה גם אותנו, ולא רק אותם.</p>
+
+  <div class="tw">
+    <table>
+      <caption>01 עד 08 בספטמבר · ארבע שנים · בלי אירועים חד־פעמיים</caption>
+      <thead><tr><th>שנה</th><th class="n">הוצאה</th><th class="n">לידים</th><th class="n">עלות לליד</th></tr></thead>
+      <tbody>
+        <tr><td>2023 <span style="color:var(--muted);font-size:13px">· לפני המלחמה</span></td><td class="n">4,032 ₪</td><td class="n">12</td><td class="n">336 ₪</td></tr>
+        <tr><td>2024 <span style="color:var(--muted);font-size:13px">· מלחמה</span></td><td class="n">3,235 ₪</td><td class="n good">20</td><td class="n good">162 ₪</td></tr>
+        <tr><td>2025</td><td class="n">2,439 ₪</td><td class="n big">5</td><td class="n big">488 ₪</td></tr>
+        <tr class="total"><td>2026</td><td class="n">10,809 ₪</td><td class="n">29</td><td class="n">373 ₪</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tw">
+    <table>
+      <caption>תקופת הניהול שלנו · 01 באפריל עד 08 בספטמבר · בלי אירועים חד־פעמיים</caption>
+      <thead><tr><th>שנה</th><th class="n">הוצאה</th><th class="n">לידים</th><th class="n">עלות לליד</th><th class="n">מהם לידי טופס</th></tr></thead>
+      <tbody>
+        <tr><td>2024 <span style="color:var(--muted);font-size:13px">· הבייסליין הטוב ביותר</span></td><td class="n">115,714 ₪</td><td class="n">680</td><td class="n good">170 ₪</td><td class="n">15</td></tr>
+        <tr><td>2025 <span style="color:var(--muted);font-size:13px">· השנה שלפנינו</span></td><td class="n">138,629 ₪</td><td class="n big">236</td><td class="n big">587 ₪</td><td class="n">43</td></tr>
+        <tr class="total"><td>2026 <span style="font-weight:400;font-size:13px">· בניהולנו</span></td><td class="n">187,137 ₪</td><td class="n good">720</td><td class="n">260 ₪</td><td class="n">283</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>מול השנה שקדמה לנו: <strong>פי 3 לידים ועלות לליד נמוכה ב־56%</strong>. אבל אסור לעצור שם, כי 2025 היא השנה החלשה ביותר בהיסטוריה של החשבון. <strong>מול 2024, הבייסליין הטוב ביותר, אנחנו עדיין יקרים ב־53%</strong>, 260 ש"ח מול 170. מי שיציג רק את ההשוואה ל־2025 בוחר לעצמו בייסליין נוח, והלקוח יגלה את זה תוך דקות.</p>
+  <p><strong>וסייג מתודולוגי שחייב להיאמר:</strong> תמהיל סוגי הליד השתנה. ב־2024 רק 15 מתוך 680 הלידים הגיעו מטופס לידים של פייסבוק, כלומר 2%. ב־2026 זה 283 מתוך 720, כלומר 39%. ליד טופס זול יותר מהמרה מלאה באתר, ולכן חלק מהשיפור במחיר הוא שינוי בסוג המדידה ולא רק ביצוע טוב יותר. זה לא מבטל את הפער מול 2025, אבל הוא קטן ממה שהמספר הגולמי משדר.</p>
+  <p>החודשים שלנו מראים את אותו קו: מרץ ואפריל, כשהחשבון עבר אלינו, עמדו על 3,083 ו־6,357 ש"ח לליד. יולי הגיע ל־157. הפיקסל עבד לכל אורך התקופה, גם במרץ, כלומר הקפיצה אינה שינוי מדידה.</p>
+</section>
+
+<section>
+  <span class="sec-num">חלק ב־3</span>
+  <h2>איפה בדיוק נשבר, והתשובה נמצאת ביולי</h2>
+  <p class="lede">לא צריך להמציא כלום. אותן שתי מגמות, באותו חשבון, לפני חודשיים בלבד.</p>
+
+  <div class="tw">
+    <table>
+      <caption>שתי המגמות הקריטיות · יולי מול ספטמבר 2026</caption>
+      <thead><tr><th>מדד</th><th class="n">תקשורת · יולי</th><th class="n">תקשורת · ספט'</th><th class="n">עיצוב · יולי</th><th class="n">עיצוב · ספט'</th></tr></thead>
+      <tbody>
+        <tr><td>תקציב יומי</td><td class="n">51 ₪</td><td class="n big">290 ₪</td><td class="n">40 ₪</td><td class="n big">179 ₪</td></tr>
+        <tr><td>טווח הגעה</td><td class="n good">34,077</td><td class="n big">6,230</td><td class="n good">25,979</td><td class="n big">7,260</td></tr>
+        <tr><td>מחיר לאלף</td><td class="n good">32 ₪</td><td class="n big">175 ₪</td><td class="n good">33 ₪</td><td class="n big">123 ₪</td></tr>
+        <tr class="total"><td>לידי טופס</td><td class="n good">18</td><td class="n big">1</td><td class="n good">18</td><td class="n big">2</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="call">
+    <span class="k">המשפט שמסביר את הכל</span>
+    <p>הכפלנו את התקציב פי חמישה והגענו לרבע מהאנשים. זה לא כשל קריאייטיב, לא כשל תקציב ולא שוק. זה מבנה, ומורכב משני דברים שקרו יחד.</p>
+  </div>
+
+  <div class="find">
+    <div class="find-h">
+      <span class="tag us">דיוק שחייב להיאמר</span>
+      <h3 class="find-t">אלה לא אותם קמפיינים, וזה מחמיר את התמונה ולא מקל אותה</h3>
+    </div>
+    <div class="find-b">
+      <p>קמפיין תקשורת חזותית של יולי, זה שהביא 18 לידים ב־88 ש"ח, <strong>הופסק ב־31/08</strong>. באותו יום נבנה במקומו קמפיין חדש ונפרד ששמו נגמר במילה "בדיקה". הטבלה למעלה משווה בין שני קמפיינים שונים, לא בין שני חודשים של אותו קמפיין. אותו דבר בעיצוב תעשייתי.</p>
+      <p>לכן הניסוח המדויק הוא לא "הקמפיין נחלש", אלא: <strong>בשבוע הקריטי ביותר של עונת הרישום פירקנו שני קמפיינים בוגרים שכבר עברו את שלב הלמידה, ובנינו במקומם קמפיינים חדשים עם קהל צר יותר.</strong> קמפיין חדש מתחיל בלמידה בהגדרה, וקהל צר מייקר את החשיפה. שני הגורמים פועלים יחד, וזו הסיבה ש־290 ש"ח ליום קונים היום פחות ממה ש־51 ש"ח ליום קנו ביולי.</p>
+      <p>זה גם מסביר למה תוכנית ההמשך אינה הימור: המבנה שעבד עדיין קיים ביומן החשבון, על נתונים אמיתיים ולא על הערכה.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="sec-num">חלק ג</span>
+  <h2>שלושה דברים שכן עלינו</h2>
+  <p class="lede">זה החלק שאסור לטייח, כי אחד מהם קרה לפני יומיים והוא בדיוק מה שהלקוח שם עליו את האצבע בלי לדעת.</p>
+
+  <div class="find">
+    <div class="find-h">
+      <span class="tag us">באחריותנו</span>
+      <h3 class="find-t">26 עריכות טירגוט ב־45 דקות החזירו את החשבון ללמידה</h3>
+    </div>
+    <div class="find-b">
+      <p>יומן הפעילות של החשבון, יום ראשון 06/09, משתמש <span class="mono">Ubiz Adv</span>: <strong>שני גלי עריכה נפרדים</strong>, הראשון ב־07:36 עד 08:21 והשני, הגדול יותר, ב־10:50 עד 11:40 שעון ישראל. באותו יום בוצעו בסך הכל 38 עריכות <span class="mono">update_ad_set_target_spec</span> ו־62 שינויי סטטוס בקבוצות מודעות, ועוד 116 שינויי סטטוס ברמת המודעה. כמעט כל רשומה נושאת <span class="mono">last_learning_exit</span>.</p>
+      <p><strong>הגל שגרם לנזק הוא השני, לא הראשון.</strong> השדה <span class="mono">last_sig_edit_ts</span>, שהוא שקובע בפועל מתי הלמידה מתאפסת, מתקבע בקבוצות הלידים בין 11:12 ל־11:26. זה מדויק לגל השני.</p>
+      <p>המסמך שהכנו לישיבה של אותו בוקר הזהיר מזה מילה במילה:</p>
+      <p class="quote">"עריכה אחת ויחידה לכל אחת משלוש הקבוצות הדולפות, שמכילה בתוכה גם את תקרת הגיל וגם את החרגת instream_video. המטרה: שהלמידה תתאפס פעם אחת ולא שלוש."</p>
+      <p>בפועל נעשה ההפך המדויק, ועל 15 קבוצות ולא על שלוש. <strong>כשהלקוח שואל אם הכסף נשרף על למידה, התשובה היא כן, ומ־06/09.</strong></p>
+    </div>
+    <dl class="strip">
+      <div><dt>קבוצות עם יעד לידים</dt><dd>16</dd></div>
+      <div><dt>מתוכן בלמידה</dt><dd class="hot">14</dd></div>
+      <div><dt>תקציב הלידים הפעיל</dt><dd>1,111 ₪</dd></div>
+      <div><dt>ממנו בלמידה</dt><dd class="hot">100%</dd></div>
+    </dl>
+  </div>
+
+  <div class="find">
+    <div class="find-h">
+      <span class="tag us">באחריותנו</span>
+      <h3 class="find-t">שתי ההשהיות שהמלצנו עליהן לא בוצעו</h3>
+    </div>
+    <div class="find-b">
+      <p>שלושה קמפיינים רצו שמונה ימים והניבו אפס לידים, וההמלצה להשהות את שני הראשונים ניתנה בישיבה של 06/09. תחרות הנוף הסתיימה ב־7.9 והקמפיין שלה עוד באוויר.</p>
+      <p><strong>סייג הוגן, ואם לא נאמר אותו הלקוח יאמר אותו במקומנו:</strong> שניים מהשלושה אינם קמפייני לידים מלכתחילה. תחרות הנוף היא קמפיין מעורבות ומודעות המותג הוא קמפיין צפיות, ולשפוט אותם לפי לידים זה למדוד אותם במדד שלא נבחר עבורם. רק מכונות אנרגיה וגז הוא קמפיין לידים אמיתי עם אפס תוצאה. מה שנכון לומר על שלושתם: <strong>2,647 ש"ח שאיש לא יידע להגן עליהם היום</strong>, ואחד מהם רץ אחרי שהאירוע שלו כבר נגמר.</p>
+      <div class="tw" style="margin:0">
+        <table style="min-width:420px">
+          <thead><tr><th>קמפיין</th><th class="n">הוצאה</th><th class="n">לידים</th><th>סטטוס</th></tr></thead>
+          <tbody>
+            <tr><td>מעורבות תחרות נוף עד 7.9</td><td class="n">1,785 ₪</td><td class="n zero">0</td><td>פעיל</td></tr>
+            <tr><td>מודעות מותג, צפייה בסרטונים</td><td class="n">589 ₪</td><td class="n zero">0</td><td>פעיל</td></tr>
+            <tr><td>מכונות אנרגיה וגז טבעי</td><td class="n">273 ₪</td><td class="n zero">0</td><td>פעיל</td></tr>
+            <tr class="total"><td>21% מהוצאת התקופה</td><td class="n">2,647 ₪</td><td class="n">0</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="find">
+    <div class="find-h">
+      <span class="tag us">באחריותנו</span>
+      <h3 class="find-t">הקהלים צרים מדי, ומטא גובה על זה קנס</h3>
+    </div>
+    <div class="find-b">
+      <p>תקשורת חזותית שילמה 220 ש"ח לאלף חשיפות, פי חמישה מממוצע החשבון ופי אחד עשר ממה ששילמנו שנה שעברה. זה מעגל סגור: קהל קטן מדי מייקר את החשיפה, חשיפה יקרה מקטינה את מספר האנשים שנחשפים, ופחות חשיפות זה פחות לידים. שתי המגמות שהפרוטוקול מגדיר כקריטיות הן בדיוק שתי היקרות ביותר בחשבון.</p>
+      <div class="tw" style="margin:0">
+        <table style="min-width:460px">
+          <thead><tr><th>קבוצת מודעות</th><th class="n">הוצאה</th><th class="n">טווח הגעה</th><th class="n">מחיר לאלף</th></tr></thead>
+          <tbody>
+            <tr><td>תקשורת חזותית, קהל קר</td><td class="n">1,102 ₪</td><td class="n big">3,379</td><td class="n big">220 ₪</td></tr>
+            <tr><td>תקשורת חזותית, שנייה</td><td class="n">933 ₪</td><td class="n">3,250</td><td class="n big">163 ₪</td></tr>
+            <tr><td>עיצוב תעשייתי</td><td class="n">1,155 ₪</td><td class="n">6,091</td><td class="n">131 ₪</td></tr>
+            <tr><td>קירור ומיזוג, להשוואה</td><td class="n">2,236 ₪</td><td class="n good">11,771</td><td class="n good">97 ₪</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="find">
+    <div class="find-h">
+      <span class="tag them" style="background:var(--win-bg);color:var(--win)">מה כן עבד</span>
+      <h3 class="find-t">קמפיין הכנס הוא הטוב ביותר בחשבון, וזו ההוכחה שהמנגנון תקין</h3>
+    </div>
+    <div class="find-b">
+      <p>על פני כל חייו, מ־19/08 ועד שהופסק היום בשעת הכנס: <strong>2,834 ש"ח, 37 לידים, 77 ש"ח לליד</strong>. הזול ביותר בחשבון בפער גדול. בשמונת הימים האחרונים לבדם הוא ירד ל־53 ש"ח, אבל זה החלק הזול של הקמפיין ולא הממוצע שלו, ולכן המספר שמדווחים הוא 77.</p>
+      <p>המשפך בריא לכל אורכו: 139 קליקים הפכו ל־84 צפיות בדף (60%) ומהן 17 לידים (20% מהצפיות). כשהקהל, הדף וההצעה מתאימים זה לזה, אותו חשבון מייצר ליד בשליש מהמחיר.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="sec-num">חלק ד</span>
+  <h2>וחמישה דברים שלא</h2>
+  <div class="split">
+    <div class="si"><span class="si-n">01</span><div>
+      <h3>מחיר החשיפה בשוק כמעט הוכפל</h3>
+      <p>מ־19 עד 29 ש"ח לאלף חשיפות ב־2025, ל־33 עד 45 ש"ח ב־2026. אותו תקציב קונה היום כמחצית מהחשיפות. זה תמחור של מטא בעונת פתיחת שנת הלימודים, לא ניהול חשבון.</p>
+    </div></div>
+    <div class="si"><span class="si-n">01</span><div>
+      <h3>40% מהלידים נפסלים על ידי המכללה, לפי הפרוטוקול שלה</h3>
+      <p>מתוך 60 לידים, 24 סומנו "לא רלוונטיים": 9 מ־19 בקירור, 5 מ־10 בכימיה, 5 מ־19 במכונות, 3 מ־7 בעיצוב, 2 מ־5 בתקשורת. שווה לציין שבעבר נטען מולנו 70%, והמסמך שלהם עצמו אומר 40%.</p>
+    </div></div>
+    <div class="si"><span class="si-n">02</span><div>
+      <h3>זמן הטיפול בליד, במילים שלהם</h3>
+      <p>ליד מ־29.8 בתקשורת חזותית "טרם עודכן במערכת" נכון ל־8.9, כלומר עשרה ימים. "2 טרם טופלו משום שהתקבלו ביום הישיבה" מופיע פעמיים. ומתוך 60 לידים בשבועיים, שניים נרשמו בפועל ו־22 עדיין במעקב או באיתור טלפוני. ליד מפייסבוק מתקרר תוך שעות.</p>
+    </div></div>
+    <div class="si"><span class="si-n">03</span><div>
+      <h3>הביקוש בקטגוריה עצמה</h3>
+      <p>תקשורת חזותית ועיצוב תעשייתי בבאר שבע הן קטגוריות עם קהל אמיתי קטן, ולכן גם הפרוטוקול מקדם עבורן במקביל עיתונות, שילוט חוצות ומסכים דיגיטליים.</p>
+    </div></div>
+    <div class="si"><span class="si-n">04</span><div>
+      <h3>שמונה ערוצים מקבילים שאיש לא מודד</h3>
+      <p>וואלה שבע, ברנז'ה, מביט, עליתון, זמן ירוק, שבע דרום, בשבע, שלטי חוצות ומסכים בכניסות לעיר. אף אחד מהם לא נמדד בעלות לליד, ורק פייסבוק נדרש להצדיק את עצמו למספר.</p>
+    </div></div>
+  </div>
+</section>
+
+<section>
+  <span class="sec-num">חלק ה</span>
+  <h2>חלוקת האחריות, בכנות</h2>
+  <div class="resp">
+    <div class="r us"><div class="r-bar"></div><div class="r-main"><h4>איפוס למידה גורף ב־06/09</h4><p>67% מהתקציב היומי יושב בקבוצות שחזרו ללמידה</p></div><div class="r-who">שלנו</div></div>
+    <div class="r us"><div class="r-bar"></div><div class="r-main"><h4>השהיות שהומלצו ולא בוצעו</h4><p>2,647 ש"ח, אפס לידים, 21% מתקציב התקופה</p></div><div class="r-who">שלנו</div></div>
+    <div class="r us"><div class="r-bar"></div><div class="r-main"><h4>קהלים צרים מדי במגמות הקריטיות</h4><p>מחיר חשיפה עונשי, עד 220 ש"ח לאלף</p></div><div class="r-who">שלנו</div></div>
+    <div class="r out"><div class="r-bar"></div><div class="r-main"><h4>מחיר החשיפה בשוק</h4><p>פי שניים מול אותה עונה שנה שעברה</p></div><div class="r-who">חיצוני</div></div>
+    <div class="r out"><div class="r-bar"></div><div class="r-main"><h4>גודל הביקוש בקטגוריה</h4><p>חמישה עד שישה נרשמים במגמות הקריטיות</p></div><div class="r-who">חיצוני</div></div>
+    <div class="r them"><div class="r-bar"></div><div class="r-main"><h4>הגדרת "ליד רלוונטי" והסינון</h4><p>40% נפסלים לפי הקריטריונים שלהם</p></div><div class="r-who">שלהם</div></div>
+    <div class="r them"><div class="r-bar"></div><div class="r-main"><h4>מהירות הטיפול והמרה להרשמה</h4><p>עד עשרה ימים לליד, 3.3% המרה בפועל</p></div><div class="r-who">שלהם</div></div>
+  </div>
+  <p><strong>המשפט המדויק:</strong> לא, לא הכל על הקמפיינר. אבל שלושה דברים אמיתיים כן עלינו, ואחד מהם קרה לפני יומיים, ואם נענה בלי להודות בו נאבד את הזכות לטעון את כל השאר.</p>
+</section>
+
+<section>
+  <span class="sec-num">חלק ו</span>
+  <h2>לאן הולכים מפה</h2>
+  <p class="lede">עונת הרישום נסגרת ב־18/10. נשארו חמישה שבועות, ומגמה עם חמישה נרשמים לא נפתחת. במצב הזה נפח מנצח דיוק, ולא כי ויתרנו על איכות אלא כי מגמה שלא נפתחת שווה אפס גם באיכות מושלמת. וזו אינה קפיצה לחושך: זו חזרה למבנה של יולי, שכבר עבד בחשבון הזה.</p>
+
+  <div class="tw">
+    <table>
+      <caption>תוכנית הנפח · ארבעה מהלכים</caption>
+      <thead><tr><th>מה</th><th>היום</th><th>לאן</th><th>על סמך מה</th></tr></thead>
+      <tbody>
+        <tr><td>רוחב הקהל</td><td>3,300 עד 7,300 איש</td><td><strong>25,000 עד 34,000</strong></td><td>זה היה המצב ביולי</td></tr>
+        <tr><td>מבנה הטופס</td><td>טופס כוונה עם שאלות סינון</td><td><strong>טופס נפח, שם וטלפון</strong></td><td>יולי: 88 ₪ ו־68 ₪ לליד</td></tr>
+        <tr><td>מספר הקמפיינים</td><td>13 פעילים</td><td><strong>6 עד 7 גדולים</strong></td><td>פחות חפיפה, פחות תחרות עצמית</td></tr>
+        <tr><td>קבוצות בלמידה</td><td>15</td><td><strong>אפס, ואז לא נוגעים</strong></td><td>כל עריכה מאפסת מחדש</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="swing">
+    <div class="sw">
+      <div class="sw-t">עד 18/10 · בקצב של היום</div>
+      <div class="sw-row"><span class="sw-y">242 ₪ לליד</span><span class="sw-v old">≈294</span></div>
+      <p class="sw-note">פניות עד סגירת עונת הרישום.</p>
+    </div>
+    <div class="sw">
+      <div class="sw-t">עד 18/10 · במבנה של יולי</div>
+      <div class="sw-row"><span class="sw-y">157 ₪ לליד</span><span class="sw-v new">≈450</span></div>
+      <p class="sw-note">אותו תקציב, 1,778 ש"ח ליום.</p>
+    </div>
+    <div class="sw">
+      <div class="sw-t">ההפרש</div>
+      <div class="sw-row"><span class="sw-y">בחמישה שבועות</span><span class="sw-v new">≈150</span></div>
+      <p class="sw-note">פניות נוספות, בלי שקל נוסף.</p>
+    </div>
+  </div>
+
+  <div class="find">
+    <div class="find-h">
+      <span class="tag out">המחיר</span>
+      <h3 class="find-t">יותר נפח זה יותר לידים לא רלוונטיים, ומדור הרישום שלהם כבר לא עומד בקצב</h3>
+    </div>
+    <div class="find-b">
+      <p>היום 40% נפסלים לפי הפרוטוקול שלהם. במבנה נפח זה יעלה, ריאלית ל־55% עד 60%. זה לא הסיכון האמיתי.</p>
+      <p><strong>הסיכון האמיתי:</strong> 60 לידים בשבועיים הפיקו אצלם שתי הרשמות, 22 עדיין באיתור טלפוני, וליד מ־29.8 טופל רק ב־8.9. אם נכפיל את הנפח בלי שיגדילו את כוח האדם בטלפונים, נייצר ערימה גדולה יותר של פניות שמתקררות, ובעוד שבועיים תגיע אותה תלונה בדיוק, רק על מספרים גדולים יותר.</p>
+    </div>
+  </div>
+
+  <div class="call">
+    <span class="k">לכן: כן, אבל בכתב ובתנאי · לשלוח לפני שנוגעים בחשבון</span>
+    <p>"אתם מודדים כמות פניות, אז נעבור למבנה שמייצר כמות. זה יביא לפי ההערכה כ־150 פניות נוספות עד 18/10, ובמקביל יעלה את שיעור הלא רלוונטיים מ־40% לכ־60%. התנאי מצידנו הוא שמדור הרישום יחזור לכל פנייה תוך 24 שעות, אחרת אנחנו מייצרים יותר פניות שמתקררות ולא יותר נרשמים."</p>
+  </div>
+  <p>המשפט הזה בכתב הופך כל תלונה עתידית על איכות לשיחה על מה שסוכם, ולא לשיחה על מי אשם.</p>
+
+  <h2 style="font-size:23px;margin-top:38px">סדר ביצוע</h2>
+  <ol class="act">
+    <li><div><b>היום · השהיית שלושת הקמפיינים שהניבו אפס</b><span>2,647 ש"ח חוזרים לתקציב. אי אפשר לענות ללקוח לפני שזה בוצע.</span></div></li>
+    <li><div><b>היום · שליחת התשובה עם משפט התנאי</b><span>מודה בשלושת הדברים, מביאה את ההשוואה השנתית, ומחזירה את שאלת ההמרה להרשמה.</span></div></li>
+    <li><div><b>מיד אחרי אישור · בנייה מחדש ברוחב של יולי</b><span>שישה קמפיינים, עריכה אחת לכל אחד, לא שלוש.</span></div></li>
+    <li><div><b>ואז שבוע בלי לגעת</b><span>זה החלק הקשה כשלקוח לוחץ, וזה גם החלק שקובע אם הלמידה מסתיימת או מתחילה מחדש.</span></div></li>
+    <li><div><b>במקביל · רשימת הנרשמים בפועל לפי מגמה ומקור</b><span>בלי זה אנחנו מייעלים עלות לפנייה בזמן שהם מודדים הרשמות, ושתי הצלחות שונות נמדדות זו מול זו.</span></div></li>
+  </ol>
+
+  <div class="si" style="border-color:var(--line-strong)">
+    <span class="si-n">↗</span>
+    <div>
+      <h3>קלף שנשמר לשיחה הבאה</h3>
+      <p>לפי הפרוטוקול, 43% מהנרשמים למכללה הם מהמגזר הבדואי, ואין בחשבון קמפיין ייעודי בערבית. זו ההזדמנות הגדולה ביותר שלא נוצלה, והיא לא נכנסת להודעת הגנה.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>מקורות.</strong> לידים, הוצאה, מחיר לאלף חשיפות, שיעור הקלקה וטווח הגעה: <code>Graph API v21.0 /insights</code>, נמשך 08/09/2026. עשרים ושש עריכות הטירגוט ומועדיהן: <code>/activities</code>. שלב הלמידה והתקציב היומי: <code>/adsets</code> עם <code>learning_stage_info</code>.</p>
+  <p>60 הלידים, שיעור הפסילה וזמני הטיפול: פרוטוקול ישיבת צוות השיווק של המכללה, 8.9.2026. ההמלצות שלא בוצעו: <code>meetings/2026-09-06-tcb-recommendations-team.md</code>.</p>
+  <p>לא בוצע שום שינוי בחשבון המודעות במהלך הבדיקה.</p>
+</footer>
+
+</div>
+
+</html>

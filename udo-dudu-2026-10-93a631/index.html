@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta property="og:title" content="דודו בשש פלטות">
+<meta property="og:description" content="הלוגו של UDO בשש פלטות צבעים, לבחירה.">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>דודו בשש פלטות</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Fredoka:wght@500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: אותה מסגרת סטודיו שקטה של ספר המותג (ניטרלית, מגיבה לבהיר וכהה). הסמל והאותיות קבועים, וכל דוגמה צובעת את המשטח שלה לפי הפלטה. */
+:root{
+  --st-bg:#F2F2EF;
+  --st-panel:#FFFFFF;
+  --st-ink:#17171A;
+  --st-soft:#5E5E67;
+  --st-line:#E0E0DB;
+  --st-chip:#E8E8E3;
+  --st-focus:#2F6BFF;
+  --st-good:#18794A;
+  --st-font:"Assistant","Heebo",system-ui,sans-serif;
+  --st-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --cap-fredoka:.7;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--st-bg:#111113;--st-panel:#1A1A1E;--st-ink:#F0F0EC;--st-soft:#A5A5AE;--st-line:#2D2D33;--st-chip:#26262C;--st-focus:#8AACFF;--st-good:#5FD394;color-scheme:dark}
+}
+:root[data-theme="dark"]{--st-bg:#111113;--st-panel:#1A1A1E;--st-ink:#F0F0EC;--st-soft:#A5A5AE;--st-line:#2D2D33;--st-chip:#26262C;--st-focus:#8AACFF;--st-good:#5FD394;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{direction:rtl;background:var(--st-bg);color:var(--st-ink);font-family:var(--st-font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+button{font:inherit;color:inherit}
+figure{margin:0}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--st-focus);outline-offset:3px;border-radius:6px}
+h1,h2,h3,h4{text-wrap:balance}
+
+/* ---------- סרגל עליון ---------- */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:color-mix(in oklab,var(--st-bg) 86%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--st-line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;min-height:56px}
+.tb-title{font-weight:800;white-space:nowrap}
+.tb-nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1}
+.tb-nav::-webkit-scrollbar{display:none}
+.tb-nav a{flex:none;text-decoration:none;color:var(--st-soft);font-weight:700;font-size:.95rem;padding:6px 12px;border-radius:999px;display:inline-flex;align-items:center;gap:7px}
+.tb-nav a:hover{color:var(--st-ink)}
+.tb-nav a i{width:10px;height:10px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.16)}
+.tb-nav a[aria-current="true"]{background:var(--st-ink);color:var(--st-bg)}
+.tb-sep{width:1px;height:18px;background:var(--st-line);flex:none;align-self:center;margin-inline:4px}
+
+/* ---------- פתיחה ---------- */
+.intro{padding-block:52px 26px;display:grid;gap:16px}
+.eyebrow{font-size:.8rem;letter-spacing:.06em;font-weight:700;color:var(--st-soft)}
+.intro h1{font-size:clamp(2.3rem,5.6vw,4rem);line-height:1.02;font-weight:800;margin:0;max-width:16ch}
+.intro p{margin:0;max-width:62ch;font-size:1.12rem;color:var(--st-soft)}
+.intro p b{color:var(--st-ink)}
+.fixed{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 0;padding:0;list-style:none}
+.fixed li{background:var(--st-chip);border-radius:999px;padding:4px 12px;font-size:.9rem;font-weight:700}
+.fixed li span{color:var(--st-soft);font-weight:600}
+
+/* ---------- בחירת פלטה ---------- */
+.picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding-block:6px 34px}
+@media (max-width:860px){.picker{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.picker{grid-template-columns:1fr}}
+.pick-card{display:flex;flex-direction:column;text-align:start;border:1px solid var(--st-line);background:var(--st-panel);border-radius:18px;overflow:hidden;cursor:pointer;padding:0;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.pick-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px -26px rgba(0,0,0,.45)}
+.pick-card[aria-pressed="true"]{border-color:var(--st-ink);box-shadow:0 0 0 2px var(--st-ink)}
+.pick-face{height:124px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:hidden}
+.pick-face > span{display:grid;place-items:center;position:relative;isolation:isolate;overflow:hidden}
+.pick-face .lk{font-size:34px}
+.pick-meta{padding:13px 16px 16px;display:grid;gap:3px;font-family:var(--st-font);color:var(--st-ink)}
+.pick-num{font-size:.78rem;font-weight:700;color:var(--st-soft)}
+.pick-name{font-weight:800;font-size:1.25rem;line-height:1.2}
+.pick-tag{color:var(--st-soft);font-size:.95rem}
+.pick-sw{display:flex;gap:6px;margin-top:6px}
+.pick-sw i{width:16px;height:16px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14)}
+
+/* ---------- ספר הפלטה ---------- */
+#book{scroll-margin-top:70px}
+.book-in{animation:bookIn .35s ease-out}
+@keyframes bookIn{from{opacity:.35;transform:translateY(8px)}to{opacity:1;transform:none}}
+.cover{position:relative;overflow:hidden;border-radius:26px;min-height:clamp(360px,46vw,480px);display:grid;grid-template-rows:auto 1fr auto;padding:clamp(20px,4vw,44px);isolation:isolate;gap:12px}
+.cover-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.9rem;font-weight:700;font-family:var(--b-body)}
+.cover-logo{display:grid;place-items:center;padding-block:18px}
+.cover-logo .lk{font-size:clamp(70px,13.5vw,170px)}
+.cover-text{display:grid;gap:6px;max-width:44ch}
+.cover-name{font-size:clamp(2rem,4.6vw,3.4rem);line-height:1;margin:0}
+.cover-slogan{font-size:clamp(1.15rem,2.2vw,1.5rem);margin:0;line-height:1.3}
+.cover-tag{margin:0;color:var(--b-muted);font-family:var(--b-body)}
+.replay{border:1px solid currentColor;background:transparent;border-radius:999px;padding:6px 14px;font-weight:700;font-size:.85rem;cursor:pointer;opacity:.85}
+.replay:hover{opacity:1}
+
+.chaps{font-family:var(--st-font);color:var(--st-ink)}
+.chap{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr);gap:clamp(16px,3vw,40px);padding-block:42px;border-bottom:1px solid var(--st-line)}
+@media (max-width:860px){.chap{grid-template-columns:1fr;padding-block:30px}}
+.chap-head h3{margin:0;font-size:1.5rem;font-weight:800;line-height:1.1}
+.chap-head p{margin:8px 0 0;color:var(--st-soft);font-size:.98rem}
+.chap-body{display:grid;gap:16px;min-width:0}
+.sub-h{margin:10px 0 0;font-size:1rem;font-weight:800}
+
+.idea-lead{font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.5;font-weight:600;margin:0;max-width:50ch;text-wrap:pretty}
+.pc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.pc{grid-template-columns:1fr}}
+.pc-col{background:var(--st-panel);border:1px solid var(--st-line);border-radius:16px;padding:16px 18px}
+.pc-col h4{margin:0 0 10px;font-size:1rem;font-weight:800}
+.pc-col ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.pc-col li{position:relative;padding-inline-start:20px;line-height:1.5}
+.pc-col li::before{content:"";position:absolute;inset-inline-start:2px;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--st-good)}
+.cons li::before{border-radius:2px;background:var(--st-soft);transform:rotate(45deg)}
+
+/* אריחים */
+.tile{border-radius:16px;overflow:hidden;border:1px solid var(--st-line);display:grid;min-width:0;position:relative;isolation:isolate}
+.tile-stage{display:grid;place-items:center;min-height:170px;padding:28px 20px}
+.tile-stage .lk{font-size:clamp(40px,5.6vw,56px)}
+.tile figcaption{padding:0 16px 14px;font-size:.88rem;color:var(--b-muted);font-family:var(--st-font);display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.tile.plain{background:var(--st-panel);color:var(--st-ink)}
+.tile.plain figcaption{color:var(--st-soft)}
+.logo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:920px){.logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.logo-grid{grid-template-columns:1fr}}
+.ico-row{display:flex;align-items:flex-end;justify-content:center;gap:18px;flex-wrap:wrap}
+.ico-wrap{display:grid;justify-items:center;gap:6px}
+.ico-wrap small{font-family:var(--st-mono);font-size:.72rem;color:var(--st-soft)}
+.ico{display:grid;place-items:center;flex:none}
+.ico svg{overflow:visible}
+.space-box{font-size:clamp(34px,4.6vw,46px);padding:calc(var(--cap-fredoka) * .5em);outline:1.5px dashed color-mix(in oklab,currentColor 45%,transparent);line-height:0}
+.space-box .lk{font-size:1em;outline:1px solid color-mix(in oklab,currentColor 22%,transparent)}
+.mini-replay{border:1px solid currentColor;background:transparent;border-radius:999px;padding:2px 10px;font-size:.8rem;font-weight:700;cursor:pointer;color:inherit}
+
+/* צבעים */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.sw{background:var(--st-panel);border:1px solid var(--st-line);border-radius:16px;overflow:hidden;display:grid;align-content:start;min-width:0}
+.sw-chip{all:unset;display:grid;place-items:center;height:116px;cursor:copy;position:relative;box-shadow:inset 0 -1px 0 var(--st-line)}
+.sw-chip:focus-visible{outline:2.5px solid var(--st-focus);outline-offset:-5px}
+.sw-copied{opacity:0;font-weight:800;font-size:.85rem;background:rgba(0,0,0,.72);color:#FFFFFF;padding:4px 10px;border-radius:999px;transition:opacity .2s}
+.sw-chip.copied .sw-copied{opacity:1}
+.sw-meta{padding:12px 14px 14px;display:grid;gap:6px}
+.sw-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.sw-top b{font-size:1.05rem}
+.sw-top code{font-family:var(--st-mono);font-size:.8rem;color:var(--st-soft);direction:ltr}
+.sw-meta p{margin:0;font-size:.9rem;color:var(--st-soft);line-height:1.45}
+.sw-cr{display:flex;flex-wrap:wrap;gap:6px}
+.cr{display:inline-flex;gap:5px;align-items:baseline;font-size:.78rem;background:var(--st-chip);border-radius:999px;padding:3px 9px}
+.cr b{font-family:var(--st-mono);font-weight:500;direction:ltr}
+.cr em{font-style:normal;color:var(--st-soft)}
+.cr.good em{color:var(--st-good)}
+.prop{display:grid;gap:10px}
+.prop-bar{display:flex;height:46px;border-radius:12px;overflow:hidden;outline:1px solid var(--st-line);outline-offset:-1px}
+.prop-leg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.9rem;color:var(--st-soft)}
+.prop-leg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-inline-end:6px;vertical-align:-1px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.16)}
+
+/* רכיבים */
+.comp{padding:clamp(16px,3vw,26px);display:grid;gap:16px}
+.comp-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.comp-label{font-size:.82rem;color:var(--b-muted)}
+.comp-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:700px){.comp-split{grid-template-columns:1fr}}
+.comp-dark{grid-template-columns:minmax(0,1fr) auto;align-items:center}
+@media (max-width:640px){.comp-dark{grid-template-columns:1fr}}
+.comp-dark-h{font-size:clamp(1.4rem,3vw,2rem);line-height:1.15}
+
+/* יישומים */
+.apps-hero{font-size:16px}
+@media (max-width:560px){.apps-hero{font-size:12.5px}}
+.apps-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}
+@media (max-width:760px){.apps-2{grid-template-columns:1fr}}
+.ap-fig{display:grid;gap:10px;justify-items:center;min-width:0}
+.ap-fig figcaption{font-size:.88rem;color:var(--st-soft);text-align:center;max-width:46ch}
+.ap-fig .app{justify-self:stretch}
+
+/* מערכת */
+.sys{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+@media (max-width:640px){.sys{grid-template-columns:1fr}}
+.sys-note{margin:0;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:baseline;max-width:72ch}
+.effort{background:var(--st-chip);border-radius:999px;padding:3px 12px;font-weight:800;font-size:.9rem}
+.login-now{width:min(300px,100%);background:#FFFFFF;color:#1F2937;border:1px solid #E5E7EB;border-radius:14px;padding:22px;display:grid;gap:6px;font-family:"Assistant",sans-serif;box-shadow:0 10px 30px -20px rgba(0,0,0,.35);text-align:right}
+.ln-brand{color:#E9950F;font-weight:800;font-size:1.5rem;line-height:1}
+.ln-sub{color:#6B7280;font-size:.9rem;margin-bottom:6px}
+.ln-l{font-size:.85rem;font-weight:600}
+.ln-in{height:36px;border-radius:8px;background:#F3F4F6;border:1px solid #E5E7EB}
+.ln-btn{margin-top:8px;height:38px;border-radius:8px;background:#F4AF25;color:#1F2937;font-weight:700;display:grid;place-items:center}
+.ln-link{color:#D9900F;text-align:center;font-size:.85rem;margin-top:4px}
+.ln-note{color:#6B7280;font-size:.75rem}
+
+.pick-end{display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding-block:28px 6px}
+.pick-alt{color:var(--st-soft);font-weight:700}
+
+/* ---------- אזורים כלליים ---------- */
+.sec{padding-block:64px 18px;scroll-margin-top:64px}
+.sec-head{display:grid;gap:8px;margin-bottom:24px}
+.sec-head h2{font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800;margin:0;line-height:1.05}
+.sec-head p{margin:0;color:var(--st-soft);max-width:62ch}
+.st-btn{border:0;border-radius:12px;padding:11px 18px;font-weight:800;cursor:pointer;background:var(--st-chip);color:var(--st-ink);font-family:var(--st-font)}
+.st-btn:hover{filter:brightness(.97)}
+.st-btn.primary{background:var(--st-ink);color:var(--st-bg)}
+.st-btn[disabled]{opacity:.6;cursor:progress}
+
+.icons-line{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;background:var(--st-panel);border:1px solid var(--st-line);border-radius:20px;padding:20px 14px;margin-bottom:18px}
+@media (max-width:640px){.icons-line{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:18px}}
+.icons-line figure{display:grid;justify-items:center;gap:8px;text-align:center}
+.icons-line figcaption{font-size:.85rem;font-weight:700;color:var(--st-soft);line-height:1.25}
+.cmp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:900px){.cmp-grid{grid-template-columns:1fr}}
+.cmp{display:grid;gap:10px}
+.cmp-hero{font-size:12px}
+.cmp figcaption{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.cmp figcaption span{color:var(--st-soft)}
+.cmp figcaption b{color:var(--st-ink)}
+
+.decide{display:grid;gap:16px;background:var(--st-panel);border:1px solid var(--st-line);border-radius:22px;padding:clamp(16px,3vw,28px)}
+.dopts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:760px){.dopts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:440px){.dopts{grid-template-columns:1fr}}
+.dopt{position:relative;display:grid;gap:6px;align-content:start;padding:12px;border-radius:14px;border:1.5px solid var(--st-line);cursor:pointer;background:var(--st-bg);font-family:var(--st-font);color:var(--st-ink)}
+.dopt input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.dopt:has(input:checked){border-color:var(--st-ink);box-shadow:0 0 0 1.5px var(--st-ink)}
+.dopt:has(input:focus-visible){outline:2.5px solid var(--st-focus);outline-offset:2px}
+.dopt .face{height:66px;border-radius:10px;display:grid;place-items:center;position:relative;overflow:hidden;isolation:isolate}
+.dopt .face .lk{font-size:26px}
+.dopt small{color:var(--st-soft);line-height:1.35}
+.notes-l{font-weight:800}
+textarea{width:100%;font:inherit;padding:12px 14px;border-radius:12px;border:1px solid var(--st-line);background:var(--st-bg);color:var(--st-ink);resize:vertical;min-height:96px}
+.save-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+#saveStatus{font-weight:700}
+#saveStatus.ok{color:var(--st-good)}
+.fallback{display:grid;gap:10px;border-top:1px solid var(--st-line);padding-top:14px}
+.fallback p{margin:0;color:var(--st-soft)}
+.foot{padding-block:40px 60px;color:var(--st-soft);font-size:.9rem}
+
+/* ---------- דוגמאות המותג ---------- */
+.bk{font-family:var(--st-font)}
+.bk .disp{font-family:var(--b-display);font-weight:var(--b-display-w)}
+.s-light,.s-dark,.s-brand{font-family:var(--b-body);font-weight:var(--b-body-w)}
+.s-light{background-color:var(--b-bg);color:var(--b-ink)}
+.s-dark{background-color:var(--b-dark);color:var(--b-on-dark);--b-muted:var(--b-on-dark-muted);--b-action:var(--b-action-dark);--b-action-ink:var(--b-action-dark-ink);--b-line:rgba(255,255,255,.14)}
+.s-brand{background-color:var(--b-brand-bg);color:var(--b-brand-ink);--b-muted:var(--b-brand-muted);--b-action:var(--b-brand-action);--b-action-ink:var(--b-brand-action-ink);--b-line:rgba(127,127,127,.25)}
+.bk .s-light .hl{color:var(--b-accent)}
+.bk[data-hl="marker"] .s-light .hl{background-image:linear-gradient(transparent 56%,var(--b-marker) 56%,var(--b-marker) 90%,transparent 90%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding-inline:.06em}
+.bk .s-dark .hl{color:var(--b-accent-on-dark)}
+.bk .s-brand .hl{color:var(--b-brand-accent);text-decoration-line:var(--b-brand-deco);text-decoration-color:var(--b-brand-deco-color);text-decoration-thickness:.15em;text-underline-offset:.16em;text-decoration-skip-ink:none}
+
+.pat-glow{background-image:radial-gradient(60% 75% at 12% 0%,color-mix(in oklab,var(--b-accent-on-dark) 20%,transparent),transparent 70%),radial-gradient(42% 55% at 100% 100%,color-mix(in oklab,var(--b-accent-on-dark) 10%,transparent),transparent 70%)}
+.pat-dots{background-image:radial-gradient(color-mix(in oklab,var(--b-dots) 42%,transparent) 1.3px,transparent 1.7px);background-size:16px 16px}
+.deco{position:absolute;z-index:-1;pointer-events:none;overflow:visible}
+.deco-cover{width:min(60%,520px);inset-inline-end:-7%;bottom:-26%;opacity:.13}
+.deco-hero{width:min(42%,340px);inset-inline-end:-8%;bottom:-34%;opacity:.22}
+
+.bk .btn{display:inline-flex;align-items:center;justify-content:center;gap:.4em;min-height:2.9em;padding:.5em 1.3em;border-radius:999px;background:var(--b-action);color:var(--b-action-ink);font-family:var(--b-body);font-weight:var(--b-strong-w);font-size:1em;line-height:1.2;box-shadow:inset 0 0 0 1px var(--b-action-edge);white-space:nowrap}
+.bk .btn.sm{min-height:2.3em;padding:.3em .95em;font-size:.9em}
+.bk .btn.ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+.bk .btn.wide{width:100%}
+.bk .pill{display:inline-flex;align-items:center;padding:.28em .8em;border-radius:999px;font-size:.85em;font-weight:var(--b-strong-w);white-space:nowrap;line-height:1.35}
+.bk .card{background:var(--b-bg);color:var(--b-ink);border:1px solid var(--b-line);border-radius:22px;box-shadow:var(--b-card-shadow);padding:1em 1.1em}
+.lead{display:grid;gap:8px}
+.lead-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.lead-top b{font-size:1.1rem}
+.lead-meta{font-size:.9rem;color:var(--b-muted)}
+.lead-q{display:flex;justify-content:space-between;align-items:baseline;background:var(--b-surface);border-radius:13px;padding:8px 10px;font-size:.92rem}
+.lead-q b{font-family:var(--b-display);font-weight:var(--b-display-w);font-size:1.25rem;direction:ltr}
+.lead-next{display:flex;align-items:center;gap:8px;font-size:.9rem;font-weight:var(--b-strong-w)}
+.lead-next i{width:9px;height:9px;border-radius:50%;background:var(--b-action);box-shadow:0 0 0 3px color-mix(in oklab,var(--b-action) 30%,transparent);flex:none}
+.form{display:grid;gap:12px;align-content:start}
+.field{display:grid;gap:.35em}
+.field label{font-size:.85em;color:var(--b-muted)}
+.input{min-height:2.5em;border:1px solid var(--b-line);border-radius:14px;padding:.55em .8em;background:var(--b-bg);color:var(--b-ink)}
+.tg{display:flex;align-items:center;gap:.7em;font-size:.92em;line-height:1.35}
+.tg span:nth-child(2){flex:1}
+.tg em{font-style:normal;font-size:.85em;font-weight:var(--b-strong-w);color:var(--b-muted)}
+.tg .sw-t{width:2.6em;height:1.5em;border-radius:999px;background:var(--b-line);position:relative;flex:none}
+.tg .sw-t::after{content:"";position:absolute;top:.2em;inset-inline-start:.2em;width:1.1em;height:1.1em;border-radius:50%;background:#FFFFFF;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.tg .sw-t.on{background:var(--b-action);box-shadow:inset 0 0 0 1px var(--b-action-edge)}
+.tg .sw-t.on::after{inset-inline-start:auto;inset-inline-end:.2em;background:var(--b-action-ink)}
+
+.hero{position:relative;overflow:hidden;border-radius:28px;padding:1.3em 1.6em 2.1em;display:grid;gap:1.7em;isolation:isolate}
+.hero-nav{display:flex;align-items:center;justify-content:space-between;gap:1em}
+.hero-nav .lk{font-size:1.75em}
+.hero-links{display:flex;align-items:center;gap:1em;font-size:.95em;font-weight:var(--b-strong-w);color:var(--b-muted)}
+.hero-body{display:grid;gap:.9em;max-width:34em}
+.hero-h{font-size:2.5em;line-height:1.08;margin:0}
+.hero-p{margin:0;color:var(--b-muted);font-size:1.06em;line-height:1.55;max-width:32em}
+.hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:.6em 1em}
+.hero-note{font-size:.85em;color:var(--b-muted)}
+
+.phone{width:min(300px,100%);border-radius:38px;padding:9px;background:#0E0E10;box-shadow:0 30px 60px -32px rgba(0,0,0,.55);font-family:var(--b-body);font-size:15px}
+.ph-screen{border-radius:30px;overflow:hidden;background:var(--b-chat-wall);display:flex;flex-direction:column;height:520px}
+.ph-head{display:flex;align-items:center;gap:.6em;padding:1.5em 1em .75em;background:var(--b-chat-head);color:var(--b-chat-head-ink)}
+.ph-head b{display:block;font-size:.95em}
+.ph-head small{display:block;opacity:.75;font-size:.75em}
+.ph-av{width:2.1em;height:2.1em;border-radius:50%;display:grid;place-items:center;background:var(--b-chat-head-ink);color:var(--b-chat-head);font-weight:700;flex:none}
+.ph-wall{flex:1;display:flex;flex-direction:column;gap:.45em;padding:.9em .75em;overflow:hidden;font-size:.86em}
+.ph-day{align-self:center;font-size:.8em;padding:.15em .8em;border-radius:999px;background:var(--b-chat-in);color:var(--b-muted)}
+.msg{max-width:84%;padding:.5em .75em .35em;border-radius:14px;white-space:pre-line;line-height:1.45;box-shadow:0 1px 1px rgba(0,0,0,.06)}
+.msg time{display:block;text-align:end;font-size:.72em;opacity:.6;margin-top:.1em}
+.msg.in{align-self:flex-start;background:var(--b-chat-in);color:var(--b-chat-in-ink);border-start-start-radius:4px}
+.msg.out{align-self:flex-end;background:var(--b-chat-out);color:var(--b-chat-out-ink);border-start-end-radius:4px}
+.msg.typing{display:flex;gap:4px;padding:.75em .9em}
+.msg.typing i{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.45;animation:typing2 1.2s ease-in-out infinite}
+.msg.typing i:nth-child(2){animation-delay:.15s}
+.msg.typing i:nth-child(3){animation-delay:.3s}
+@keyframes typing2{0%,60%,100%{transform:none;opacity:.35}30%{transform:translateY(-3px);opacity:.9}}
+
+.post{position:relative;overflow:hidden;aspect-ratio:1;width:min(340px,100%);max-width:100%;border-radius:26px;padding:1.5em;display:grid;grid-template-rows:auto 1fr auto;isolation:isolate;font-size:15px}
+.post .lk{font-size:1.6em}
+.post-h{align-self:center;font-size:2.3em;line-height:1.06}
+.post-foot{display:flex;justify-content:space-between;align-items:center;gap:1em;font-size:.95em}
+.post-url{font-weight:var(--b-strong-w);opacity:.8;direction:ltr}
+
+.app{display:grid;grid-template-columns:190px minmax(0,1fr);border-radius:24px;overflow:hidden;border:1px solid var(--b-line);background:var(--b-bg);color:var(--b-ink);font-family:var(--b-body);width:100%}
+.app-side{background:var(--b-surface);padding:1.1em .8em;display:grid;align-content:start;gap:1.1em;min-width:0}
+.app-side .lk{font-size:1.45em;padding-inline:.35em}
+.app-nav{display:grid;gap:.15em}
+.app-nav span{padding:.5em .75em;border-radius:12px;font-size:.95em;color:var(--b-muted)}
+.app-nav span.on{background:var(--b-side-active);color:var(--b-side-active-ink);font-weight:var(--b-strong-w)}
+.app-main{padding:1.1em 1.3em;display:grid;align-content:start;gap:.8em;min-width:0}
+.app-head{display:flex;justify-content:space-between;align-items:center;gap:1em}
+.app-head b{font-family:var(--b-display);font-weight:var(--b-display-w);font-size:1.5em}
+.app-table{overflow-x:auto}
+.app-table table{width:100%;border-collapse:collapse;font-size:.92em;min-width:560px}
+.app-table th{font-weight:500;color:var(--b-muted);text-align:start;padding:.5em .6em;border-bottom:1px solid var(--b-line);font-size:.85em}
+.app-table td{padding:.65em .6em;border-bottom:1px solid var(--b-line);white-space:nowrap}
+.app-table tr:last-child td{border-bottom:0}
+.app-table .muted{color:var(--b-muted)}
+@media (max-width:640px){.app{grid-template-columns:1fr}.app-nav{display:flex;overflow-x:auto;gap:.3em}.app-nav span{flex:none}}
+
+.login{width:min(300px,100%);border-radius:24px;padding:1.4em;display:grid;gap:.6em;border:1px solid var(--b-line);box-shadow:var(--b-card-shadow)}
+.login .lk{font-size:1.9em}
+.login-sub{color:var(--b-muted);font-size:.9rem}
+.login-link{text-align:center;color:var(--b-link);font-size:.9rem;font-weight:var(--b-strong-w)}
+
+/* ---------- הלוגו והתנועה ---------- */
+.lk{display:inline-flex;align-items:baseline;line-height:1;white-space:nowrap}
+.lk-mark{height:calc(var(--cap-fredoka) * 1em);width:calc(var(--cap-fredoka) * 1em);overflow:visible;flex:none;margin-left:.06em}
+.m-dudu{transform-box:view-box;transform-origin:50px 90px}
+.m-eye{transform-box:fill-box;transform-origin:center}
+.m-face{transition:opacity .18s}
+.m-typing{opacity:0;transition:opacity .18s}
+.m-typing circle{transform-box:fill-box;transform-origin:center}
+@keyframes duduPop{0%{transform:scale(.35);opacity:0}60%{transform:scale(1.08);opacity:1}100%{transform:scale(1)}}
+@keyframes blink{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.12)}}
+@keyframes typeDot{0%,60%,100%{transform:translateY(0);opacity:.55}30%{transform:translateY(-7px);opacity:1}}
+.lk.play .m-dudu{animation:duduPop .6s cubic-bezier(.34,1.56,.64,1) .1s backwards}
+.lk.live .m-eye{animation:blink 4.2s ease-in-out 1.2s infinite}
+.lk:hover .m-face{opacity:0}
+.lk:hover .m-typing{opacity:1}
+.lk:hover .m-typing circle{animation:typeDot 1s ease-in-out infinite}
+.lk:hover .m-typing circle:nth-child(2){animation-delay:.15s}
+.lk:hover .m-typing circle:nth-child(3){animation-delay:.3s}
+
+@media (prefers-reduced-motion: reduce){
+  .lk *,.book-in,.msg.typing i{animation:none !important;transition:none !important}
+  .pick-card{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar" dir="rtl">
+  <div class="wrap">
+    <span class="tb-title">דודו, צבעים</span>
+    <nav class="tb-nav" id="tbNav" aria-label="ניווט בעמוד"></nav>
+  </div>
+</header>
+
+<div class="wrap" dir="rtl">
+  <section class="intro" aria-labelledby="introH">
+    <span class="eyebrow">UDO, מותג, 6 באוקטובר 2026</span>
+    <h1 id="introH">דודו בשש פלטות</h1>
+    <p>UDO היא מערכת מכירות לסוכני נסיעות עצמאיים, ודודו הוא העוזר שלה: בועת שיחה עם עיניים וחיוך, שיושבת במקום ה-O בשם. הכיוון נבחר, והצבעים עוד פתוחים. <b>הסמל, האותיות והתנועה נשארים כמו שהם, ורק הצבעים משתנים.</b> הראשונה היא הסגול והלימון מספר המותג המקורי, כדי שיהיה מול מה להשוות. בכל פלטה רואים את הלוגו, הצבעים עם הניגודיות שלהם, ראש העמוד, השיחה בטלפון, פוסט והמערכת.</p>
+    <ul class="fixed" aria-label="מה לא משתנה">
+      <li><span>סמל:</span> דודו במקום ה-O</li>
+      <li><span>כותרות:</span> Fredoka</li>
+      <li><span>טקסט:</span> Assistant</li>
+      <li><span>תנועה:</span> קופץ, ממצמץ ומקליד</li>
+    </ul>
+    <p><a href="https://report.ubiz.co.il/udo-brand-2026-10-f94197/" target="_blank" rel="noopener">לספר המותג המקורי, עם ארבעת הכיוונים</a></p>
+  </section>
+
+  <div class="picker" id="picker" aria-label="הפלטות"></div>
+  <div id="book"></div>
+
+  <section class="sec" id="compare" aria-labelledby="cmpH">
+    <div class="sec-head">
+      <span class="eyebrow">השוואה</span>
+      <h2 id="cmpH">אותו מסך, שש פלטות</h2>
+      <p>קודם האייקון של המערכת, כמו שהוא ייראה במסך הבית של הטלפון. אחר כך ראש עמוד המכירה, באותן מילים, בכל אחת מהפלטות.</p>
+    </div>
+    <div class="icons-line" id="iconsLine"></div>
+    <div class="cmp-grid" id="cmpGrid"></div>
+  </section>
+
+  <section class="sec" id="decide" aria-labelledby="decH">
+    <div class="sec-head">
+      <span class="eyebrow">בחירה</span>
+      <h2 id="decH">איזו פלטה הכי עובדת?</h2>
+      <p>בוחרים פלטה ומוסיפים הערה אם צריך, למשל לחבר בין שתיים. אחר כך מעתיקים ושולחים לדני בוואטסאפ.</p>
+    </div>
+    <div class="decide">
+      <div class="dopts" id="dopts" role="radiogroup" aria-label="הפלטה שנבחרה"></div>
+      <label class="notes-l" for="notes">מה לשנות, לשמור או לחבר בין פלטות? (לא חובה)</label>
+      <textarea id="notes" rows="4" placeholder="למשל: הכתום, אבל עם הכפתורים הכהים של שחור ולימון"></textarea>
+      <div class="save-row">
+        <button type="button" class="st-btn primary" id="save">להעתיק את הבחירה</button>
+        <span id="saveStatus" role="status" aria-live="polite"></span>
+      </div>
+      <div class="fallback" id="fallback" hidden>
+        <p>אם ההעתקה לא עבדה, אפשר לסמן את הטקסט כאן ולהעתיק ידנית.</p>
+        <textarea id="fbText" readonly rows="3"></textarea>
+              </div>
+    </div>
+  </section>
+
+  <p class="foot">כל מה שבעמוד הוא הצעה לבחירה, ושום דבר עוד לא עלה לאתר. השמות, הסכומים והשעות בדוגמאות הם להמחשה בלבד.</p>
+</div>
+
+<script>
+(() => {
+'use strict';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+/* ---------- הסמל: דודו במקום ה-O ---------- */
+const DUDU = c => `<g class="m-dudu"><path fill="${c.main}" d="M50 10A40 40 0 0 1 90 50A40 40 0 0 1 50 90H18A8 8 0 0 1 10 82V50A40 40 0 0 1 50 10z"/><g class="m-face"><ellipse class="m-eye" cx="38.5" cy="45" rx="5.4" ry="7.4" fill="${c.detail}"/><ellipse class="m-eye" cx="61.5" cy="45" rx="5.4" ry="7.4" fill="${c.detail}"/><path d="M38 60.5Q50 70.5 62 60.5" fill="none" stroke="${c.detail}" stroke-width="6" stroke-linecap="round"/></g><g class="m-typing" fill="${c.detail}"><circle cx="34" cy="51" r="5.8"/><circle cx="50" cy="51" r="5.8"/><circle cx="66" cy="51" r="5.8"/></g></g>`;
+
+/* ---------- האותיות: קבועות בכל הפלטות ---------- */
+const T = { display: "'Fredoka','Assistant',sans-serif", displayW: 600, body: "'Assistant','Heebo',sans-serif", bodyW: 400, strongW: 700 };
+
+/* ---------- שש הפלטות ---------- */
+const PALETTES = [
+  {
+    id: 'sagol', name: 'סגול ולימון', tag: 'הפלטה מהספר המקורי', slogan: 'דודו כבר עונה',
+    idea: 'הפלטה מספר המותג המקורי: סגול חזק כצבע המותג, ולימון לכפתורים על סגול ולרגע הסגירה. היא כאן כדי שיהיה מול מה להשוות.',
+    why: ['סגול כמעט לא קיים אצל מערכות לסוכני נסיעות, ולכן קל לזהות את המותג.', 'הסגול נקרא טוב על לבן, אז אפשר לכתוב בו מילים מודגשות ולא רק לצבוע כפתורים.', 'הלימון מופיע מעט, ולכן כשהוא מופיע, מרגישים שקרה משהו.'],
+    risk: ['סגול עם דמות שמחייכת עלול להיראות כמו צעצוע.', 'אין לו שום קשר לכתום שיש היום במערכת.'],
+    effort: 'עבודה במערכת: צביעה מחדש', system: 'צריך לצבוע מחדש את הכפתורים, את התפריט ואת מסך הכניסה.',
+    sw: [['סגול', '#6A4CFF', 'צבע המותג: כפתורים על רקע בהיר, ורקע לפסים'], ['לילה', '#1B1533', 'טקסט, ורקע כהה'], ['לימון', '#FFE14A', 'כפתורים על סגול, ורגע הסגירה'], ['לילך', '#F0ECFF', 'משטחים ותפריט המערכת'], ['ערפל סגול', '#625C78', 'טקסט משני']],
+    bg: '#FFFFFF', surface: '#F5F3FE', ink: '#1B1533', muted: '#625C78', line: '#E7E3F6',
+    dark: '#1B1533', onDark: '#FFFFFF', onDarkMuted: '#BDB5DA', accentOnDark: '#FFE14A', actionDark: '#FFE14A', actionDarkInk: '#1B1533',
+    action: '#6A4CFF', actionInk: '#FFFFFF', actionEdge: 'rgba(0,0,0,0)', hl: 'color', accent: '#6A4CFF', marker: '#FFE14A', link: '#6A4CFF',
+    brand: { bg: '#6A4CFF', ink: '#FFFFFF', muted: '#F7F5FF', action: '#FFE14A', actionInk: '#1B1533', accent: '#FFE14A', deco: 'none', decoColor: 'transparent' },
+    logo: { light: { text: '#1B1533', main: '#6A4CFF', detail: '#FFFFFF' }, dark: { text: '#FFFFFF', main: '#FFE14A', detail: '#1B1533' }, brand: { text: '#FFFFFF', main: '#FFFFFF', detail: '#6A4CFF' } },
+    icon: { bg: '#6A4CFF', main: '#FFFFFF', detail: '#6A4CFF' },
+    cover: 'brand', hero: 'brand', post: 'brand', deco: '#FFFFFF', decoHero: '#6A4CFF', pattern: 'dots', dots: '#FFFFFF',
+    shadow: '0 20px 44px -30px rgba(60,40,160,.55)',
+    side: { active: '#6A4CFF', activeInk: '#FFFFFF' },
+    chat: { wall: '#F0ECFF', in: '#FFFFFF', inInk: '#1B1533', out: '#6A4CFF', outInk: '#FFFFFF', head: '#6A4CFF', headInk: '#FFFFFF' },
+    status: { new: ['#F0ECFF', '#4A32C7'], contacted: ['#F2F1F6', '#4B4660'], quote: ['#6A4CFF', '#FFFFFF'], won: ['#FFE14A', '#1B1533'], lost: ['#FFE6EC', '#AE1F3E'] },
+    prop: [['לבן', '#FFFFFF', 50], ['סגול', '#6A4CFF', 26], ['לילה', '#1B1533', 14], ['לימון', '#FFE14A', 7], ['לילך', '#F0ECFF', 3]]
+  },
+  {
+    id: 'amber', name: 'כתום', tag: 'הצבע שכבר יש במערכת', slogan: 'דודו כבר עונה',
+    idea: 'דודו בכתום שכבר צובע היום את הכפתורים ואת מסך הכניסה של המערכת. העמוד והמערכת אחידים מהיום הראשון, ודודו נראה כמו שמש קטנה עם חיוך.',
+    why: ['זו הפלטה היחידה מבין השש שלא דורשת לצבוע מחדש את המערכת.', 'כתום חם ואופטימי, ומתאים לדמות שמחייכת.', 'דיו חם במקום שחור שומר על הכתום רך ולא צועק.'],
+    risk: ['כתום נפוץ אצל מערכות לעסקים קטנים, ולכן פחות ייחודי.', 'כתום על לבן חלש לטקסט. מילה מודגשת מקבלת מרקר כתום מאחוריה, ולא צבע.'],
+    effort: 'עבודה במערכת: כמעט אין', system: 'המערכת כבר בכתום הזה. מחליפים רק את הלוגו ואת הגופן.',
+    sw: [['כתום', '#F4AF25', 'דודו, כפתורים, ורקע לפסים. זה הצבע של המערכת היום'], ['דיו חם', '#1F1A14', 'טקסט, ורקע כהה'], ['דבש', '#FFD47E', 'מרקר מאחורי מילים מודגשות'], ['חול', '#FAF6EE', 'משטחים ותפריט המערכת'], ['קפה', '#6B6255', 'טקסט משני']],
+    bg: '#FFFFFF', surface: '#FAF6EE', ink: '#1F1A14', muted: '#6B6255', line: '#ECE5D8',
+    dark: '#1F1A14', onDark: '#FFFFFF', onDarkMuted: '#C2B8A8', accentOnDark: '#F4AF25', actionDark: '#F4AF25', actionDarkInk: '#1F1A14',
+    action: '#F4AF25', actionInk: '#1F1A14', actionEdge: 'rgba(31,26,20,.12)', hl: 'marker', accent: '#1F1A14', marker: '#FFD47E', link: '#8A5A00',
+    brand: { bg: '#F4AF25', ink: '#1F1A14', muted: '#4A3A1C', action: '#1F1A14', actionInk: '#F4AF25', accent: '#1F1A14', deco: 'underline', decoColor: '#FFFFFF' },
+    logo: { light: { text: '#1F1A14', main: '#F4AF25', detail: '#1F1A14' }, dark: { text: '#FFFFFF', main: '#F4AF25', detail: '#1F1A14' }, brand: { text: '#1F1A14', main: '#1F1A14', detail: '#F4AF25' } },
+    icon: { bg: '#F4AF25', main: '#1F1A14', detail: '#F4AF25' },
+    cover: 'brand', hero: 'light', post: 'brand', deco: '#1F1A14', decoHero: '#F4AF25', pattern: 'none', dots: '#1F1A14',
+    shadow: '0 18px 40px -28px rgba(80,50,0,.45)',
+    side: { active: '#F4AF25', activeInk: '#1F1A14' },
+    chat: { wall: '#FAF3E3', in: '#FFFFFF', inInk: '#1F1A14', out: '#FFE2A3', outInk: '#1F1A14', head: '#1F1A14', headInk: '#FFFFFF' },
+    status: { new: ['#F1EEE8', '#3A332A'], contacted: ['#FFF1D6', '#7A4E00'], quote: ['#1F1A14', '#FFFFFF'], won: ['#F4AF25', '#1F1A14'], lost: ['#FCE7E2', '#A23A23'] },
+    prop: [['לבן', '#FFFFFF', 55], ['דיו חם', '#1F1A14', 22], ['כתום', '#F4AF25', 13], ['חול', '#FAF6EE', 7], ['דבש', '#FFD47E', 3]]
+  },
+  {
+    id: 'forest', name: 'יער וליים', tag: 'ירוק, בלי וואטסאפ', slogan: 'דודו כבר עונה',
+    idea: 'ירוק כבר עלה בגרסה קודמת של העמוד. כאן הוא ירוק יער עמוק במקום ירוק זוהר, ולכן הוא לא נראה כמו וואטסאפ. הליים נכנס רק לכפתורים על ירוק, למרקר ולרגע הסגירה.',
+    why: ['ירוק יער נקרא מצוין על לבן, אז אפשר לכתוב בו ולא רק לצבוע.', 'הליים נותן ניצוץ של ירוק זוהר, אבל רק בנקודות.', 'ירוק אומר "יוצאים לדרך" ו"אושר", וזה מתחבר לרגע הסגירה.'],
+    risk: ['ירוק עמוק יכול להרגיש רציני, כמעט בנקאי, ופחות קליל מדמות שמחייכת.', 'עדיין ירוק, ובמסך הבית הוא יעמוד ליד האייקון של וואטסאפ.'],
+    effort: 'עבודה במערכת: צביעה מחדש', system: 'צריך לצבוע מחדש את הכפתורים, את התפריט ואת מסך הכניסה.',
+    sw: [['יער', '#0E5A3E', 'צבע המותג: דודו, כפתורים, ורקע לפסים'], ['ליים', '#C8F169', 'כפתורים על יער, מרקר, ורגע הסגירה'], ['לילה ירוק', '#0D1F17', 'טקסט, ורקע כהה'], ['טחב', '#EEF4EF', 'משטחים ותפריט המערכת'], ['אבן', '#56645C', 'טקסט משני']],
+    bg: '#FFFFFF', surface: '#EEF4EF', ink: '#0D1F17', muted: '#56645C', line: '#DDE7E0',
+    dark: '#0D1F17', onDark: '#FFFFFF', onDarkMuted: '#A9BDB2', accentOnDark: '#C8F169', actionDark: '#C8F169', actionDarkInk: '#0D1F17',
+    action: '#0E5A3E', actionInk: '#FFFFFF', actionEdge: 'rgba(0,0,0,0)', hl: 'marker', accent: '#0E5A3E', marker: '#C8F169', link: '#0E5A3E',
+    brand: { bg: '#0E5A3E', ink: '#FFFFFF', muted: '#BFD8CB', action: '#C8F169', actionInk: '#0D1F17', accent: '#C8F169', deco: 'none', decoColor: 'transparent' },
+    logo: { light: { text: '#0D1F17', main: '#0E5A3E', detail: '#C8F169' }, dark: { text: '#FFFFFF', main: '#C8F169', detail: '#0D1F17' }, brand: { text: '#FFFFFF', main: '#C8F169', detail: '#0E5A3E' } },
+    icon: { bg: '#0E5A3E', main: '#C8F169', detail: '#0E5A3E' },
+    cover: 'brand', hero: 'brand', post: 'brand', deco: '#C8F169', decoHero: '#0E5A3E', pattern: 'dots', dots: '#C8F169',
+    shadow: '0 18px 40px -28px rgba(10,60,40,.45)',
+    side: { active: '#0E5A3E', activeInk: '#FFFFFF' },
+    chat: { wall: '#EEF4EF', in: '#FFFFFF', inInk: '#0D1F17', out: '#DDF7A8', outInk: '#0D1F17', head: '#0E5A3E', headInk: '#FFFFFF' },
+    status: { new: ['#EEF4EF', '#2C3D34'], contacted: ['#FFF2D1', '#6E4C00'], quote: ['#0E5A3E', '#FFFFFF'], won: ['#C8F169', '#0D1F17'], lost: ['#FFE6E2', '#A1271A'] },
+    prop: [['לבן', '#FFFFFF', 52], ['יער', '#0E5A3E', 24], ['לילה ירוק', '#0D1F17', 12], ['טחב', '#EEF4EF', 6], ['ליים', '#C8F169', 6]]
+  },
+  {
+    id: 'coral', name: 'אלמוג וים', tag: 'שקיעה על החוף', slogan: 'דודו כבר עונה',
+    idea: 'אלמוג חם וכחול של ים עמוק. אין בה מטוס ואין גלובוס, אבל היא מרגישה כמו חופשה. דודו באלמוג, והטקסט בכחול ים במקום שחור.',
+    why: ['חמה ושמחה בלי להיראות כמו צעצוע, ומתאימה לדמות.', 'אלמוג כמעט לא קיים אצל מערכות לעסקים, ולכן בולט.', 'הכחול הכהה מחזיק את הטקסט, והאלמוג נשאר לדודו ולכפתורים.'],
+    risk: ['אלמוג קרוב לאדום. לכן "לא נסגר" במערכת יהיה אפור, כדי שלא ייראה כמו שגיאה.', 'אלמוג על לבן חלש לטקסט. מילה מודגשת מקבלת מרקר ולא צבע.'],
+    effort: 'עבודה במערכת: צביעה מחדש', system: 'צריך לצבוע מחדש את הכפתורים, את התפריט ואת מסך הכניסה.',
+    sw: [['אלמוג', '#FF6B4A', 'דודו, כפתורים, ורגע הסגירה'], ['ים', '#12263F', 'טקסט, ורקע כהה'], ['אפרסק', '#FFD3C7', 'מרקר מאחורי מילים, והודעות בצ\'אט'], ['קצף', '#FFF4EF', 'משטחים ותפריט המערכת'], ['ערפל ים', '#5A6577', 'טקסט משני']],
+    bg: '#FFFFFF', surface: '#FFF4EF', ink: '#12263F', muted: '#5A6577', line: '#F0E2DC',
+    dark: '#12263F', onDark: '#FFFFFF', onDarkMuted: '#AEB9CB', accentOnDark: '#FF8A6E', actionDark: '#FF6B4A', actionDarkInk: '#12263F',
+    action: '#FF6B4A', actionInk: '#12263F', actionEdge: 'rgba(18,38,63,.1)', hl: 'marker', accent: '#12263F', marker: '#FFD3C7', link: '#C2412A',
+    brand: { bg: '#FF6B4A', ink: '#12263F', muted: '#3A2A33', action: '#12263F', actionInk: '#FFFFFF', accent: '#12263F', deco: 'underline', decoColor: '#FFFFFF' },
+    logo: { light: { text: '#12263F', main: '#FF6B4A', detail: '#12263F' }, dark: { text: '#FFFFFF', main: '#FF6B4A', detail: '#12263F' }, brand: { text: '#12263F', main: '#12263F', detail: '#FF6B4A' } },
+    icon: { bg: '#FF6B4A', main: '#FFFFFF', detail: '#FF6B4A' },
+    cover: 'brand', hero: 'light', post: 'dark', deco: '#FFFFFF', decoHero: '#FF6B4A', pattern: 'glow', dots: '#12263F',
+    shadow: '0 18px 40px -28px rgba(120,40,20,.4)',
+    side: { active: '#FFE8E1', activeInk: '#12263F' },
+    chat: { wall: '#FFF4EF', in: '#FFFFFF', inInk: '#12263F', out: '#FFD3C7', outInk: '#12263F', head: '#12263F', headInk: '#FFFFFF' },
+    status: { new: ['#EEF1F5', '#2B3A52'], contacted: ['#FFF2D1', '#6E4C00'], quote: ['#12263F', '#FFFFFF'], won: ['#FF6B4A', '#12263F'], lost: ['#F1F2F4', '#5B606E'] },
+    prop: [['לבן', '#FFFFFF', 52], ['ים', '#12263F', 22], ['אלמוג', '#FF6B4A', 14], ['קצף', '#FFF4EF', 8], ['אפרסק', '#FFD3C7', 4]]
+  },
+  {
+    id: 'electric', name: 'כחול חשמלי', tag: 'הכי מקצועי', slogan: 'דודו כבר עונה',
+    idea: 'כחול חזק ובהיר, ושמש צהובה לרגע הסגירה. זו הפלטה שהכי מתאימה לסוכנות גדולה או ליועץ משכנתאות, ודודו עדיין שומר על החום.',
+    why: ['כחול משדר אמינות ומערכת מסודרת.', 'עונה על החשש שדודו ייראה משחקי מדי.', 'הכחול נקרא טוב על לבן, אז כפתורים וקישורים ברורים.'],
+    risk: ['כחול הוא הצבע הנפוץ ביותר בתוכנות, מפייסבוק ועד הבנק, ולכן הכי פחות ייחודי.', 'דמות כחולה עם חיוך מזכירה קצת צ\'אטבוטים של חברות גדולות.'],
+    effort: 'עבודה במערכת: צביעה מחדש', system: 'צריך לצבוע מחדש את הכפתורים, את התפריט ואת מסך הכניסה.',
+    sw: [['כחול', '#2E5BFF', 'צבע המותג: דודו, כפתורים, ורקע לפסים'], ['לילה', '#0B1330', 'טקסט, ורקע כהה'], ['שמש', '#FFC547', 'רגע הסגירה, וכפתור על רקע כהה'], ['קרח', '#EEF2FF', 'משטחים ותפריט המערכת'], ['פלדה', '#545D7A', 'טקסט משני']],
+    bg: '#FFFFFF', surface: '#F3F6FF', ink: '#0B1330', muted: '#545D7A', line: '#E1E6F5',
+    dark: '#0B1330', onDark: '#FFFFFF', onDarkMuted: '#AAB5D6', accentOnDark: '#FFC547', actionDark: '#FFC547', actionDarkInk: '#0B1330',
+    action: '#2E5BFF', actionInk: '#FFFFFF', actionEdge: 'rgba(0,0,0,0)', hl: 'color', accent: '#2E5BFF', marker: '#FFC547', link: '#2E5BFF',
+    brand: { bg: '#2E5BFF', ink: '#FFFFFF', muted: '#F2F5FF', action: '#FFFFFF', actionInk: '#1B3FD6', accent: '#FFD66B', deco: 'none', decoColor: 'transparent' },
+    logo: { light: { text: '#0B1330', main: '#2E5BFF', detail: '#FFFFFF' }, dark: { text: '#FFFFFF', main: '#4D74FF', detail: '#FFFFFF' }, brand: { text: '#FFFFFF', main: '#FFFFFF', detail: '#2E5BFF' } },
+    icon: { bg: '#2E5BFF', main: '#FFFFFF', detail: '#2E5BFF' },
+    cover: 'brand', hero: 'brand', post: 'dark', deco: '#FFFFFF', decoHero: '#2E5BFF', pattern: 'dots', dots: '#FFFFFF',
+    shadow: '0 18px 40px -28px rgba(20,40,140,.45)',
+    side: { active: '#E8EEFF', activeInk: '#1E3FCC' },
+    chat: { wall: '#EEF2FF', in: '#FFFFFF', inInk: '#0B1330', out: '#2E5BFF', outInk: '#FFFFFF', head: '#2E5BFF', headInk: '#FFFFFF' },
+    status: { new: ['#E8EEFF', '#1E3FCC'], contacted: ['#F1F2F6', '#474D63'], quote: ['#2E5BFF', '#FFFFFF'], won: ['#FFC547', '#0B1330'], lost: ['#FFE6EC', '#AE1F3E'] },
+    prop: [['לבן', '#FFFFFF', 52], ['כחול', '#2E5BFF', 24], ['לילה', '#0B1330', 14], ['קרח', '#EEF2FF', 6], ['שמש', '#FFC547', 4]]
+  },
+  {
+    id: 'lemon', name: 'שחור ולימון', tag: 'הכי נועז', slogan: 'דודו כבר עונה',
+    idea: 'שחור ולבן, ולימון זוהר כצבע היחיד. כמו שלט או מונית: רואים מרחוק ואי אפשר לפספס. על לבן דודו שחור עם עיניים צהובות, ועל שחור הוא צהוב.',
+    why: ['הכי בולט בפיד של פייסבוק ובמסך הבית של הטלפון.', 'יש רק צבע אחד, ולכן קל לשמור על אחידות בכל מקום.', 'שחור ולבן נראים בוגרים, והלימון שומר על החיוך.'],
+    risk: ['צהוב על לבן כמעט לא נקרא. על רקע בהיר הוא מופיע רק כמרקר וכעיניים של דודו.', 'דודו שחור פחות מתוק מדודו צבעוני.'],
+    effort: 'עבודה במערכת: צביעה מחדש', system: 'צריך לצבוע מחדש את הכפתורים, את התפריט ואת מסך הכניסה.',
+    sw: [['לימון', '#FFE24D', 'מרקר, כפתור על רקע כהה, ורגע הסגירה'], ['שחור', '#141414', 'טקסט, כפתורים על לבן, ורקע כהה'], ['פנינה', '#F3F3F1', 'משטחים ותפריט המערכת'], ['קש', '#FFF6C2', 'תגיות רכות'], ['גרפיט', '#5F5F5A', 'טקסט משני']],
+    bg: '#FFFFFF', surface: '#F3F3F1', ink: '#141414', muted: '#5F5F5A', line: '#E4E4E0',
+    dark: '#141414', onDark: '#FFFFFF', onDarkMuted: '#B5B5AE', accentOnDark: '#FFE24D', actionDark: '#FFE24D', actionDarkInk: '#141414',
+    action: '#141414', actionInk: '#FFE24D', actionEdge: 'rgba(0,0,0,0)', hl: 'marker', accent: '#141414', marker: '#FFE24D', link: '#141414',
+    brand: { bg: '#FFE24D', ink: '#141414', muted: '#4A4430', action: '#141414', actionInk: '#FFE24D', accent: '#141414', deco: 'underline', decoColor: '#141414' },
+    logo: { light: { text: '#141414', main: '#141414', detail: '#FFE24D' }, dark: { text: '#FFFFFF', main: '#FFE24D', detail: '#141414' }, brand: { text: '#141414', main: '#141414', detail: '#FFE24D' } },
+    icon: { bg: '#141414', main: '#FFE24D', detail: '#141414' },
+    cover: 'brand', hero: 'dark', post: 'brand', deco: '#141414', decoHero: '#141414', pattern: 'glow', dots: '#141414',
+    shadow: '0 18px 40px -28px rgba(0,0,0,.45)',
+    side: { active: '#141414', activeInk: '#FFE24D' },
+    chat: { wall: '#F3F3F1', in: '#FFFFFF', inInk: '#141414', out: '#FFE24D', outInk: '#141414', head: '#141414', headInk: '#FFFFFF' },
+    status: { new: ['#FFF6C2', '#5C4A00'], contacted: ['#F0F0EE', '#3A3A36'], quote: ['#141414', '#FFFFFF'], won: ['#FFE24D', '#141414'], lost: ['#FFE6E2', '#A1271A'] },
+    prop: [['לבן', '#FFFFFF', 55], ['שחור', '#141414', 28], ['פנינה', '#F3F3F1', 8], ['לימון', '#FFE24D', 9]]
+  }
+];
+const BYID = Object.fromEntries(PALETTES.map(p => [p.id, p]));
+const STAGES = [['new', 'חדש'], ['contacted', 'נוצר קשר'], ['quote', 'נשלחה הצעה'], ['won', 'נסגר'], ['lost', 'לא נסגר']];
+
+/* ---------- עזרים ---------- */
+function lum(hex) {
+  const h = hex.replace('#', '');
+  const v = [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16) / 255).map(c => c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
+  return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2];
+}
+function ratio(a, b) { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); }
+function crChip(label, r) {
+  const verdict = r >= 4.5 ? 'טקסט רגיל' : r >= 3 ? 'רק טקסט גדול' : 'רק לקישוט';
+  return `<span class="cr ${r >= 4.5 ? 'good' : ''}">${label} <b>${r.toFixed(1)}</b><em>${verdict}</em></span>`;
+}
+function nameOf(P, hex) {
+  const f = P.sw.find(s => s[1].toUpperCase() === hex.toUpperCase()) || P.prop.find(s => s[1].toUpperCase() === hex.toUpperCase());
+  return f ? f[0] : hex;
+}
+function V(P) {
+  const b = P.brand;
+  const o = {
+    bg: P.bg, surface: P.surface, ink: P.ink, muted: P.muted, line: P.line,
+    dark: P.dark, 'on-dark': P.onDark, 'on-dark-muted': P.onDarkMuted, 'accent-on-dark': P.accentOnDark, 'action-dark': P.actionDark, 'action-dark-ink': P.actionDarkInk,
+    action: P.action, 'action-ink': P.actionInk, 'action-edge': P.actionEdge, accent: P.accent, marker: P.marker, link: P.link, dots: P.dots,
+    'brand-bg': b.bg, 'brand-ink': b.ink, 'brand-muted': b.muted, 'brand-action': b.action, 'brand-action-ink': b.actionInk, 'brand-accent': b.accent, 'brand-deco': b.deco, 'brand-deco-color': b.decoColor,
+    'chat-wall': P.chat.wall, 'chat-in': P.chat.in, 'chat-in-ink': P.chat.inInk, 'chat-out': P.chat.out, 'chat-out-ink': P.chat.outInk, 'chat-head': P.chat.head, 'chat-head-ink': P.chat.headInk,
+    'side-active': P.side.active, 'side-active-ink': P.side.activeInk,
+    display: T.display, 'display-w': T.displayW, body: T.body, 'body-w': T.bodyW, 'strong-w': T.strongW, 'card-shadow': P.shadow
+  };
+  return Object.entries(o).map(([k, v]) => `--b-${k}:${v}`).join(';');
+}
+function lockup(c, cls = '') {
+  const svg = `<svg class="lk-mark" viewBox="10 10 80 80" aria-hidden="true" focusable="false">${DUDU(c)}</svg>`;
+  return `<span class="lk ${cls}" dir="ltr" role="img" aria-label="UDO" style="font-family:${T.display};font-weight:${T.displayW};color:${c.text}"><span class="lk-txt">UD</span>${svg}</span>`;
+}
+function icon(P, size) {
+  const ic = P.icon, inner = Math.round(size * 0.7);
+  return `<span class="ico" style="width:${size}px;height:${size}px;border-radius:${Math.max(3, Math.round(size * 0.24))}px;background:${ic.bg}"><svg viewBox="4 4 92 92" style="width:${inner}px;height:${inner}px" aria-hidden="true" focusable="false">${DUDU({ main: ic.main, detail: ic.detail })}</svg></span>`;
+}
+const patClass = (P, s) => (P.pattern === 'glow' && s === 'dark') ? 'pat-glow' : (P.pattern === 'dots' && s === 'brand') ? 'pat-dots' : '';
+function deco(P, where) {
+  const col = where === 'cover' ? P.deco : P.decoHero;
+  return `<svg class="deco deco-${where}" viewBox="4 4 92 92" aria-hidden="true" focusable="false">${DUDU({ main: col, detail: 'transparent' })}</svg>`;
+}
+const pill = (P, k) => { const s = STAGES.find(x => x[0] === k); return `<span class="pill" style="background:${P.status[k][0]};color:${P.status[k][1]}">${s[1]}</span>`; };
+const pills = P => STAGES.map(([k]) => pill(P, k)).join('');
+const li = t => `<li>${t}</li>`;
+const chap = (title, desc, body) => `<section class="chap"><div class="chap-head"><h3>${title}</h3><p>${desc}</p></div><div class="chap-body">${body}</div></section>`;
+
+/* ---------- רכיבי יישום ---------- */
+function hero(P) {
+  const s = P.hero;
+  return `<div class="hero s-${s} ${patClass(P, s)}">${s === 'light' ? deco(P, 'hero') : ''}
+    <div class="hero-nav">${lockup(P.logo[s])}<span class="hero-links"><span>כניסה</span><span class="btn sm">30 יום חינם</span></span></div>
+    <div class="hero-body">
+      <h4 class="hero-h disp">דודו עונה ללקוחות שלכם בוואטסאפ, <span class="hl">גם כשאתם עסוקים</span></h4>
+      <p class="hero-p">דודו, העוזר שלכם ב-UDO, עונה לכל פנייה בוואטסאפ בשמכם, שואל את שאלות הסינון ומזכיר למי שעוד לא חתם על ההצעה.</p>
+      <div class="hero-cta"><span class="btn">להכיר את דודו, 30 יום חינם</span><span class="hero-note">החיוב מתחיל רק אחרי 30 יום, ואפשר לבטל לפני.</span></div>
+    </div></div>`;
+}
+function phone() {
+  return `<div class="phone"><div class="ph-screen"><div class="ph-head"><span class="ph-av">ר</span><span><b>רון נסיעות</b><small>מחובר</small></span></div><div class="ph-wall">
+    <span class="ph-day">היום</span>
+    <div class="msg in">היי דנה, כאן רון מרון נסיעות. קיבלתי את הפרטים שהשארת על החופשה בתאילנד. כמה שאלות קצרות, כדי שאחזור אלייך עם הצעה מדויקת.<time>22:14</time></div>
+    <div class="msg in">מתי אתם טסים?
+1. בחודש הקרוב
+2. בעוד חודשיים או שלושה
+3. עוד לא החלטנו<time>22:14</time></div>
+    <div class="msg out">2<time>22:15</time></div>
+    <div class="msg in">וכמה נוסעים?<time>22:15</time></div>
+    <div class="msg out">4<time>22:16</time></div>
+    <div class="msg in typing" aria-label="מקליד"><i></i><i></i><i></i></div>
+  </div></div></div>`;
+}
+function post(P) {
+  const s = P.post;
+  return `<div class="post s-${s} ${patClass(P, s)}"><div>${lockup(P.logo[s])}</div><div class="post-h disp">פניות שנפלו בין הכיסאות <span class="hl">עולות לכם כסף</span></div><div class="post-foot"><span class="btn sm">30 יום חינם</span><span class="post-url">udo.co.il</span></div></div>`;
+}
+function appSlice(P) {
+  const nav = ['ראשי', 'לידים', 'לקוחות', 'משימות', 'וואטסאפ', 'הצעות מחיר'];
+  const rows = [['דנה לוי', 'וואטסאפ', 'חופשה בתאילנד', 'quote', 'לחזור היום ב-17:00'], ['יוסי כהן', 'האתר', 'חבילה ליוון', 'contacted', 'לשלוח הצעה עד מחר'], ['מיכל אברהם', 'פייסבוק', 'ירח דבש באיטליה', 'new', 'דודו שאל את שאלות הסינון'], ['אבי פרץ', 'וואטסאפ', 'סקי באוסטריה', 'won', 'חתם על ההצעה']];
+  return `<div class="app"><aside class="app-side">${lockup(P.logo.light)}<nav class="app-nav" aria-label="תפריט לדוגמה">${nav.map(n => `<span class="${n === 'לידים' ? 'on' : ''}">${n}</span>`).join('')}</nav></aside>
+    <div class="app-main"><div class="app-head"><b>לידים</b><span class="btn sm">ליד חדש</span></div>
+    <div class="app-table"><table><thead><tr><th>שם</th><th>מאיפה הגיע</th><th>מה מבקש</th><th>שלב</th><th>הצעד הבא</th></tr></thead><tbody>${rows.map(r => `<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td><td>${pill(P, r[3])}</td><td class="muted">${r[4]}</td></tr>`).join('')}</tbody></table></div></div></div>`;
+}
+function leadCard(P) {
+  return `<div class="card lead"><div class="lead-top"><b>דנה לוי</b>${pill(P, 'quote')}</div><div class="lead-meta">וואטסאפ, חופשה בתאילנד, 4 נוסעים</div><div class="lead-q"><span>הצעת מחיר</span><b>$6,480</b></div><div class="lead-next"><i></i>לחזור היום ב-17:00</div></div>`;
+}
+function formBits() {
+  return `<div class="card form"><div class="field"><label>שם העסק</label><div class="input">רון נסיעות</div></div>
+    <div class="tg"><span class="sw-t on" aria-hidden="true"></span><span>תזכורת יום אחרי ההצעה, אם היא עוד לא נחתמה</span><em>דלוקה</em></div>
+    <div class="tg"><span class="sw-t" aria-hidden="true"></span><span>תזכורת שלושה ימים אחרי</span><em>כבויה</em></div></div>`;
+}
+function login(P) {
+  return `<div class="login s-light"><div>${lockup(P.logo.light)}</div><div class="login-sub">כניסה למערכת</div><div class="field"><label>כתובת מייל</label><div class="input"></div></div><div class="field"><label>סיסמה</label><div class="input"></div></div><span class="btn wide">כניסה</span><span class="login-link">שכחתי סיסמה</span></div>`;
+}
+function loginNow() {
+  return `<div class="login-now"><div class="ln-brand" dir="ltr" style="text-align:right">UDO</div><div class="ln-sub">כניסה למערכת</div><span class="ln-l">כתובת מייל</span><div class="ln-in"></div><span class="ln-l">סיסמה</span><div class="ln-in"></div><div class="ln-btn">כניסה</div><div class="ln-link">שכחתי סיסמה</div><div class="ln-note">חשבונות נפתחים בהזמנה בלבד.</div></div>`;
+}
+
+/* ---------- הספר של פלטה ---------- */
+function renderBook(P) {
+  const idx = PALETTES.indexOf(P) + 1, cs = P.cover;
+  const tileLogo = (s, cap) => `<figure class="tile s-${s} ${patClass(P, s)}"><div class="tile-stage">${lockup(P.logo[s])}</div><figcaption>${cap}</figcaption></figure>`;
+  const sw = P.sw.map(([n, h, r]) => {
+    const ref = h.toUpperCase() === P.ink.toUpperCase() ? (P.action.toUpperCase() === P.ink.toUpperCase() ? P.marker : P.action) : P.ink;
+    return `<div class="sw"><button type="button" class="sw-chip" style="background:${h}" data-copy="${h}" aria-label="להעתיק את ${h}"><span class="sw-copied">הועתק</span></button><div class="sw-meta"><div class="sw-top"><b>${n}</b><code>${h}</code></div><p>${r}</p><div class="sw-cr">${crChip('מול לבן', ratio(h, '#FFFFFF'))}${crChip('מול ' + nameOf(P, ref), ratio(h, ref))}</div></div></div>`;
+  }).join('');
+  return `<article class="bk book-in" data-hl="${P.hl}" style="${V(P)}" aria-labelledby="bkName">
+    <header class="cover s-${cs} ${patClass(P, cs)}">${deco(P, 'cover')}
+      <div class="cover-top"><span>פלטה ${idx} מתוך ${PALETTES.length}</span><button class="replay" type="button" data-replay>להפעיל שוב את התנועה</button></div>
+      <div class="cover-logo">${lockup(P.logo[cs], 'play live')}</div>
+      <div class="cover-text"><h2 class="cover-name disp" id="bkName">${P.name}</h2><p class="cover-slogan disp">${P.slogan}</p><p class="cover-tag">${P.tag}</p></div>
+    </header>
+    <div class="chaps">
+      ${chap('הרעיון', 'מה הצבעים האלה אומרים על דודו.', `<p class="idea-lead">${P.idea}</p><div class="pc"><div class="pc-col pros"><h4>למה זה מתאים</h4><ul>${P.why.map(li).join('')}</ul></div><div class="pc-col cons"><h4>מה עלול לא לעבוד</h4><ul>${P.risk.map(li).join('')}</ul></div></div>`)}
+      ${chap('הלוגו', 'דודו על כל רקע ובכל גודל.', `<div class="logo-grid">
+        ${tileLogo('light', 'על רקע בהיר')}${tileLogo('dark', 'על רקע כהה')}${tileLogo('brand', 'על צבע המותג')}
+        <figure class="tile plain"><div class="tile-stage ico-row">${[88, 56, 32, 16].map(s => `<span class="ico-wrap">${icon(P, s)}<small>${s}</small></span>`).join('')}</div><figcaption>דודו לבד: אייקון של המערכת, לשונית בדפדפן ותמונת פרופיל</figcaption></figure>
+        <figure class="tile s-light"><div class="tile-stage"><div class="space-box">${lockup(P.logo.light)}</div></div><figcaption>מרחק נשימה: חצי מגובה האותיות מכל צד</figcaption></figure>
+        <figure class="tile s-light"><div class="tile-stage">${lockup(P.logo.light, 'play live')}</div><figcaption>בטעינה דודו קופץ פנימה וממצמץ מדי פעם. במעבר עם העכבר הוא מקליד. <button class="mini-replay" type="button" data-replay-near>להפעיל</button></figcaption></figure>
+      </div>`)}
+      ${chap('צבעים', 'כל צבע עם התפקיד שלו. המספר הוא יחס הניגודיות: מעל 4.5 אפשר לכתוב בצבע הזה טקסט רגיל. לחיצה על צבע מעתיקה אותו.', `<div class="swatches">${sw}</div><h4 class="sub-h">כמה מכל צבע</h4><div class="prop"><div class="prop-bar">${P.prop.map(([, h, p]) => `<span style="flex:${p};background:${h}"></span>`).join('')}</div><div class="prop-leg">${P.prop.map(([n, h, p]) => `<span><i style="background:${h}"></i>${n} ${p}%</span>`).join('')}</div></div>`)}
+      ${chap('רכיבים', 'כפתורים, שלבי הליד, כרטיס ליד ומתגים, כמו שהם ייראו בעמוד ובמערכת.', `<div class="tile s-light comp"><div class="comp-row"><span class="btn">להכיר את דודו, 30 יום חינם</span><span class="btn ghost">איך זה עובד</span><span class="btn sm">ליד חדש</span></div><div class="comp-label">שלבי הליד, בשמות שכבר יש במערכת</div><div class="comp-row">${pills(P)}</div><div class="comp-split">${leadCard(P)}${formBits()}</div></div>
+        <div class="tile s-dark comp comp-dark ${patClass(P, 'dark')}"><span class="disp comp-dark-h">אותן פניות, <span class="hl">הרבה יותר לקוחות</span>.</span><span class="btn">נשמע טוב, בואו נתחיל</span></div>`)}
+      ${chap('ביישום', 'העמוד, השיחה בטלפון, פוסט, והמערכת. אותן מילים בכל הפלטות, כדי שיהיה קל להשוות.', `<div class="apps-hero">${hero(P)}</div>
+        <div class="apps-2"><figure class="ap-fig">${phone()}<figcaption>השיחה כמו שהיא מצוירת בעמוד. הלקוח לא רואה את השם דודו, כי ההודעות יוצאות מהמספר של הסוכן ובשמו.</figcaption></figure><figure class="ap-fig">${post(P)}<figcaption>פוסט לפייסבוק ולאינסטגרם</figcaption></figure></div>
+        <figure class="ap-fig">${appSlice(P)}<figcaption>המערכת. השמות בטבלה הם לדוגמה.</figcaption></figure>`)}
+      ${chap('ומה עם המערכת', 'כדי שהכול יהיה אחיד, גם המערכת צריכה להיראות כמו העמוד.', `<div class="sys"><figure class="ap-fig">${loginNow()}<figcaption>מסך הכניסה היום</figcaption></figure><figure class="ap-fig">${login(P)}<figcaption>מסך הכניסה בפלטה הזו</figcaption></figure></div><p class="sys-note"><span class="effort">${P.effort}</span><span>${P.system}</span></p>`)}
+      <div class="pick-end"><button type="button" class="st-btn primary" data-choose="${P.id}">אלה הצבעים שלי</button><a href="#compare" class="pick-alt">או להשוות את כולן על אותו מסך</a></div>
+    </div>
+  </article>`;
+}
+
+/* ---------- מצב ---------- */
+const state = { active: 'sagol', choice: null };
+const choiceLabel = c => (BYID[c] ? BYID[c].name : '');
+
+function restart(el) { el.classList.remove('play'); void el.getBoundingClientRect(); el.classList.add('play'); }
+
+function setActive(id, scroll) {
+  if (!BYID[id]) return;
+  state.active = id;
+  $('#book').innerHTML = renderBook(BYID[id]);
+  $$('.pick-card').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.open === id)));
+  $$('#tbNav a[data-open]').forEach(a => a.setAttribute('aria-current', String(a.dataset.open === id)));
+  try { localStorage.setItem('udo-dudu-active', id); } catch (e) { /* אין אחסון, לא נורא */ }
+  try { history.replaceState(null, '', '#' + id); } catch (e) { /* לא קריטי */ }
+  if (scroll) $('#book').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+}
+
+function renderTopbar() {
+  $('#tbNav').innerHTML = PALETTES.map(P => `<a href="#${P.id}" data-open="${P.id}"><i style="background:${P.sw[0][1]}"></i>${P.name}</a>`).join('') + '<span class="tb-sep" aria-hidden="true"></span><a href="#compare">השוואה</a><a href="#decide">בחירה</a>';
+}
+function renderPicker() {
+  $('#picker').innerHTML = PALETTES.map((P, i) => `<button type="button" class="pick-card bk" data-hl="${P.hl}" style="${V(P)}" data-open="${P.id}" aria-pressed="false"><span class="pick-face"><span class="s-light">${lockup(P.logo.light)}</span><span class="s-${P.cover} ${patClass(P, P.cover)}">${lockup(P.logo[P.cover])}</span></span><span class="pick-meta"><span class="pick-num">פלטה ${i + 1}</span><span class="pick-name">${P.name}</span><span class="pick-tag">${P.tag}</span><span class="pick-sw">${P.sw.slice(0, 4).map(s => `<i style="background:${s[1]}"></i>`).join('')}</span></span></button>`).join('');
+}
+function renderCompare() {
+  $('#iconsLine').innerHTML = PALETTES.map(P => `<figure>${icon(P, 64)}<figcaption>${P.name}</figcaption></figure>`).join('');
+  $('#cmpGrid').innerHTML = PALETTES.map(P => `<figure class="cmp bk" data-hl="${P.hl}" style="${V(P)}"><div class="cmp-hero">${hero(P)}</div><figcaption><span><b>${P.name}.</b> ${P.tag}</span><button type="button" class="st-btn" data-open="${P.id}">לפתוח את הפלטה</button></figcaption></figure>`).join('');
+}
+function renderDecide() {
+  $('#dopts').innerHTML = PALETTES.map(P => `<label class="dopt bk" data-hl="${P.hl}" style="${V(P)}"><input type="radio" name="choice" id="choice-${P.id}" value="${P.id}" ${state.choice === P.id ? 'checked' : ''}><span class="face s-${P.cover} ${patClass(P, P.cover)}">${lockup(P.logo[P.cover])}</span><b>${P.name}</b><small>${P.tag}</small></label>`).join('');
+}
+
+/* ---------- גובה האותיות של Fredoka, כדי שדודו יתיישב בדיוק על השורה ---------- */
+async function measureCaps() {
+  const ctx = document.createElement('canvas').getContext('2d');
+  try { await document.fonts.load(`${T.displayW} 100px "Fredoka"`, 'UDH'); } catch (e) { /* נשאר עם ברירת המחדל */ }
+  ctx.font = `${T.displayW} 100px ${T.display}`;
+  const cap = ctx.measureText('H').actualBoundingBoxAscent / 100;
+  if (cap > 0.45 && cap < 0.95) document.documentElement.style.setProperty('--cap-fredoka', cap.toFixed(3));
+}
+
+/* ---------- העתקת הבחירה ---------- */
+function setStatus(msg, ok) { const s = $('#saveStatus'); s.textContent = msg; s.classList.toggle('ok', !!ok); }
+function choiceText() {
+  const notes = $('#notes').value.trim();
+  return `הפלטה שבחרתי לדודו: ${choiceLabel(state.choice)}.` + (notes ? ` הערות: ${notes}` : '');
+}
+function save() {
+  if (!state.choice) { setStatus('קודם בוחרים פלטה אחת.'); return; }
+  const text = choiceText();
+  const ta = $('#fbText');
+  ta.value = text;
+  const manual = () => { $('#fallback').hidden = false; ta.focus(); ta.select(); setStatus(''); };
+  try {
+    navigator.clipboard.writeText(text).then(() => { $('#fallback').hidden = true; setStatus('הועתק. אפשר להדביק לדני בוואטסאפ.', true); }, manual);
+  } catch (e) { manual(); }
+}
+
+/* ---------- אירועים ---------- */
+document.addEventListener('click', e => {
+  const open = e.target.closest('[data-open]');
+  if (open) { e.preventDefault(); setActive(open.dataset.open, true); return; }
+  const choose = e.target.closest('[data-choose]');
+  if (choose) { state.choice = choose.dataset.choose; renderDecide(); $('#decide').scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+  const copy = e.target.closest('[data-copy]');
+  if (copy) {
+    const v = copy.dataset.copy;
+    const done = () => { copy.classList.add('copied'); setTimeout(() => copy.classList.remove('copied'), 1200); };
+    try { navigator.clipboard.writeText(v).then(done, done); } catch (err) { done(); }
+    return;
+  }
+  if (e.target.closest('[data-replay]')) { $$('#book .lk.play').forEach(restart); return; }
+  const near = e.target.closest('[data-replay-near]');
+  if (near) { const lk = near.closest('figure').querySelector('.lk'); if (lk) restart(lk); return; }
+  if (e.target.closest('#save')) { save(); return; }
+});
+document.addEventListener('change', e => { if (e.target.name === 'choice') state.choice = e.target.value; });
+
+/* ---------- התחלה ---------- */
+renderTopbar();
+renderPicker();
+renderCompare();
+renderDecide();
+let start = 'sagol';
+const fromHash = (location.hash || '').slice(1);
+if (BYID[fromHash]) start = fromHash;
+else { try { const s = localStorage.getItem('udo-dudu-active'); if (BYID[s]) start = s; } catch (e) { /* בלי אחסון */ } }
+setActive(start, false);
+measureCaps();
+
+})();
+</script>
+
+</body>
+</html>

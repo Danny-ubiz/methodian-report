@@ -371,6 +371,7 @@ textarea{width:100%;font:inherit;padding:12px 14px;border-radius:12px;border:1px
     <span class="eyebrow">UDO, מותג, 6 באוקטובר 2026</span>
     <h1 id="introH">דודו בשש פלטות</h1>
     <p>UDO היא מערכת מכירות לסוכני נסיעות עצמאיים, ודודו הוא העוזר שלה: בועת שיחה עם עיניים וחיוך, שיושבת במקום ה-O בשם. הכיוון נבחר, והצבעים עוד פתוחים. <b>הסמל, האותיות והתנועה נשארים כמו שהם, ורק הצבעים משתנים.</b> הראשונה היא הסגול והלימון מספר המותג המקורי, כדי שיהיה מול מה להשוות. בכל פלטה רואים את הלוגו, הצבעים עם הניגודיות שלהם, ראש העמוד, השיחה בטלפון, פוסט והמערכת.</p>
+    <p><b>עדכון:</b> אלמוג וים וכחול חשמלי עברו לגוונים מעודנים יותר, ורשת הנקודות ירדה מהרקע של כל הפלטות, כי היא עשתה רעש והקשתה על הקריאה.</p>
     <ul class="fixed" aria-label="מה לא משתנה">
       <li><span>סמל:</span> דודו במקום ה-O</li>
       <li><span>כותרות:</span> Fredoka</li>
@@ -444,7 +445,7 @@ const PALETTES = [
     brand: { bg: '#6A4CFF', ink: '#FFFFFF', muted: '#F7F5FF', action: '#FFE14A', actionInk: '#1B1533', accent: '#FFE14A', deco: 'none', decoColor: 'transparent' },
     logo: { light: { text: '#1B1533', main: '#6A4CFF', detail: '#FFFFFF' }, dark: { text: '#FFFFFF', main: '#FFE14A', detail: '#1B1533' }, brand: { text: '#FFFFFF', main: '#FFFFFF', detail: '#6A4CFF' } },
     icon: { bg: '#6A4CFF', main: '#FFFFFF', detail: '#6A4CFF' },
-    cover: 'brand', hero: 'brand', post: 'brand', deco: '#FFFFFF', decoHero: '#6A4CFF', pattern: 'dots', dots: '#FFFFFF',
+    cover: 'brand', hero: 'brand', post: 'brand', deco: '#FFFFFF', decoHero: '#6A4CFF', pattern: 'none', dots: '#FFFFFF',
     shadow: '0 20px 44px -30px rgba(60,40,160,.55)',
     side: { active: '#6A4CFF', activeInk: '#FFFFFF' },
     chat: { wall: '#F0ECFF', in: '#FFFFFF', inInk: '#1B1533', out: '#6A4CFF', outInk: '#FFFFFF', head: '#6A4CFF', headInk: '#FFFFFF' },
@@ -484,7 +485,7 @@ const PALETTES = [
     brand: { bg: '#0E5A3E', ink: '#FFFFFF', muted: '#BFD8CB', action: '#C8F169', actionInk: '#0D1F17', accent: '#C8F169', deco: 'none', decoColor: 'transparent' },
     logo: { light: { text: '#0D1F17', main: '#0E5A3E', detail: '#C8F169' }, dark: { text: '#FFFFFF', main: '#C8F169', detail: '#0D1F17' }, brand: { text: '#FFFFFF', main: '#C8F169', detail: '#0E5A3E' } },
     icon: { bg: '#0E5A3E', main: '#C8F169', detail: '#0E5A3E' },
-    cover: 'brand', hero: 'brand', post: 'brand', deco: '#C8F169', decoHero: '#0E5A3E', pattern: 'dots', dots: '#C8F169',
+    cover: 'brand', hero: 'brand', post: 'brand', deco: '#C8F169', decoHero: '#0E5A3E', pattern: 'none', dots: '#C8F169',
     shadow: '0 18px 40px -28px rgba(10,60,40,.45)',
     side: { active: '#0E5A3E', activeInk: '#FFFFFF' },
     chat: { wall: '#EEF4EF', in: '#FFFFFF', inInk: '#0D1F17', out: '#DDF7A8', outInk: '#0D1F17', head: '#0E5A3E', headInk: '#FFFFFF' },
@@ -497,19 +498,19 @@ const PALETTES = [
     why: ['חמה ושמחה בלי להיראות כמו צעצוע, ומתאימה לדמות.', 'אלמוג כמעט לא קיים אצל מערכות לעסקים, ולכן בולט.', 'הכחול הכהה מחזיק את הטקסט, והאלמוג נשאר לדודו ולכפתורים.'],
     risk: ['אלמוג קרוב לאדום. לכן "לא נסגר" במערכת יהיה אפור, כדי שלא ייראה כמו שגיאה.', 'אלמוג על לבן חלש לטקסט. מילה מודגשת מקבלת מרקר ולא צבע.'],
     effort: 'עבודה במערכת: צביעה מחדש', system: 'צריך לצבוע מחדש את הכפתורים, את התפריט ואת מסך הכניסה.',
-    sw: [['אלמוג', '#FF6B4A', 'דודו, כפתורים, ורגע הסגירה'], ['ים', '#12263F', 'טקסט, ורקע כהה'], ['אפרסק', '#FFD3C7', 'מרקר מאחורי מילים, והודעות בצ\'אט'], ['קצף', '#FFF4EF', 'משטחים ותפריט המערכת'], ['ערפל ים', '#5A6577', 'טקסט משני']],
-    bg: '#FFFFFF', surface: '#FFF4EF', ink: '#12263F', muted: '#5A6577', line: '#F0E2DC',
-    dark: '#12263F', onDark: '#FFFFFF', onDarkMuted: '#AEB9CB', accentOnDark: '#FF8A6E', actionDark: '#FF6B4A', actionDarkInk: '#12263F',
-    action: '#FF6B4A', actionInk: '#12263F', actionEdge: 'rgba(18,38,63,.1)', hl: 'marker', accent: '#12263F', marker: '#FFD3C7', link: '#C2412A',
-    brand: { bg: '#FF6B4A', ink: '#12263F', muted: '#3A2A33', action: '#12263F', actionInk: '#FFFFFF', accent: '#12263F', deco: 'underline', decoColor: '#FFFFFF' },
-    logo: { light: { text: '#12263F', main: '#FF6B4A', detail: '#12263F' }, dark: { text: '#FFFFFF', main: '#FF6B4A', detail: '#12263F' }, brand: { text: '#12263F', main: '#12263F', detail: '#FF6B4A' } },
-    icon: { bg: '#FF6B4A', main: '#FFFFFF', detail: '#FF6B4A' },
-    cover: 'brand', hero: 'light', post: 'dark', deco: '#FFFFFF', decoHero: '#FF6B4A', pattern: 'glow', dots: '#12263F',
+    sw: [['אלמוג', '#FF6F4F', 'דודו, כפתורים, ורגע הסגירה'], ['ים', '#01142E', 'טקסט, ורקע כהה'], ['אפרסק', '#FFE6DF', 'מרקר מאחורי מילים, והודעות בצ\'אט'], ['קצף', '#FFF6F3', 'משטחים ותפריט המערכת'], ['ערפל ים', '#525D6E', 'טקסט משני']],
+    bg: '#FFFFFF', surface: '#FFF6F3', ink: '#01142E', muted: '#525D6E', line: '#F0E2DC',
+    dark: '#01142E', onDark: '#FFFFFF', onDarkMuted: '#AEB9CB', accentOnDark: '#FF6F4F', actionDark: '#FF6F4F', actionDarkInk: '#01142E',
+    action: '#FF6F4F', actionInk: '#01142E', actionEdge: 'rgba(18,38,63,.1)', hl: 'marker', accent: '#01142E', marker: '#FFE6DF', link: '#C2412A',
+    brand: { bg: '#FF6F4F', ink: '#01142E', muted: '#3A2A33', action: '#01142E', actionInk: '#FFFFFF', accent: '#01142E', deco: 'underline', decoColor: '#FFFFFF' },
+    logo: { light: { text: '#01142E', main: '#FF6F4F', detail: '#01142E' }, dark: { text: '#FFFFFF', main: '#FF6F4F', detail: '#01142E' }, brand: { text: '#01142E', main: '#01142E', detail: '#FF6F4F' } },
+    icon: { bg: '#FF6F4F', main: '#FFFFFF', detail: '#FF6F4F' },
+    cover: 'brand', hero: 'light', post: 'dark', deco: '#FFFFFF', decoHero: '#FF6F4F', pattern: 'glow', dots: '#01142E',
     shadow: '0 18px 40px -28px rgba(120,40,20,.4)',
-    side: { active: '#FFE8E1', activeInk: '#12263F' },
-    chat: { wall: '#FFF4EF', in: '#FFFFFF', inInk: '#12263F', out: '#FFD3C7', outInk: '#12263F', head: '#12263F', headInk: '#FFFFFF' },
-    status: { new: ['#EEF1F5', '#2B3A52'], contacted: ['#FFF2D1', '#6E4C00'], quote: ['#12263F', '#FFFFFF'], won: ['#FF6B4A', '#12263F'], lost: ['#F1F2F4', '#5B606E'] },
-    prop: [['לבן', '#FFFFFF', 52], ['ים', '#12263F', 22], ['אלמוג', '#FF6B4A', 14], ['קצף', '#FFF4EF', 8], ['אפרסק', '#FFD3C7', 4]]
+    side: { active: '#FFE6DF', activeInk: '#01142E' },
+    chat: { wall: '#FFF6F3', in: '#FFFFFF', inInk: '#01142E', out: '#FFE6DF', outInk: '#01142E', head: '#01142E', headInk: '#FFFFFF' },
+    status: { new: ['#EEF1F5', '#2B3A52'], contacted: ['#FFF2D1', '#6E4C00'], quote: ['#01142E', '#FFFFFF'], won: ['#FF6F4F', '#01142E'], lost: ['#F1F2F4', '#5B606E'] },
+    prop: [['לבן', '#FFFFFF', 52], ['ים', '#01142E', 22], ['אלמוג', '#FF6F4F', 14], ['קצף', '#FFF6F3', 8], ['אפרסק', '#FFE6DF', 4]]
   },
   {
     id: 'electric', name: 'כחול חשמלי', tag: 'הכי מקצועי', slogan: 'דודו כבר עונה',
@@ -517,19 +518,19 @@ const PALETTES = [
     why: ['כחול משדר אמינות ומערכת מסודרת.', 'עונה על החשש שדודו ייראה משחקי מדי.', 'הכחול נקרא טוב על לבן, אז כפתורים וקישורים ברורים.'],
     risk: ['כחול הוא הצבע הנפוץ ביותר בתוכנות, מפייסבוק ועד הבנק, ולכן הכי פחות ייחודי.', 'דמות כחולה עם חיוך מזכירה קצת צ\'אטבוטים של חברות גדולות.'],
     effort: 'עבודה במערכת: צביעה מחדש', system: 'צריך לצבוע מחדש את הכפתורים, את התפריט ואת מסך הכניסה.',
-    sw: [['כחול', '#2E5BFF', 'צבע המותג: דודו, כפתורים, ורקע לפסים'], ['לילה', '#0B1330', 'טקסט, ורקע כהה'], ['שמש', '#FFC547', 'רגע הסגירה, וכפתור על רקע כהה'], ['קרח', '#EEF2FF', 'משטחים ותפריט המערכת'], ['פלדה', '#545D7A', 'טקסט משני']],
-    bg: '#FFFFFF', surface: '#F3F6FF', ink: '#0B1330', muted: '#545D7A', line: '#E1E6F5',
-    dark: '#0B1330', onDark: '#FFFFFF', onDarkMuted: '#AAB5D6', accentOnDark: '#FFC547', actionDark: '#FFC547', actionDarkInk: '#0B1330',
-    action: '#2E5BFF', actionInk: '#FFFFFF', actionEdge: 'rgba(0,0,0,0)', hl: 'color', accent: '#2E5BFF', marker: '#FFC547', link: '#2E5BFF',
-    brand: { bg: '#2E5BFF', ink: '#FFFFFF', muted: '#F2F5FF', action: '#FFFFFF', actionInk: '#1B3FD6', accent: '#FFD66B', deco: 'none', decoColor: 'transparent' },
-    logo: { light: { text: '#0B1330', main: '#2E5BFF', detail: '#FFFFFF' }, dark: { text: '#FFFFFF', main: '#4D74FF', detail: '#FFFFFF' }, brand: { text: '#FFFFFF', main: '#FFFFFF', detail: '#2E5BFF' } },
-    icon: { bg: '#2E5BFF', main: '#FFFFFF', detail: '#2E5BFF' },
-    cover: 'brand', hero: 'brand', post: 'dark', deco: '#FFFFFF', decoHero: '#2E5BFF', pattern: 'dots', dots: '#FFFFFF',
+    sw: [['כחול', '#2A55FF', 'צבע המותג: דודו, כפתורים, ורקע לפסים'], ['לילה', '#01031F', 'טקסט, ורקע כהה'], ['שמש', '#FFD78B', 'רגע הסגירה, וכפתור על רקע כהה'], ['קרח', '#F6F8FF', 'משטחים ותפריט המערכת'], ['פלדה', '#555F71', 'טקסט משני']],
+    bg: '#FFFFFF', surface: '#F6F8FF', ink: '#01031F', muted: '#555F71', line: '#E1E6F5',
+    dark: '#01031F', onDark: '#FFFFFF', onDarkMuted: '#AAB5D6', accentOnDark: '#FFD78B', actionDark: '#FFD78B', actionDarkInk: '#01031F',
+    action: '#2A55FF', actionInk: '#FFFFFF', actionEdge: 'rgba(0,0,0,0)', hl: 'color', accent: '#2A55FF', marker: '#FFD78B', link: '#2A55FF',
+    brand: { bg: '#2A55FF', ink: '#FFFFFF', muted: '#F2F5FF', action: '#FFFFFF', actionInk: '#1B3FD6', accent: '#FFD78B', deco: 'none', decoColor: 'transparent' },
+    logo: { light: { text: '#01031F', main: '#2A55FF', detail: '#FFFFFF' }, dark: { text: '#FFFFFF', main: '#4D74FF', detail: '#FFFFFF' }, brand: { text: '#FFFFFF', main: '#FFFFFF', detail: '#2A55FF' } },
+    icon: { bg: '#2A55FF', main: '#FFFFFF', detail: '#2A55FF' },
+    cover: 'brand', hero: 'brand', post: 'dark', deco: '#FFFFFF', decoHero: '#2A55FF', pattern: 'none', dots: '#FFFFFF',
     shadow: '0 18px 40px -28px rgba(20,40,140,.45)',
     side: { active: '#E8EEFF', activeInk: '#1E3FCC' },
-    chat: { wall: '#EEF2FF', in: '#FFFFFF', inInk: '#0B1330', out: '#2E5BFF', outInk: '#FFFFFF', head: '#2E5BFF', headInk: '#FFFFFF' },
-    status: { new: ['#E8EEFF', '#1E3FCC'], contacted: ['#F1F2F6', '#474D63'], quote: ['#2E5BFF', '#FFFFFF'], won: ['#FFC547', '#0B1330'], lost: ['#FFE6EC', '#AE1F3E'] },
-    prop: [['לבן', '#FFFFFF', 52], ['כחול', '#2E5BFF', 24], ['לילה', '#0B1330', 14], ['קרח', '#EEF2FF', 6], ['שמש', '#FFC547', 4]]
+    chat: { wall: '#F6F8FF', in: '#FFFFFF', inInk: '#01031F', out: '#2A55FF', outInk: '#FFFFFF', head: '#2A55FF', headInk: '#FFFFFF' },
+    status: { new: ['#E8EEFF', '#1E3FCC'], contacted: ['#F1F2F6', '#474D63'], quote: ['#2A55FF', '#FFFFFF'], won: ['#FFD78B', '#01031F'], lost: ['#FFE6EC', '#AE1F3E'] },
+    prop: [['לבן', '#FFFFFF', 52], ['כחול', '#2A55FF', 24], ['לילה', '#01031F', 14], ['קרח', '#F6F8FF', 6], ['שמש', '#FFD78B', 4]]
   },
   {
     id: 'lemon', name: 'שחור ולימון', tag: 'הכי נועז', slogan: 'דודו כבר עונה',

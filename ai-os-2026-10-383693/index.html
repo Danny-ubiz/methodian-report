@@ -100,9 +100,10 @@ button { font: inherit; }
 .chip { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: .95rem; padding: 6px 16px; border-radius: 999px;
   background: var(--card); border: 1px solid var(--rule); color: var(--fg); white-space: nowrap; }
 .chip.y { background: var(--y); border-color: var(--y); color: var(--ink); }
-.proof { display: flex; gap: 12px; align-items: center; font-weight: 700; font-size: 1.02rem; line-height: 1.35; }
-.proof .mk { width: 30px; height: 29px; }
-.yel .proof .mk { background-color: var(--ink); background-size: 76%; border-radius: 9px; }
+/* שורה תחתונה בסוף כל שקף עובד: איזה כאב זה פותר ללקוח ומה זה חוסך לו (דני, 25/10/2026). לא עובדות על יוביז. */
+.bottom { display: flex; flex-direction: column; gap: 4px; border-inline-start: 4px solid var(--y); padding: 2px 16px; }
+.bottom small { font-weight: 800; font-size: .85rem; letter-spacing: .03em; color: var(--soft); }
+.bottom p { font-weight: 700; font-size: 1.1rem; line-height: 1.4; max-width: 46ch; }
 .agent-col { display: flex; flex-direction: column; gap: 22px; }
 .agent-id { display: flex; align-items: center; gap: 14px; font-weight: 800; font-size: 1.1rem; }
 .agent-id small { display: block; font-weight: 600; color: var(--soft); font-size: .9rem; }
@@ -491,10 +492,11 @@ button { font: inherit; }
 .bento .c.w { grid-column: span 3; }
 .bento .c .agent-id small { color: var(--y); }
 .bento .c p { color: var(--soft); font-size: 1rem; line-height: 1.45; }
-.quote { display: flex; gap: 18px; align-items: flex-start; }
+.quote { display: flex; gap: 18px; align-items: flex-start; border: 2px solid var(--y); border-radius: 26px; padding: clamp(18px, 2.4vw, 30px); background: var(--card); box-shadow: 0 0 34px rgba(255,183,46,.14); }
 .quote .qmk { width: 48px; height: 46px; transform: rotate(-4deg); }
 .quote blockquote { margin: 0; font-size: clamp(1.4rem, 2.6vw, 2.2rem); font-weight: 800; line-height: 1.25; text-wrap: balance; }
 .quote blockquote span { color: var(--y); }
+.quote .nw { white-space: nowrap; }
 .quote cite { display: block; font-style: normal; font-size: 1rem; color: var(--soft); font-weight: 700; margin-top: 10px; }
 @media (max-width: 960px) { .bento .c, .bento .c.w { grid-column: span 3; } }
 @media (max-width: 600px) { .bento { grid-template-columns: 1fr; } .bento .c, .bento .c.w { grid-column: auto; } }
@@ -719,7 +721,7 @@ button { font: inherit; }
           <div class="head" style="gap:10px"><span class="sub">נשאר אצלכם</span><ul class="keep"><li>ההחלטות שהוא מעלה אליכם</li><li>העלאה של עובד בדרגה</li></ul></div>
           <div class="head" style="gap:10px"><span class="sub">עובד מול</span><div class="chips"><span class="chip">כל העובדים</span><span class="chip">יומן הלמידה</span><span class="chip">וואטסאפ</span><span class="chip">מערכת הלקוחות</span></div></div>
         </div>
-        <p class="proof r"><span class="mk" aria-hidden="true"></span>אצלנו מנהל התפעול מחזיר לדני עד שלוש החלטות, ולא רשימת משימות.</p>
+        <div class="bottom r"><small>בשורה התחתונה</small><p>אתם מפסיקים לנהל את כולם מהראש. לא בודקים מי עשה מה ומה נתקע, רק מקבלים את מה שבאמת מחכה להחלטה שלכם.</p></div>
       </div>
       <div class="mock r">
         <span class="demo">להמחשה</span>
@@ -751,7 +753,7 @@ button { font: inherit; }
           <div class="head" style="gap:10px"><span class="sub">נשאר אצלכם</span><ul class="keep"><li>אישור על כל מסמך וכל תזכורת</li><li>תשלום שלא תואם בדיוק מגיע אליכם כשאלה</li></ul></div>
           <div class="head" style="gap:10px"><span class="sub">מחוברת אל</span><div class="chips"><span class="chip">הנהלת החשבונות</span><span class="chip">הבנק</span><span class="chip">מייל</span><span class="chip">וואטסאפ</span></div></div>
         </div>
-        <p class="proof r"><span class="mk" aria-hidden="true"></span>גבי כבר עובדת אצלנו ביוביז בגבייה, כל יום.</p>
+        <div class="bottom r"><small>בשורה התחתונה</small><p>הכסף שמגיע לכם נכנס בזמן, בלי לרדוף אחרי אף לקוח ובלי ערב שלם של קבלות והתאמות.</p></div>
       </div>
       <div class="mock r">
         <span class="demo">להמחשה</span>
@@ -785,7 +787,7 @@ button { font: inherit; }
           <div class="head" style="gap:10px"><span class="sub">נשאר אצלכם</span><ul class="keep"><li>בחירת הכיוון</li><li>אישור כל פוסט לפני שהוא מתוזמן</li></ul></div>
           <div class="head" style="gap:10px"><span class="sub">מחוברת אל</span><div class="chips"><span class="chip">פייסבוק</span><span class="chip">אינסטגרם</span><span class="chip">דרייב</span><span class="chip">יומן תוכן</span></div></div>
         </div>
-        <p class="proof r"><span class="mk" aria-hidden="true"></span>מיה כבר מנהלת אצלנו את הפרופילים האישיים של דני.</p>
+        <div class="bottom r"><small>בשורה התחתונה</small><p>העמוד שלכם ממשיך לפרסם גם בשבוע הכי עמוס, ואתם רק מאשרים. בלי לחפש כל בוקר מה מעלים היום.</p></div>
       </div>
       <div class="mock r">
         <span class="demo">להמחשה</span>
@@ -841,7 +843,7 @@ button { font: inherit; }
           <div class="head" style="gap:10px"><span class="sub">נשאר אצלכם</span><ul class="keep"><li>כל הודעה שיוצאת בשמכם</li><li>ההחלטות עצמן</li></ul></div>
           <div class="head" style="gap:10px"><span class="sub">מחובר אל</span><div class="chips"><span class="chip">וואטסאפ</span><span class="chip">יומן גוגל</span><span class="chip">מייל</span><span class="chip">מערכת הלקוחות</span></div></div>
         </div>
-        <p class="proof r"><span class="mk" aria-hidden="true"></span>אצלנו דני כותב &quot;בוקר טוב&quot; ומקבל את כל היום בהודעה אחת.</p>
+        <div class="bottom r"><small>בשורה התחתונה</small><p>אתם פותחים את הבוקר עם תמונה אחת ברורה של היום, ושום פגישה, תזכורת או מייל חשוב לא נופלים בין הכיסאות.</p></div>
       </div>
       <div class="phone r">
         <span class="demo">להמחשה</span>
@@ -874,7 +876,7 @@ button { font: inherit; }
           <div class="head" style="gap:10px"><span class="sub">נשאר אצלכם</span><ul class="keep"><li>הצעת מחיר וסגירה</li><li>כל שאלה שהוא לא בטוח בתשובה עליה</li></ul></div>
           <div class="head" style="gap:10px"><span class="sub">מחובר אל</span><div class="chips"><span class="chip">וואטסאפ</span><span class="chip">אינסטגרם</span><span class="chip">פייסבוק</span><span class="chip">טופס באתר</span><span class="chip">יומן</span></div></div>
         </div>
-        <p class="proof r"><span class="mk" aria-hidden="true"></span>רץ על UChat, מערכת הוואטסאפ והאינסטגרם של יוביז, שעברה את בדיקת ההרשאות של מטא.</p>
+        <div class="bottom r"><small>בשורה התחתונה</small><p>אף פנייה לא מתקררת בלילה או בסוף השבוע. כל ליד מקבל מענה כשהוא עוד חם, ומגיע אליכם עם שיחה שכבר ביומן.</p></div>
       </div>
       <div class="night r">
         <span class="demo">להמחשה</span>
@@ -978,7 +980,7 @@ button { font: inherit; }
       <div class="c w r"><div class="agent-id"><span class="av sm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><div>המפקח<small>שירות ללקוחות</small></div></div><p>מודד כל פנייה של לקוח בוואטסאפ מול תקן של מענה תוך שעה, ויודע להבדיל בין "תודה" לבין "אני מחכה לגרפיקה".</p></div>
       <div class="c w r"><div class="agent-id"><span class="av sm mgr"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7h10M10 12h10M10 17h10"/><path d="M4 7l1 1 2-2M4 12l1 1 2-2M4 17l1 1 2-2"/></svg></span><div>מנהל התפעול<small>בורד המשימות</small></div></div><p>עובר על כל המשימות הפתוחות של הצוות, ומחזיר לדני עד שלוש החלטות במקום עוד רשימת משימות.</p></div>
     </div>
-    <div class="quote r"><span class="mk qmk" aria-hidden="true"></span><div><blockquote>אני לא מוכר לכם משהו שאני מאמין בו.<br><span>אני מוכר לכם משהו שאני תלוי בו.</span></blockquote><cite>דני שניידרמן, יוביז פרסום</cite></div></div>
+    <div class="quote r"><span class="mk qmk" aria-hidden="true"></span><div><blockquote>אני לא מוכר לכם משהו שאני מאמין בו.<br><span>אני בונה לכם את המערכת שאני כבר עובד איתה <span class="nw">ביום-יום.</span></span></blockquote><cite>דני שניידרמן, יוביז פרסום</cite></div></div>
   </div>
 </section>
 

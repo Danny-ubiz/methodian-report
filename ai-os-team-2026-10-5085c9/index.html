@@ -7,7 +7,7 @@
 <meta property="og:title" content="מערכת AI-OS לעסק">
 <meta property="og:description" content="צוות ניהול שלם של עובדים דיגיטליים, ומה כל אחד מהם עושה.">
 <meta property="og:locale" content="he_IL">
-<meta name="deck-build" content="0e123ad41cd2">
+<meta name="deck-build" content="97f3beba6c93">
 </head>
 <body>
 <title>מערכת AI-OS לעסק</title>
@@ -139,9 +139,12 @@ button { font: inherit; }
 .p-point { --pw: 190px; --h: min(560px, 62vh); --fx: 84%; }
 /* פסי: מאחורי הלוח, מציצה מעל הקצה העליון ומצלמת את הגאנט */
 .p-top { --pt: 228px; --h: 260px; --ax: 14px; --ay: var(--pt); --fx: 0%; --fy: 88%; }
-/* עוז: יושב על הפינה העליונה של הטלפון, והרגליים משתלשלות לפניו */
-.p-sit { --pw: 90px; --pt: 196px; --h: 360px; --ax: calc(var(--pw) + 22px); --ay: var(--pt); --fx: 52%; --fy: 54%; }
+/* עוז: יושב על הקצה העליון הישר של הטלפון, כף היד (54% מגובה התמונה) נשענת עליו, והרגליים משתלשלות לפני הצד הריק של הכותרת.
+   העיגון נמדד מהקצה השמאלי של הטלפון ולא של הבמה, אחרת הוא מרחף בצד. הכותרת גבוהה יותר כאן כדי שהנעליים לא יסתירו את הבועה הראשונה, והמסך ארוך באותה מידה כדי שאזור הצ'אט לא יקטן. */
+.p-sit { --pw: 0px; --pt: 176px; --h: 310px; --ax: 30px; --ay: var(--pt); --fx: 0%; --fy: 54%; }
 .p-sit .pal { z-index: 2; }
+.p-sit .phone .hd { padding-top: 72px; }
+.p-sit .phone .scr { height: calc(clamp(520px, 66vh, 640px) + 38px); }
 /* לידור: יושב על הרצפה ונשען לאחור על הפינה התחתונה של הלוח, לפניו */
 .p-floor { --pw: 200px; --h: 330px; --ay: calc(100% - 6px); --fx: 73%; --fy: 82%; }
 .p-floor .pal { z-index: 2; }
@@ -151,7 +154,7 @@ button { font: inherit; }
   .stage.ph { width: 100%; } .stage.ph > .phone { margin-inline: auto; }
   .p-grip, .p-point { --pw: 0px; --pt: 0px; margin-top: 120px; --h: 250px; --ax: 0px; --ay: -118px; --fx: 0%; --fy: 0%; }
   .p-top { --pt: 176px; --h: 200px; }
-  .p-sit { --pw: 0px; --pt: 124px; --h: 228px; --ax: 84px; }
+  .p-sit { --pt: 150px; --h: 270px; --ax: calc(50% - min(180px, 50%) + 26px); }
   .p-floor { --pw: 0px; --pt: 150px; --h: 200px; --ax: 150px; --ay: var(--pt); --fx: 73%; --fy: 86%; }
   .p-floor .pal { z-index: 0; }
 }

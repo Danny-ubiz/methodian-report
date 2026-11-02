@@ -243,16 +243,42 @@ button.lrow:hover { background: var(--hover); }
 .login-side::before { content: ""; position: absolute; width: 620px; height: 620px; border-radius: 50%; top: -220px; inset-inline-end: -180px; background: hsl(0 0% 100% / .07); }
 .white-logo { position: relative; display: inline-flex; align-items: center; gap: 5px; direction: ltr; align-self: flex-start; }
 .white-logo { color: #fff; }
-.white-logo .lg { height: 34px; }
+.white-logo .lg { height: clamp(34px, 3vw, 46px); }
+.lg-btn { display: block; padding: 0; background: none; border: 0; color: inherit; cursor: pointer; }
+.lg-knob { transition: transform .32s cubic-bezier(.34, 1.4, .64, 1); }
+.lg-pill { transition: fill-opacity .25s; }
+.lg-btn.idle .lg-knob { animation: lg-knob 6s var(--ease) infinite; }
+.lg-btn.idle .lg-pill { animation: lg-pill 6s linear infinite; }
+.lg-btn[aria-pressed="false"] .lg-knob, .logo:hover .lg-knob { transform: translateX(-12.34px); }
+.lg-btn[aria-pressed="false"] .lg-pill { fill-opacity: .35; }
+@keyframes lg-knob { 0%, 58% { transform: none; } 66%, 82% { transform: translateX(-12.34px); } 90%, 100% { transform: none; } }
+@keyframes lg-pill { 0%, 58% { fill-opacity: 1; } 66%, 82% { fill-opacity: .55; } 90%, 100% { fill-opacity: 1; } }
 .white-logo i { width: 1px; height: 30px; background: hsl(0 0% 100% / .55); margin-inline: 10px; }
 .white-logo .t { font-size: .92rem; font-weight: 600; }
-.login-side h2 { position: relative; font-size: clamp(2rem, 3.3vw, 3rem); font-weight: 800; line-height: 1.04; letter-spacing: -.015em; margin-top: clamp(16px, 5vh, 54px); text-wrap: balance; color: #fff; }
-.login-side p { position: relative; font-size: clamp(1.15rem, 1.7vw, 1.45rem); font-weight: 600; line-height: 1.3; color: hsl(0 0% 100% / .94); }
-.lineup { position: relative; margin-top: auto; margin-bottom: calc(clamp(28px, 4vw, 56px) * -1 - 16px); display: flex; justify-content: center; align-items: flex-end; }
-.lineup img { width: clamp(118px, 12vw, 190px); height: auto; display: block; margin-inline: -14px; }
-.lineup img:nth-child(1), .lineup img:nth-child(5) { width: clamp(104px, 10.5vw, 166px); }
-.lineup img:nth-child(3) { width: clamp(132px, 13.5vw, 212px); position: relative; z-index: 2; }
-.lineup img:nth-child(2), .lineup img:nth-child(4) { position: relative; z-index: 1; }
+.login-side h2 { position: relative; font-size: clamp(2.1rem, 3.5vw, 4.4rem); font-weight: 800; line-height: 1.06; letter-spacing: -.015em; margin-top: clamp(10px, 3vh, 36px); color: #fff; }
+.login-side p { position: relative; font-size: clamp(1.2rem, 1.9vw, 1.9rem); font-weight: 600; line-height: 1.25; color: hsl(0 0% 100% / .94); }
+.lu-feed { position: relative; flex: 1 1 0; min-height: 130px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 9px; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 30px); mask-image: linear-gradient(180deg, transparent 0, #000 30px); }
+.lu-card { flex: none; display: flex; align-items: center; gap: 10px; max-width: min(500px, 100%); padding: 8px 14px 8px 12px; border-radius: 14px; background: hsl(0 0% 100% / .13); border: 1px solid hsl(0 0% 100% / .17); color: #fff; line-height: 1.3; transition: opacity .35s, transform .4s var(--ease); }
+.lu-card.old { opacity: .74; }
+.lu-card.in { animation: lu-in .42s var(--ease) both; }
+.lu-card img { flex: none; width: 34px; height: 34px; border-radius: 50%; object-fit: cover; object-position: top center; background: hsl(0 0% 100% / .2); }
+.lu-card b { font-weight: 800; margin-inline-end: 5px; }
+.lu-card .lu-ap { display: block; margin-top: 1px; color: var(--side-acc); font-size: .8rem; font-weight: 700; }
+@keyframes lu-in { from { opacity: 0; transform: translateY(12px); } }
+.lineup { position: relative; margin-inline: calc(clamp(28px, 4vw, 56px) * -1); margin-bottom: calc(clamp(28px, 4vw, 56px) * -1 - 14px); display: flex; justify-content: center; align-items: flex-end; }
+.lu { position: relative; flex: 1 1 19%; min-width: 0; display: flex; flex-direction: column; align-items: center; transition: transform .38s var(--ease); }
+.lu:nth-child(3) { flex-basis: 24%; z-index: 2; }
+.lu:nth-child(2), .lu:nth-child(4) { z-index: 1; }
+.lu:nth-child(2) { transition-delay: .05s; } .lu:nth-child(3) { transition-delay: .1s; } .lu:nth-child(4) { transition-delay: .15s; } .lu:nth-child(5) { transition-delay: .2s; }
+.lu img { display: block; width: 112%; max-width: none; margin-inline: -6%; height: auto; transform-origin: 50% 100%; transition: transform .38s var(--ease), filter .38s; }
+.lu.talk img { transform: translateY(-7px) scale(1.035); }
+.lu.off { transform: translateY(16px); }
+.lu.off img { filter: grayscale(1) brightness(.68); }
+.lu-c { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 5px; margin-bottom: 5px; color: #fff; font-size: .92rem; font-weight: 700; line-height: 1; }
+.lu .sw { background: hsl(0 0% 100% / .26); }
+.lu .sw[aria-checked="true"] { background: var(--side-acc); }
+.lu .sw[aria-checked="true"]::after { background: var(--side-knob); }
+@media (prefers-reduced-motion: reduce) { .lg-btn.idle .lg-knob, .lg-btn.idle .lg-pill, .lu-card.in { animation: none; } }
 .login-form { background: var(--bg); display: grid; place-items: center; padding: clamp(24px, 4vw, 56px); }
 .login-form .inner { width: min(420px, 100%); display: grid; gap: 16px; }
 .field { display: grid; gap: 6px; }
@@ -409,6 +435,12 @@ button.pgrid:hover { background: var(--hover); }
 
 /* שיחות */
 main.fill { padding: 0; }
+.ig-h { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; gap: 10px; padding: 11px 16px; background: var(--bg); border-bottom: 1px solid var(--border); }
+.ig-h b { display: block; font-weight: 800; line-height: 1.2; }
+.ig-h small { display: block; color: var(--muted); font-size: .8rem; }
+.ig-n { margin-inline-start: auto; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 999px; background: var(--grad); color: var(--on-brand); font-size: .76rem; font-weight: 800; display: grid; place-items: center; }
+.iitem.nf { grid-template-columns: minmax(0, 1fr); }
+.m-queue { align-self: flex-end; width: min(520px, 100%); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 14px; background: #fff; border: 1px solid var(--brand-mid); border-radius: 14px; box-shadow: var(--sh); font-weight: 700; }
 .cs { display: grid; grid-template-columns: 320px minmax(0, 1fr); height: calc(100vh - var(--bar) - var(--top)); height: calc(100dvh - var(--bar) - var(--top)); background: #fff; }
 .cs-list { border-inline-end: 1px solid var(--border); overflow-y: auto; min-height: 0; padding-bottom: 12px; }
 .cs-lh { padding: 18px 18px 8px; }
@@ -536,7 +568,11 @@ main.fill { padding: 0; }
   .two, .conn, .wgrid { grid-template-columns: minmax(0, 1fr); }
   .login { grid-template-columns: minmax(0, 1fr); min-height: 0; }
   .login-form { order: -1; }
-  .login-side { min-height: 460px; }
+  .login-side { min-height: 0; }
+  .login-side h2 { font-size: clamp(1.6rem, 7.3vw, 3.4rem); }
+  .login-side p { font-size: clamp(1.1rem, 4.6vw, 1.6rem); }
+  .lu-card { font-size: .9rem; }
+  .lu-c { font-size: .82rem; }
   .proto-note { display: none; }
   .inbox { grid-template-columns: minmax(0, 1fr); }
   .cs { grid-template-columns: minmax(0, 1fr); height: calc(100vh - var(--bar) - var(--top) - 62px); height: calc(100dvh - var(--bar) - var(--top) - 62px); }
@@ -568,9 +604,6 @@ main.fill { padding: 0; }
   .cmd .code { font-size: .96rem; flex: 1 1 100%; padding-block: 4px; }
   .cmd .btn { width: 100%; }
   .stage { padding-inline: 8px; }
-  .lineup img { width: 26%; margin-inline: -10px; }
-  .lineup img:nth-child(1), .lineup img:nth-child(5) { width: 23%; }
-  .lineup img:nth-child(3) { width: 30%; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -654,8 +687,7 @@ function exampleApprovals() {
       list: ['טיוטה לפוסט חנוכה', 'טיוטה לפוסט ספטמבר', 'קמפיין קיץ, גרסה ישנה'] }
   ];
 }
-function exampleThreads(list) {
-  var ap = function (id) { return { t: 'ap', a: list.filter(function (a) { return a.id === id; })[0] }; };
+function exampleThreads() {
   var day = function (x) { return { t: 'day', text: x }; };
   var me = function (x, at) { return { t: 'me', text: x, at: at, st: 'ok' }; };
   var w = function (x, at) { return { t: 'w', text: x, at: at }; };
@@ -666,61 +698,33 @@ function exampleThreads(list) {
       me('צריך פוסט על ההרשמה לקורס המתנדבים, שיעלה בשבוע הבא', '16:30'),
       w('סגור, אני מעביר את זה לפסי ובודק את הטיוטה לפני שהיא מגיעה אליכם.', '16:31'),
       note('מני העביר את המשימה לפסי'),
+      me('לקוח מבקש לדחות את הפגישה של מחר, צריך להכין לו תשובה', '17:10'),
+      w('אני מעביר לעוז, והוא יציע לו שני מועדים שפנויים אצלכם ביומן. המייל יישלח רק אחרי שתאשרו.', '17:10'),
+      note('מני העביר את המשימה לעוז'),
       day('היום'),
       me('מה נשאר פתוח להיום?', '10:05'),
-      w('שלושה דברים מחכים לאישור שלכם: הפוסט של פסי, המייל של עוז ובקשה שלי למחוק טיוטות ישנות.\n\nאת שלי אפשר לאשר כאן, ואת השניים האחרים תמצאו בשיחה עם פסי ועם עוז.', '10:05'),
-      ap('a3')
-    ] },
-    pesi: { unread: 1, items: [
-      day('היום'),
-      w('הכנתי את הפוסט על קורס המתנדבים, ומני כבר עבר עליו. אם הוא נראה לכם טוב, הוא יעלה ביום ראשון הבא ב-10:00.', '09:04'),
-      ap('a1')
-    ] },
-    oz: { unread: 1, items: [
-      day('אתמול'),
-      me('לקוח מבקש לדחות את הפגישה של מחר, תכין לו תשובה', '17:10'),
-      w('הכנתי תשובה עם שני מועדים שפנויים אצלכם ביומן. המייל יישלח מהחשבון שלכם רק אחרי שתאשרו.', '17:12'),
-      ap('a2')
-    ] },
-    lidor: { unread: 0, items: [
-      day('אתמול'),
-      me('כמה פניות נכנסו השבוע?', '12:05'),
-      w('שבע. שתיים מהן מחכות שתחליטו אם לחזור אליהן.', '12:05'),
-      note('לידור כובה מהאתר ב-17:40')
-    ] },
-    claude: { unread: 0, items: [
-      day('היום'),
-      me('מה הקבצים הכי חדשים בתיקיית הלקוחות?', '08:52'),
-      w('שלושה קבצים השתנו מאתמול: הצעת המחיר של עמותת הדוגמה, רשימת המתנדבים וטיוטת הניוזלטר. תרצו שאפתח אחד מהם?', '08:52')
+      w('הפוסט של פסי והמייל של עוז מוכנים, וגם אני ביקשתי למחוק טיוטות ישנות. הכול מחכה לכם בתור האישורים, מסודר לפי עובד.', '10:05'),
+      { t: 'queue' }
     ] }
   };
 }
-var CHIPS = {
-  meni: ['מה נשאר פתוח להיום?', 'מי מהצוות תקוע?', 'תסכם לי את השבוע'],
-  pesi: ['מה מוכן לשבוע הבא?', 'תכיני פוסט חדש'],
-  oz: ['מה יש לי מחר?', 'תכין אותי לפגישה הבאה', 'מה חשוב במיילים היום?'],
-  lidor: ['כמה פניות נכנסו השבוע?', 'מי מחכה שנחזור אליו?'],
-  claude: ['מה השתנה היום בקבצים?', 'תסכם לי קובץ']
-};
+var CHIPS = ['מה נשאר פתוח להיום?', 'מי מהצוות תקוע?', 'תסכם לי את השבוע', 'מה יש לי מחר?'];
 var REPLY = {
   'מי מהצוות תקוע?': 'אף אחד לא תקוע, אבל הריצה של עוז ב-07:30 לא התחילה. אני בודק למה, ואעדכן אתכם כאן.',
   'תסכם לי את השבוע': 'השבוע פסי הכינה שלושה פוסטים, עוז הכין תשובה למייל ולידור ענה לשבע פניות. מה שמחכה לאישור שלכם נמצא בתור האישורים.',
-  'מה מוכן לשבוע הבא?': 'שלושה פוסטים. את הראשון שלחתי לכם כאן לאישור, והשניים האחרים אצל מני לבדיקה.',
-  'תכיני פוסט חדש': 'בשמחה. על מה הפוסט ולאיזה יום? אם יש לכם תמונה, אפשר לצרף אותה כאן.',
-  'מה יש לי מחר?': 'שלוש פגישות. לראשונה, ב-10:00, כבר הכנתי סיכום.',
-  'תכין אותי לפגישה הבאה': 'הפגישה הבאה היא מחר ב-10:00. הכנתי סיכום של ההתכתבות האחרונה עם הלקוח, ושלוש שאלות שכדאי לשאול אותו.',
-  'מה חשוב במיילים היום?': 'שני מיילים מחכים לתשובה: לקוח שביקש לדחות פגישה, וספק ששלח חשבונית. על הראשון כבר הכנתי תשובה, והיא מחכה לאישור שלכם.',
-  'כמה פניות נכנסו השבוע?': 'שבע. שתיים מהן מחכות שתחליטו אם לחזור אליהן.',
-  'מי מחכה שנחזור אליו?': 'שתי פניות מחכות להחלטה שלכם, שתיהן מאתמול.',
-  'מה השתנה היום בקבצים?': 'שלושה קבצים השתנו היום: הצעת המחיר של עמותת הדוגמה, רשימת המתנדבים וטיוטת הניוזלטר. תרצו שאפתח אחד מהם?',
-  'תסכם לי קובץ': 'בשמחה. צרפו אותו כאן או כתבו לי איך קוראים לו, ואני אמצא אותו במחשב.'
+  'מה יש לי מחר?': 'בדקתי עם עוז: שלוש פגישות. לראשונה, ב-10:00, הוא כבר הכין סיכום.'
 };
+function routeFor(text) {
+  var r = [[/פוסט|סושיאל|פייסבוק|אינסטגרם|תוכן/, 'pesi'], [/מייל|פגישה|יומן|לקוח/, 'oz'], [/פנייה|פניות|ליד/, 'lidor']];
+  for (var i = 0; i < r.length; i++) if (r[i][0].test(text)) return worker(r[i][1]);
+  return null;
+}
 function replyFor(text) {
   if (text === 'מה נשאר פתוח להיום?') {
     var n = P().approvals.length;
     return n ? ['', 'דבר אחד מחכה', 'שני דברים מחכים', 'שלושה דברים מחכים'][n] + ' לאישור שלכם בתור. חוץ מזה הצוות עובד, ואם משהו ייתקע אעדכן אתכם כאן.' : 'כרגע שום דבר לא מחכה לכם. הצוות עובד, ואם משהו ייתקע אעדכן אתכם כאן.';
   }
-  return REPLY[text] || 'קיבלתי. אחזור אליכם לכאן כשזה יהיה מוכן.';
+  return REPLY[text] || 'קיבלתי. אני מחלק את זה לצוות, ואחזור אליכם לכאן כשזה יהיה מוכן.';
 }
 function blankPerson(name, mail, status, code, secs) {
   return { name: name, mail: mail, status: status, computer: '', os: '', workers: [], approvals: [], done: [], threads: {}, halted: false, code: code || newCode(), secs: secs || 600 };
@@ -732,7 +736,7 @@ function newCode() {
 }
 var S = {
   role: 'shir', viewing: 'shir', reporting: true, zero: false, route: 'login', more: false, theme: 'teal',
-  thread: 'meni', threadOpen: false, typing: null, chatFix: null, drafts: {}, welcome: false, stepsHidden: false,
+  thread: 'meni', threadOpen: false, typing: null, drafts: {}, welcome: false, stepsHidden: false,
   justConnected: false, pendingLevel: null, fixing: null, apSel: null, modal: false, discon: false, enter: true,
   people: {
     shir: (function () { var p = blankPerson('שיר', 'shir@example.co.il', 'none', '7KQ4-M2XP', 582); p.computer = 'DESKTOP-SHIR'; p.os = 'Windows'; return p; })(),
@@ -748,7 +752,7 @@ function connect(key, withTeam) {
   p.status = 'connected';
   if (!p.computer) { p.computer = 'LAPTOP-' + (p.mail.split('@')[0] || 'NEW').toUpperCase().slice(0, 8); p.os = 'Windows'; }
   p.workers = withTeam ? exampleTeam() : []; p.approvals = withTeam ? exampleApprovals() : []; p.done = []; p.spoke = false;
-  p.threads = withTeam ? exampleThreads(p.approvals) : { claude: { unread: 0, items: [] } };
+  p.threads = withTeam ? exampleThreads() : { meni: { unread: 0, items: [] } };
 }
 function face(w, cls) { return '<img class="face ' + (cls || '') + ((P().halted || !w.enabled) && cls !== 'keep' ? ' off-face' : '') + '" src="' + FACE[w.id] + '" alt="">'; }
 var LG_PILL = '<rect class="lg-pill" x="0" y="-.33" width="37" height="24.66" rx="12.33"/><circle class="lg-knob" cx="24.67" cy="12" r="7.9"/>';
@@ -760,7 +764,7 @@ function syncText(w) { return w.sync === 'sending' ? 'נשלח למחשב' : w.s
 /* סרגל אב הטיפוס */
 function renderProto() {
   var cur = S.route.indexOf('worker-') === 0 ? 'worker' : S.route;
-  var chips = [['login', 'כניסה'], ['connect', 'חיבור'], ['team', 'הצוות'], ['chat', 'שיחות'], ['worker', 'כרטיס עובד'], ['approvals', 'תור אישורים'], ['people', 'אנשים']];
+  var chips = [['login', 'כניסה'], ['connect', 'חיבור'], ['team', 'הצוות'], ['chat', 'מני'], ['worker', 'כרטיס עובד'], ['approvals', 'תור אישורים'], ['people', 'אנשים']];
   function mode(key, opts) {
     return '<div class="mode" role="group">' + opts.map(function (o) {
       return '<button data-act="seg" data-k="' + key + '" data-v="' + o[0] + '" aria-pressed="' + (String(S[key]) === String(o[0])) + '">' + o[1] + '</button>';
@@ -787,7 +791,7 @@ function shell(content, fill) {
   var teamLabel = isMgr() ? 'הצוות של ' + esc(p.name) : 'הצוות';
   var unread = Object.keys(p.threads || {}).reduce(function (n, k) { return n + (p.threads[k].unread || 0); }, 0);
   var navs = '<div class="navs"><div class="all"><section><small>העבודה שלי</small><ul>' +
-    (isMgr() ? '' : nv('chat', 'שיחות', 'chat', unread, r === 'chat')) + nv('team', teamLabel, 'users', 0, onTeam) + nv('approvals', 'תור האישורים', 'checks', p.approvals.length, r === 'approvals') + '</ul></section>' +
+    (isMgr() ? '' : nv('chat', 'שיחה עם מני', 'chat', unread, r === 'chat')) + nv('team', teamLabel, 'users', 0, onTeam) + nv('approvals', 'תור האישורים', 'checks', p.approvals.length, r === 'approvals') + '</ul></section>' +
     (isMgr() ? '<section><small>ניהול</small><ul>' + nv('people', 'אנשים', 'people', 0, r === 'people') + '</ul></section>' : '') +
     '<section><small>המערכת</small><ul>' + nv('connect', 'חיבור המחשב', 'plug', 0, r === 'connect') + '</ul></section></div></div>';
   var pc = isMgr() ? '<span class="pcchip">בעל החשבון</span>'
@@ -804,12 +808,61 @@ function shell(content, fill) {
 var pageClass = function () { return 'page' + (S.enter ? ' enter' : ''); };
 
 /* כניסה */
+/* הפאנל במסך הכניסה חי: המתג בלוגו מדליק ומכבה את כולם, לכל עובד מתג משלו, וההודעות מתעדכנות בלי לצייר את המסך מחדש */
+var LU_CAST = ['gabi', 'pesi', 'meni', 'oz', 'lidor'];
+var LU_NAME = { gabi: 'גבי', pesi: 'פסי', meni: 'מני', oz: 'עוז', lidor: 'לידור' };
+var LU_FEED = [
+  ['meni', 'קיבלתי מכם משימה וחילקתי אותה לצוות'],
+  ['pesi', 'הפוסט לשבוע הבא מוכן', 1],
+  ['oz', 'הכנתי תשובה למייל של הלקוח', 1],
+  ['lidor', 'נכנסו שבע פניות, ושתיים מחכות שתחליטו אם לחזור אליהן'],
+  ['gabi', 'הכנתי תזכורת על חשבונית שלא שולמה', 1],
+  ['meni', 'כל הצוות סיים את המשימות של הבוקר'],
+  ['oz', 'סידרתי לכם את היומן של מחר'],
+  ['pesi', 'תכננתי את הפוסטים של השבוע הבא'],
+  ['gabi', 'בדקתי מי שילם החודש ומי עוד לא'],
+  ['lidor', 'הכנתי מענה לפנייה חדשה מהאתר', 1]
+];
+var LU = { i: 0, off: {}, force: null };
+function luTalk(k) { [].forEach.call(document.querySelectorAll('.lu'), function (e) { e.classList.toggle('talk', e.dataset.w === k); }); }
+function luPush(instant) {
+  var box = document.getElementById('lu-feed');
+  if (!box) return;
+  var on = LU_CAST.filter(function (k) { return !LU.off[k]; });
+  if (!on.length) { box.innerHTML = '<div class="lu-card in"><span>הצוות כבוי. מדליקים בלחיצה על המתג.</span></div>'; luTalk(null); return; }
+  var item, tries = 0;
+  if (LU.force) { item = LU_FEED.filter(function (f) { return f[0] === LU.force; })[0]; LU.force = null; }
+  while (!item && tries++ < LU_FEED.length) { var f = LU_FEED[LU.i++ % LU_FEED.length]; if (!LU.off[f[0]]) item = f; }
+  [].forEach.call(box.querySelectorAll('.lu-card:not([data-w])'), function (e) { e.remove(); });
+  var old = [].slice.call(box.children), tops = old.map(function (e) { return e.getBoundingClientRect().top; });
+  var el = document.createElement('div');
+  el.className = 'lu-card' + (instant ? '' : ' in'); el.dataset.w = item[0];
+  el.innerHTML = '<img src="' + FACE[item[0]] + '" alt=""><span><b>' + LU_NAME[item[0]] + '</b>' + item[1] + (item[2] ? '<span class="lu-ap">מחכה לאישור שלכם</span>' : '') + '</span>';
+  box.appendChild(el);
+  while (box.children.length > 5) box.removeChild(box.firstChild);
+  [].forEach.call(box.children, function (c, i) { c.classList.toggle('old', i < box.children.length - 1); });
+  old.forEach(function (e, i) {
+    if (!e.parentNode) return;
+    var d = tops[i] - e.getBoundingClientRect().top;
+    if (!d) return;
+    e.style.transition = 'none'; e.style.transform = 'translateY(' + d + 'px)'; e.getBoundingClientRect();
+    e.style.transition = ''; e.style.transform = '';
+  });
+  luTalk(item[0]);
+}
+function luSync() {
+  var allOn = LU_CAST.every(function (k) { return !LU.off[k]; }), anyOn = LU_CAST.some(function (k) { return !LU.off[k]; });
+  [].forEach.call(document.querySelectorAll('.lu'), function (e) { var off = !!LU.off[e.dataset.w]; e.classList.toggle('off', off); e.querySelector('.sw').setAttribute('aria-checked', String(!off)); });
+  var lg = document.getElementById('lu-logo');
+  if (lg) { lg.setAttribute('aria-pressed', String(anyOn)); lg.classList.toggle('idle', allOn); }
+}
 function viewLogin() {
   var mail = isMgr() ? 'danny@example.co.il' : S.people.shir.mail;
-  var line = ['gabi', 'pesi', 'meni', 'oz', 'lidor'].map(function (k) { return '<img src="' + FACE[k] + '" alt="">'; }).join('');
-  return '<div class="login"><section class="login-side"><span class="white-logo">' + LOGO + '<i></i><span class="t">it\'s all about U</span></span>' +
-    '<h2>מערכת הניהול של העובדים הדיגיטליים שלכם</h2><p>אתם נותנים משימה ומאשרים מה שיוצא החוצה</p>' +
-    '<div class="lineup" aria-hidden="true">' + line + '</div></section>' +
+  var line = LU_CAST.map(function (k) { var off = !!LU.off[k]; return '<div class="lu' + (off ? ' off' : '') + '" data-w="' + k + '"><span class="lu-c"><span>' + LU_NAME[k] + '</span><button class="sw" type="button" role="switch" aria-checked="' + !off + '" aria-label="מתג של ' + LU_NAME[k] + '" data-act="lu-sw" data-id="' + k + '"></button></span><img src="' + FACE[k] + '" alt=""></div>'; }).join('');
+  var allOn = LU_CAST.every(function (k) { return !LU.off[k]; }), anyOn = LU_CAST.some(function (k) { return !LU.off[k]; });
+  return '<div class="login"><section class="login-side"><span class="white-logo"><button class="lg-btn' + (allOn ? ' idle' : '') + '" id="lu-logo" type="button" data-act="lu-all" aria-pressed="' + anyOn + '" aria-label="הדלקה וכיבוי של כל הצוות">' + LOGO + '</button><i></i><span class="t">it\'s all about U</span></span>' +
+    '<h2>מערכת הניהול של<br>העובדים הדיגיטליים שלכם</h2><p>הצוות הכי מדליק בעסק שלכם</p>' +
+    '<div class="lu-feed" id="lu-feed" aria-hidden="true"></div><div class="lineup">' + line + '</div></section>' +
     '<section class="login-form"><form class="inner" data-form="login"><div><h1>כניסה ל-UBOT</h1><p class="lead">הכניסה היא בהזמנה, אז נכנסים עם האימייל שאליו היא הגיעה.</p></div>' +
     '<button class="btn line full" type="button" data-act="toast" data-msg="באב הטיפוס זה לא נפתח">' + GOOGLE + 'המשך עם Google</button><div class="or">או</div>' +
     '<div class="field"><label for="in-mail">אימייל</label><div class="inwrap">' + I('mail') + '<input class="ltr" id="in-mail" type="email" value="' + mail + '" autocomplete="email"></div></div>' +
@@ -875,7 +928,7 @@ function firstSteps(p) {
   if (isMgr() || S.stepsHidden || !worker('meni')) return '';
   var steps = [
     ['לחבר את המחשב', true],
-    ['לכתוב למני את ההודעה הראשונה', !!p.spoke, '<button class="btn pri sm" data-act="chat-open" data-id="meni">לשיחה עם מני' + I('left') + '</button>'],
+    ['לכתוב למני את ההודעה הראשונה', !!p.spoke, '<button class="btn pri sm" data-act="chat-open">לשיחה עם מני' + I('left') + '</button>'],
     ['לאשר או לתקן את הדבר הראשון שהצוות הכין', p.done.length > 0, '<button class="btn pri sm" data-act="go" data-to="approvals">לתור האישורים' + I('left') + '</button>']
   ];
   var next = steps.filter(function (x) { return !x[1]; })[0];
@@ -923,7 +976,7 @@ function viewTeam() {
       '<div class="lvcell"><div class="lvs' + (isMgr() ? ' locked' : '') + '" role="group" aria-label="דרגה של ' + w.name + '">' + [1, 2, 3, 4].map(function (n) {
         return '<button data-act="level" data-id="' + w.id + '" data-n="' + n + '" data-fk="l' + w.id + n + '" aria-pressed="' + (w.level === n) + '" title="' + LV[n][0] + '">' + n + '</button>';
       }).join('') + '</div><small>' + LV[w.level][0] + '</small></div>' +
-      '<button class="sw" role="switch" aria-checked="' + w.enabled + '" aria-label="מתג של ' + w.name + '" data-act="toggle" data-id="' + w.id + '" data-fk="t' + w.id + '"' + (p.halted ? ' disabled' : '') + '></button>' + (isMgr() ? '<span></span>' : '<button class="iconbtn chatb" data-act="chat-open" data-id="' + w.id + '" aria-label="שיחה עם ' + w.name + '" title="שיחה עם ' + w.name + '">' + I('chat') + '</button>') + '</div>';
+      '<button class="sw" role="switch" aria-checked="' + w.enabled + '" aria-label="מתג של ' + w.name + '" data-act="toggle" data-id="' + w.id + '" data-fk="t' + w.id + '"' + (p.halted ? ' disabled' : '') + '></button>' + (isMgr() ? '<span></span>' : (w.id === 'meni' ? '<button class="iconbtn chatb" data-act="chat-open" aria-label="שיחה עם מני" title="שיחה עם מני">' + I('chat') + '</button>' : '<button class="iconbtn chatb" data-act="ap-worker" data-id="' + w.id + '" aria-label="האישורים של ' + w.name + '" title="האישורים של ' + w.name + '">' + I('inbox') + (p.approvals.filter(function (a) { return a.w === w.id; }).length ? '<span class="dotn num">' + p.approvals.filter(function (a) { return a.w === w.id; }).length + '</span>' : '') + '</button>')) + '</div>';
     if (S.pendingLevel && S.pendingLevel.w === w.id) {
       var n = S.pendingLevel.n;
       row += '<div class="rowconfirm" aria-live="polite"><span><b>להעלות את ' + w.name + ' לדרגה ' + n + '?</b> ' + LV[n][1] + '</span><button class="btn pri sm" data-act="level-yes" data-fk="ly">להעלות</button><button class="btn line sm" data-act="level-no">ביטול</button></div>';
@@ -980,7 +1033,7 @@ function viewWorker(id) {
   var hbTxt = !S.reporting ? ['לא דיווח מאז 19:12', 'bad'] : late ? ['הריצה של ' + w.late + ' לא התחילה', 'bad'] : ['פעילות אחרונה ' + w.hb, ''];
   var note = isMgr() ? 'את הדרגה קובע מי שהעובד שלו. אתם יכולים לכבות אותו.' : 'את הדרגה מעלים רק אתם, אחרי שראיתם שהעובד כבר כמעט לא צריך תיקונים.';
   return '<div class="' + pageClass() + '"><button class="back" data-act="go" data-to="team">' + I('right') + 'לכל הצוות</button>' +
-    '<section class="card" style="overflow:hidden"><header class="wh' + (off ? ' isoff' : '') + '"><img class="port" src="' + FACE[w.id] + '" alt=""><div class="txt"><h1>' + w.name + '</h1><div class="tt">' + w.title + '</div><p class="muted">' + w.scope + '</p><div class="pills"><span class="pill accent">דרגה ' + w.level + '</span>' + hbPill + '</div>' + (isMgr() ? '' : '<button class="btn pri sm" style="margin-top:12px" data-act="chat-open" data-id="' + w.id + '">' + I('chat') + 'שיחה עם ' + w.name + '</button>') + '</div>' +
+    '<section class="card" style="overflow:hidden"><header class="wh' + (off ? ' isoff' : '') + '"><img class="port" src="' + FACE[w.id] + '" alt=""><div class="txt"><h1>' + w.name + '</h1><div class="tt">' + w.title + '</div><p class="muted">' + w.scope + '</p><div class="pills"><span class="pill accent">דרגה ' + w.level + '</span>' + hbPill + '</div>' + (isMgr() ? '' : (w.id === 'meni' ? '<button class="btn pri sm" style="margin-top:12px" data-act="chat-open">' + I('chat') + 'שיחה עם מני</button>' : '<button class="btn pri sm" style="margin-top:12px" data-act="ap-worker" data-id="' + w.id + '">' + I('inbox') + 'האישורים של ' + w.name + '</button>')) + '</div>' +
     '<div class="swbox"><button class="sw" role="switch" aria-checked="' + w.enabled + '" aria-label="מתג של ' + w.name + '" data-act="toggle" data-id="' + w.id + '" data-fk="tb"' + (p.halted ? ' disabled' : '') + '></button><div><b>' + (p.halted ? 'עצר עם הצוות' : w.enabled ? 'דלוק' : 'כבוי') + '</b><small>' + sub + '</small></div></div></header></section>' +
     '<section class="card"><div class="card-h"><div><h2>דרגה</h2><small>' + note + '</small></div></div><div class="ladder">' + rungs + '</div>' + pending + '</section>' +
     '<div class="wgrid"><div style="display:grid;gap:20px"><section class="card"><div class="card-h"><div><h2>פעילות</h2><small>לוח זמנים: ' + w.run + '</small></div></div><div class="card-b"><div class="hbbig ' + hbTxt[1] + '">' + hbTxt[0] + '</div>' + chart(w) + '</div></section>' +
@@ -996,12 +1049,14 @@ function preview(a) {
 }
 function viewApprovals() {
   var p = P();
-  var head = '<div><h1>תור האישורים</h1><p class="lead">כל מה שהעובדים הכינו מחכה כאן עד שתחליטו.</p></div>';
+  var head = '<div><h1>תור האישורים</h1><p class="lead">כל מה שהעובדים הכינו מחכה כאן עד שתחליטו, מסודר לפי עובד.</p></div>';
   if (p.status !== 'connected') return '<div class="' + pageClass() + '">' + head + '<section class="card"><div class="empty"><span class="eic">' + I('plug') + '</span><b>המחשב עוד לא מחובר</b><p>אחרי החיבור, מה שהעובדים יכינו יחכה כאן.</p><button class="btn pri" style="margin-top:6px" data-act="go" data-to="connect">לחיבור המחשב' + I('left') + '</button></div></section></div>';
-  var sel = p.approvals.filter(function (a) { return a.id === S.apSel; })[0] || p.approvals[0];
-  var list = p.approvals.map(function (a) {
-    var w = worker(a.w);
-    return '<button class="iitem" data-act="ap-sel" data-id="' + a.id + '" aria-current="' + (sel && sel.id === a.id) + '">' + face(w, 'keep') + '<span style="min-width:0"><b>' + a.title + '</b><small>' + w.name + ', ' + a.when + '</small><span class="pill ' + a.tone + '">' + a.tag + '</span></span></button>';
+  var byW = p.workers.map(function (w) { return { w: w, items: p.approvals.filter(function (a) { return a.w === w.id; }) }; }).filter(function (g) { return g.items.length; });
+  var sel = p.approvals.filter(function (a) { return a.id === S.apSel; })[0] || (byW[0] ? byW[0].items[0] : null);
+  var list = byW.map(function (g) {
+    return '<div class="ig-h">' + face(g.w, 'keep s') + '<div><b>' + g.w.name + '</b><small>' + g.w.title + '</small></div><span class="ig-n num">' + g.items.length + '</span></div>' + g.items.map(function (a) {
+      return '<button class="iitem nf" data-act="ap-sel" data-id="' + a.id + '" aria-current="' + (sel && sel.id === a.id) + '"><span style="min-width:0"><b>' + a.title + '</b><small>' + a.when + '</small><span class="pill ' + a.tone + '">' + a.tag + '</span></span></button>';
+    }).join('');
   }).join('');
   var done = p.done.length ? '<div class="idone"><h3>טופלו עכשיו</h3><ul>' + p.done.map(function (d) { return '<li><span>' + d.title + '</span><span class="pill ' + d.tone + '">' + d.result + '</span></li>'; }).join('') + '</ul></div>' : '';
   var detail;
@@ -1020,33 +1075,25 @@ function viewApprovals() {
 function afterApprove(a) {
   var w = worker(a.w);
   if (!S.reporting) return 'אושר. זה יבוצע כשהמחשב יחזור לדווח.';
-  return 'אושר ונשלח למחשב. התוצאה תופיע בשיחה עם ' + w.name + '.';
+  return 'אושר ונשלח ל' + w.name + '. מני יעדכן אתכם בשיחה כשזה יבוצע.';
 }
 
 /* שיחות */
 function paras(t) { return t.split(/\n\s*\n/).map(function (x) { return '<p>' + esc(x) + '</p>'; }).join(''); }
-function thTitle(id) { return id === 'claude' ? 'קלוד' : worker(id).name; }
-function curThread() { var p = P(); return p.threads[S.thread] ? S.thread : (p.workers[0] ? p.workers[0].id : 'claude'); }
 function csDot(w) {
   var off = P().halted || !w.enabled;
   return off || !S.reporting ? 'dot off' : w.late ? 'dot bad' : 'dot live';
 }
-function csItem(id, cur) {
-  var p = P(), th = p.threads[id], isC = id === 'claude', w = isC ? null : worker(id);
-  var last = th.items.filter(function (x) { return x.t === 'me' || x.t === 'w' || x.t === 'ap'; }).slice(-1)[0];
-  var sub = !last ? (isC ? 'שיחה חופשית, בלי עובד מסוים' : 'עוד לא דיברתם') : last.t === 'ap' ? (last.a.result ? last.a.title : 'מחכה לאישור: ' + last.a.title) : (last.t === 'me' ? 'אתם: ' : '') + last.text.replace(/\s+/g, ' ');
-  var at = (th.items.filter(function (x) { return x.at; }).slice(-1)[0] || {}).at || '';
-  var pic = isC ? '<span class="cs-cl">' + I('laptop') + '</span>' : '<span class="cs-av">' + face(w) + '<span class="' + csDot(w) + '"></span></span>';
-  return '<button class="cs-item' + (th.unread ? ' un' : '') + '" data-act="chat-open" data-id="' + id + '" aria-current="' + (cur === id) + '">' + pic + '<span style="min-width:0"><b>' + thTitle(id) + '</b><small>' + esc(sub) + '</small></span><span class="cs-meta"><span>' + at + '</span>' + (th.unread ? '<span class="cs-un num">' + th.unread + '</span>' : '') + '</span></button>';
+function csTeamRow(w) {
+  var p = P(), n = p.approvals.filter(function (a) { return a.w === w.id; }).length, off = p.halted || !w.enabled;
+  return '<button class="cs-item" data-act="open" data-id="' + w.id + '"><span class="cs-av">' + face(w) + '<span class="' + csDot(w) + '"></span></span><span style="min-width:0"><b>' + w.name + '</b><small>' + w.title + (off ? ', כבוי' : '') + '</small></span><span class="cs-meta">' + (n ? '<span class="cs-un num" title="מחכה לאישור">' + n + '</span>' : '') + '</span></button>';
 }
 function csMsg(it, id) {
   if (it.t === 'day') return '<div class="m-day">' + it.text + '</div>';
   if (it.t === 'note') return '<div class="m-note">' + esc(it.text) + '</div>';
-  if (it.t === 'ap') {
-    var a = it.a;
-    if (a.result) return '<div class="m-ap done"><div class="m-ap-h"><span>' + a.title + '</span><span class="pill ' + a.doneTone + '">' + a.result + '</span></div></div>';
-    return '<div class="m-ap"><div class="m-ap-h"><span>מחכה לאישור שלכם</span><span class="pill ' + a.tone + '">' + a.tag + '</span></div><div class="m-ap-b"><b>' + a.title + '</b>' + preview(a) + '<div class="will">' + I('alert') + '<span>' + a.will + '</span></div>' +
-      '<div class="apact"><button class="btn pri" data-act="approve" data-id="' + a.id + '">' + I('check') + 'לאשר</button><button class="btn line" data-act="chat-fix" data-id="' + a.id + '">לתקן</button><button class="btn ghost-red" data-act="reject" data-id="' + a.id + '">לדחות</button></div></div></div>';
+  if (it.t === 'queue') {
+    var n = P().approvals.length;
+    return n ? '<div class="m-queue"><span>' + ['', 'דבר אחד מחכה', 'שני דברים מחכים', 'שלושה דברים מחכים'][n] + ' לאישור שלכם</span><button class="btn pri sm" data-act="go" data-to="approvals">לתור האישורים' + I('left') + '</button></div>' : '';
   }
   if (it.t === 'me') {
     var wait = it.st === 'wait';
@@ -1054,66 +1101,59 @@ function csMsg(it, id) {
   }
   return '<div class="m-row w"><div><div class="m w">' + paras(it.text) + '</div><div class="m-t">' + it.at + '</div></div>' + csPic(id) + '</div>';
 }
-function csPic(id) { return id === 'claude' ? '<span class="cs-cl s">' + I('laptop') + '</span>' : '<img class="face s" src="' + FACE[id] + '" alt="">'; }
-function viewThread(id) {
-  var p = P(), th = p.threads[id], isC = id === 'claude', w = isC ? null : worker(id);
-  var state = isC ? 'קלוד במחשב שלכם, בלי עובד מסוים' : w.title + ', ' + (p.halted ? 'עצר עם כל הצוות' : !w.enabled ? 'כבוי' : !S.reporting ? 'לא דיווח מאז 19:12' : w.late ? 'הריצה של ' + w.late + ' לא התחילה' : 'פעילות אחרונה ' + w.hb);
-  var head = '<header class="cs-h"><button class="iconbtn cs-back" data-act="chat-back" aria-label="לכל השיחות">' + I('right') + '</button>' + (isC ? '<span class="cs-cl">' + I('laptop') + '</span>' : '<span class="cs-av">' + face(w) + '<span class="' + csDot(w) + '"></span></span>') +
-    '<div><b>' + thTitle(id) + '</b><small>' + state + '</small></div>' + (isC ? '' : '<button class="btn line sm" data-act="open" data-id="' + id + '">לכרטיס</button>') + '</header>';
+function csPic() { return '<img class="face s" src="' + FACE.meni + '" alt="">'; }
+function viewThread() {
+  var p = P(), id = 'meni', th = p.threads.meni, w = worker('meni');
+  var state = w.title + ', ' + (p.halted ? 'עצר עם כל הצוות' : !w.enabled ? 'כבוי' : !S.reporting ? 'לא דיווח מאז 19:12' : 'פעילות אחרונה ' + w.hb);
+  var head = '<header class="cs-h"><span class="cs-av">' + face(w) + '<span class="' + csDot(w) + '"></span></span><div><b>מני</b><small>' + state + '</small></div><button class="btn line sm" data-act="open" data-id="meni">לכרטיס</button></header>';
   var bn = S.reporting ? '' : '<div class="cs-bn"><div class="alert red">' + I('alert') + '<b>המחשב לא מדווח מאז 19:12</b><span>אפשר לכתוב, וההודעה תגיע כשהמחשב יחזור.</span></div></div>';
   var body = th.items.map(function (it) { return csMsg(it, id); }).join('');
-  if (!body && S.typing !== id) body = '<p class="cs-empty">עוד לא כתבתם כאן. כתבו מה צריך, והתשובה תחזור לכאן.</p>';
-  if (S.typing === id) body += '<div class="m-row w"><div class="m w"><span class="td" aria-label="מקליד"><i></i><i></i><i></i></span></div>' + csPic(id) + '</div>';
-  var blocked = !isC && (p.halted || !w.enabled);
+  if (!body && S.typing !== id) body = '<p class="cs-empty">עוד לא כתבתם כאן. כתבו למני מה צריך, והוא יחלק את זה לצוות.</p>';
+  if (S.typing === id) body += '<div class="m-row w"><div class="m w"><span class="td" aria-label="מקליד"><i></i><i></i><i></i></span></div>' + csPic() + '</div>';
   var foot;
-  if (blocked) {
-    foot = '<div class="cs-block"><span>' + (p.halted ? 'כל הצוות עצר, ולכן העובדים לא יקבלו הודעות עד שתפעילו אותו מחדש.' : 'העובד כבוי, ולכן הודעות לא יגיעו אליו.') + '</span>' +
-      (p.halted ? '<button class="btn line sm" data-act="halt">להפעלה מחדש</button>' : '<button class="btn pri sm" data-act="toggle" data-id="' + id + '">הדלקה</button>') + '</div>';
+  if (p.halted || !w.enabled) {
+    foot = '<div class="cs-block"><span>' + (p.halted ? 'כל הצוות עצר, ולכן מני לא יקבל הודעות עד שתפעילו אותו מחדש.' : 'מני כבוי, ולכן הודעות לא יגיעו אליו.') + '</span>' +
+      (p.halted ? '<button class="btn line sm" data-act="halt">להפעלה מחדש</button>' : '<button class="btn pri sm" data-act="toggle" data-id="meni">הדלקה</button>') + '</div>';
   } else {
-    var fixing = S.chatFix && p.approvals.filter(function (a) { return a.id === S.chatFix; })[0];
-    var chips = fixing ? '<div class="cs-fix"><span>כתבו כאן מה לתקן, והתיקון יירשם גם ביומן הלמידה.</span><button class="tlink" data-act="chat-fix-no">ביטול</button></div>'
-      : (CHIPS[id] || []).length ? '<div class="cs-chips">' + CHIPS[id].map(function (c) { return '<button class="cs-chip" data-act="chat-chip" data-id="' + id + '" data-text="' + c + '">' + c + '</button>'; }).join('') + '</div>' : '';
-    foot = chips + '<form class="cs-form" data-form="chat" data-id="' + id + '"><button class="iconbtn" type="button" data-act="toast" data-msg="באב הטיפוס לא עולה קובץ" aria-label="צירוף קובץ">' + I('clip') + '</button>' +
-      '<textarea id="chat-in" data-t="' + id + '" data-fk="chatin" rows="1" aria-label="הודעה ל' + thTitle(id) + '" placeholder="' + (fixing ? 'כתבו ל' + thTitle(id) + ' מה לתקן...' : 'כתבו ל' + thTitle(id) + '...') + '"></textarea>' +
+    foot = '<div class="cs-chips">' + CHIPS.map(function (c) { return '<button class="cs-chip" data-act="chat-chip" data-text="' + c + '">' + c + '</button>'; }).join('') + '</div>' +
+      '<form class="cs-form" data-form="chat"><button class="iconbtn" type="button" data-act="toast" data-msg="באב הטיפוס לא עולה קובץ" aria-label="צירוף קובץ">' + I('clip') + '</button>' +
+      '<textarea id="chat-in" data-t="meni" data-fk="chatin" rows="1" aria-label="הודעה למני" placeholder="כתבו למני מה צריך, והוא יחלק את זה לצוות..."></textarea>' +
       '<button class="btn pri" type="submit">' + I('send') + 'שליחה</button></form>';
   }
   return '<section class="cs-th">' + head + bn + '<div class="cs-msgs" id="chatbox">' + body + '</div><div class="cs-foot">' + foot + '</div></section>';
 }
-function chatFull() { return !isMgr() && P().status === 'connected'; }
+function chatFull() { return !isMgr() && P().status === 'connected' && !!worker('meni'); }
 function viewChat() {
   var p = P();
-  var hd = '<div><h1>שיחות</h1></div>';
-  if (isMgr()) return '<div class="' + pageClass() + '">' + hd + '<section class="card"><div class="empty"><span class="eic">' + I('chat') + '</span><b>השיחות נשארות אצל כל אחד</b><p>העובדים רצים על המחשב ועל המנוי של מי שחיבר אותם, ולכן רק הוא מדבר איתם. מכאן רואים את הצוות ואפשר לכבות עובד.</p></div></section></div>';
-  if (p.status !== 'connected') return '<div class="' + pageClass() + '">' + hd + '<section class="card"><div class="empty"><span class="eic">' + I('plug') + '</span><b>המחשב עוד לא מחובר</b><p>העובדים רצים על המחשב שלכם, ולכן אחרי החיבור תוכלו לדבר איתם כאן.</p><button class="btn pri" style="margin-top:6px" data-act="go" data-to="connect">לחיבור המחשב' + I('left') + '</button></div></section></div>';
-  var cur = curThread();
-  if (S.threadOpen || window.innerWidth > 860) p.threads[cur].unread = 0;
-  var team = p.workers.map(function (w) { return csItem(w.id, cur); }).join('');
-  return '<div class="cs' + (S.threadOpen ? ' open' : '') + '"><aside class="cs-list"><div class="cs-lh"><h1>שיחות</h1><p>כותבים לעובד מה צריך, והתשובה חוזרת לכאן.</p></div>' +
-    (team ? '<div class="cs-sec">הצוות</div>' + team : '') + '<div class="cs-sec">שיחה חופשית</div>' + csItem('claude', cur) + '</aside>' + viewThread(cur) + '</div>';
+  var hd = '<div><h1>שיחה עם מני</h1></div>';
+  if (isMgr()) return '<div class="' + pageClass() + '">' + hd + '<section class="card"><div class="empty"><span class="eic">' + I('chat') + '</span><b>השיחה עם מני נשארת אצל כל אחד</b><p>העובדים רצים על המחשב ועל המנוי של מי שחיבר אותם, ולכן רק הוא מדבר איתם. מכאן רואים את הצוות ואפשר לכבות עובד.</p></div></section></div>';
+  if (p.status !== 'connected') return '<div class="' + pageClass() + '">' + hd + '<section class="card"><div class="empty"><span class="eic">' + I('plug') + '</span><b>המחשב עוד לא מחובר</b><p>העובדים רצים על המחשב שלכם, ולכן אחרי החיבור תוכלו לכתוב למני כאן.</p><button class="btn pri" style="margin-top:6px" data-act="go" data-to="connect">לחיבור המחשב' + I('left') + '</button></div></section></div>';
+  if (!worker('meni')) return '<div class="' + pageClass() + '">' + hd + '<section class="card"><div class="empty"><span class="eic">' + I('chat') + '</span><b>עוד אין צוות</b><p>אחרי שנקים לכם את הצוות, כותבים כאן למני והוא מחלק את העבודה.</p></div></section></div>';
+  p.threads.meni.unread = 0;
+  var team = p.workers.filter(function (w) { return w.id !== 'meni'; }).map(csTeamRow).join('');
+  return '<div class="cs open"><aside class="cs-list"><div class="cs-lh"><h1>הצוות של מני</h1><p>כותבים למני, והוא מחלק למי שצריך. המספר ליד עובד הוא מה שמחכה לאישור שלכם.</p></div>' + team + '</aside>' + viewThread() + '</div>';
 }
-function later(tid, text) {
+function later(tid, text, noteText) {
   S.typing = tid; render();
   setTimeout(function () {
     var th = P().threads[tid];
     S.typing = null;
     if (!th) return;
     th.items.push({ t: 'w', text: text, at: 'עכשיו' });
-    if (S.route !== 'chat' || S.thread !== tid) th.unread = (th.unread || 0) + 1;
+    if (noteText) th.items.push({ t: 'note', text: noteText });
+    if (S.route !== 'chat') th.unread = (th.unread || 0) + 1;
     render();
   }, 1100);
 }
 function sendChat(tid, text) {
-  var p = P(), th = p.threads[tid], fix = S.chatFix;
+  var p = P(), th = p.threads[tid];
   th.items.push({ t: 'me', text: text, at: 'עכשיו', st: S.reporting ? 'ok' : 'wait' });
-  if (tid === 'meni') p.spoke = true;
-  if (fix) {
-    var w = worker(tid);
-    w.lessons[0]++;
-    settle(fix, 'הוחזר לתיקון', 'accent', function () { return 'התיקון נרשם ביומן הלמידה של ' + w.name + '.'; });
-    if (S.reporting) later(tid, 'קיבלתי. הגרסה החדשה תחכה לכם כאן לאישור.');
-    return;
-  }
-  if (S.reporting) later(tid, replyFor(text)); else render();
+  p.spoke = true;
+  if (!S.reporting) { render(); return; }
+  var known = REPLY[text] || text === 'מה נשאר פתוח להיום?', to = known ? null : routeFor(text);
+  if (to && !to.enabled) later(tid, 'זה שייך ל' + to.name + ', והמתג כרגע כבוי. תדליקו אותו בעמוד הצוות ואעביר.');
+  else if (to) later(tid, 'קיבלתי, אני מעביר את זה ל' + to.name + '. כשזה יהיה מוכן, זה יחכה לכם בתור האישורים.', 'מני העביר את המשימה ל' + to.name);
+  else later(tid, replyFor(text));
 }
 function flushWaiting() {
   var p = P();
@@ -1167,12 +1207,13 @@ function render() {
   document.getElementById('app').innerHTML = html;
   document.getElementById('layer').innerHTML = S.modal ? modalAdd() : S.welcome ? modalWelcome() : '';
   S.enter = false;
+  if (r === 'login') { luPush(true); luPush(true); }
   if (keep) { var el = document.querySelector('[data-fk="' + keep + '"]'); if (el) el.focus(); }
   ci = document.getElementById('chat-in'); if (ci) ci.value = S.drafts[ci.dataset.t] || '';
   var box = document.getElementById('chatbox'); if (box) box.scrollTop = box.scrollHeight;
 }
 function go(route) {
-  S.route = route; S.more = false; S.pendingLevel = null; S.fixing = null; S.chatFix = null; S.discon = false; S.enter = true; S.lastNote = null;
+  S.route = route; S.more = false; S.pendingLevel = null; S.fixing = null; S.discon = false; S.enter = true; S.lastNote = null;
   if (route !== 'connect') S.justConnected = false;
   try { history.replaceState(null, '', '#' + route); } catch (e) { /* המסגרת עלולה לחסום, וזה לא משנה כאן */ }
   render();
@@ -1199,8 +1240,8 @@ function settle(id, result, tone, note) {
   p.approvals = p.approvals.filter(function (x) { return x.id !== id; });
   p.done.unshift({ title: a.title, result: result, tone: tone });
   a.result = result; a.doneTone = tone;
-  S.lastNote = note(a); S.fixing = null; S.apSel = null; S.chatFix = null;
-  if (p.threads[a.w]) p.threads[a.w].items.push({ t: 'note', text: S.lastNote });
+  S.lastNote = note(a); S.fixing = null; S.apSel = null;
+  if (p.threads.meni) p.threads.meni.items.push({ t: 'note', text: a.title + ': ' + a.result });
   render();
 }
 
@@ -1278,15 +1319,14 @@ var ACT = {
   'welcome-yes': function () { S.welcome = false; ACT['chat-open']({ id: 'meni' }); },
   'welcome-no': function () { S.welcome = false; render(); },
   'steps-hide': function () { S.stepsHidden = true; render(); },
-  'chat-open': function (d) {
-    S.thread = d.id; S.threadOpen = true; S.chatFix = null;
+  'chat-open': function () {
     if (S.route !== 'chat') go('chat'); else render();
     var i = document.getElementById('chat-in'); if (i && window.innerWidth > 860) i.focus();
   },
-  'chat-back': function () { S.threadOpen = false; render(); },
-  'chat-chip': function (d) { sendChat(d.id, d.text); },
-  'chat-fix': function (d) { S.chatFix = d.id; render(); var i = document.getElementById('chat-in'); if (i) i.focus(); },
-  'chat-fix-no': function () { S.chatFix = null; render(); },
+  'chat-chip': function (d) { sendChat('meni', d.text); },
+  'ap-worker': function (d) { var a = P().approvals.filter(function (x) { return x.w === d.id; })[0]; S.apSel = a ? a.id : null; go('approvals'); },
+  'lu-all': function (d, el) { var on = el.getAttribute('aria-pressed') !== 'true'; LU_CAST.forEach(function (k) { LU.off[k] = !on; }); if (on) LU.force = 'meni'; luSync(); luPush(); },
+  'lu-sw': function (d) { LU.off[d.id] = !LU.off[d.id]; if (!LU.off[d.id]) LU.force = d.id; luSync(); if (!LU.off[d.id] || !LU_CAST.some(function (k) { return !LU.off[k]; })) luPush(); },
   'modal-bg': function (d, el, e) { if (e.target === el) { S.modal = false; render(); } }
 };
 document.addEventListener('click', function (e) {
@@ -1318,16 +1358,17 @@ document.addEventListener('submit', function (e) {
     S.people[key] = blankPerson(name, mail, 'waiting');
     S.viewing = key; S.modal = false; go('connect');
   } else if (kind === 'chat') {
-    var input = document.getElementById('chat-in'), text = input.value.trim(), tid = f.dataset.id;
+    var input = document.getElementById('chat-in'), text = input.value.trim(), tid = 'meni';
     if (!text) return;
     input.value = ''; S.drafts[tid] = '';
     sendChat(tid, text);
   } else if (kind === 'quick') {
     var qt = document.getElementById('quick-in').value.trim();
     if (!qt) return;
-    S.thread = 'meni'; S.threadOpen = true; go('chat'); sendChat('meni', qt);
+    go('chat'); sendChat('meni', qt);
   }
 });
+if (!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) setInterval(function () { if (S.route === 'login' && !document.hidden) luPush(); }, 3300);
 /* שעון הקוד רץ רק על הטקסט, בלי לצייר מחדש את המסך */
 setInterval(function () {
   Object.keys(S.people).forEach(function (k) { if (S.people[k].secs > 0) S.people[k].secs--; });

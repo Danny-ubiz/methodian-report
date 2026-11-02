@@ -259,7 +259,29 @@ button.lrow:hover { background: var(--hover); }
 .login-side p { position: relative; font-size: clamp(1.2rem, 1.9vw, 1.9rem); font-weight: 600; line-height: 1.25; color: hsl(0 0% 100% / .94); }
 .lu-feed { position: relative; flex: 1 1 0; min-height: 130px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 9px; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 30px); mask-image: linear-gradient(180deg, transparent 0, #000 30px); }
 .lu-card { flex: none; display: flex; align-items: center; gap: 10px; max-width: min(500px, 100%); padding: 8px 14px 8px 12px; border-radius: 14px; background: hsl(0 0% 100% / .13); border: 1px solid hsl(0 0% 100% / .17); color: #fff; line-height: 1.3; transition: opacity .35s, transform .4s var(--ease); }
+.lu-card { border-start-start-radius: 4px; }
 .lu-card.old { opacity: .74; }
+.lu-card.fresh { animation: lu-fresh 1.1s var(--ease); }
+@keyframes lu-fresh { from { box-shadow: 0 0 0 2px var(--side-acc); } to { box-shadow: 0 0 0 2px transparent; } }
+.lu-fly { position: absolute; top: 0; left: 0; z-index: 6; opacity: 0; pointer-events: none; transform-origin: var(--tail) 100%; transition: transform .52s cubic-bezier(.3, 1.28, .6, 1), opacity .12s; will-change: transform; }
+.lu-fly.on { opacity: 1; }
+.lu-fly.open { transition: transform .3s var(--ease), width .3s var(--ease), height .3s var(--ease); }
+.lu-fly.land { transition: transform .58s cubic-bezier(.45, .05, .2, 1), width .58s cubic-bezier(.45, .05, .2, 1), height .58s cubic-bezier(.45, .05, .2, 1); }
+.lu-bub { position: relative; overflow: hidden; width: 100%; height: 100%; max-width: none; background: #fff; border-color: #fff; border-radius: 16px; color: var(--brand-ink); box-shadow: 0 10px 26px hsl(204 70% 8% / .34); transition: background .5s, border-color .5s, border-radius .5s, color .5s, box-shadow .5s; }
+.lu-fly.land .lu-bub { background: hsl(0 0% 100% / .13); border-color: hsl(0 0% 100% / .17); border-radius: 14px; border-start-start-radius: 4px; color: #fff; box-shadow: none; }
+.lu-card.lu-bub img { width: 0; margin-inline-end: -10px; opacity: 0; transition: width .58s cubic-bezier(.45, .05, .2, 1), margin .58s cubic-bezier(.45, .05, .2, 1), opacity .35s; }
+.lu-fly.land .lu-bub img { width: 34px; margin-inline-end: 0; opacity: 1; }
+.lu-fly .lu-tx { flex: none; width: var(--tw); opacity: 0; transition: opacity .22s .08s; }
+.lu-fly.open .lu-tx { opacity: 1; }
+.lu-card.lu-bub .lu-ap { color: var(--brand-deep); transition: color .5s; }
+.lu-fly.land .lu-bub .lu-ap { color: var(--side-acc); }
+.lu-dots { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 4px; transition: opacity .14s; }
+.lu-dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-deep); animation: tdot 1s infinite; }
+.lu-dots i:nth-child(2) { animation-delay: .15s; }
+.lu-dots i:nth-child(3) { animation-delay: .3s; }
+.lu-fly.open .lu-dots { opacity: 0; }
+.lu-tail { position: absolute; top: 100%; left: var(--tail); width: 14px; height: 14px; margin: -9px 0 0 -7px; border-radius: 3px; background: #fff; transform: rotate(45deg); transition: left .3s var(--ease), opacity .16s; }
+.lu-fly.land .lu-tail { opacity: 0; }
 .lu-card.in { animation: lu-in .42s var(--ease) both; }
 .lu-card img { flex: none; width: 34px; height: 34px; border-radius: 50%; object-fit: cover; object-position: top center; background: hsl(0 0% 100% / .2); }
 .lu-card b { font-weight: 800; margin-inline-end: 5px; }
@@ -272,6 +294,7 @@ button.lrow:hover { background: var(--hover); }
 .lu:nth-child(2) { transition-delay: .05s; } .lu:nth-child(3) { transition-delay: .1s; } .lu:nth-child(4) { transition-delay: .15s; } .lu:nth-child(5) { transition-delay: .2s; }
 .lu img { display: block; width: 112%; max-width: none; margin-inline: -6%; height: auto; transform-origin: 50% 100%; transition: transform .38s var(--ease), filter .38s; }
 .lu.talk img { transform: translateY(-7px) scale(1.035); }
+.lineup.speaking .lu:not(.talk):not(.off) img { filter: brightness(.82) saturate(.88); }
 .lu.off { transform: translateY(16px); }
 .lu.off img { filter: grayscale(1) brightness(.68); }
 .lu-c { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 5px; margin-bottom: 5px; color: #fff; font-size: .92rem; font-weight: 700; line-height: 1; }
@@ -823,24 +846,17 @@ var LU_FEED = [
   ['gabi', 'בדקתי מי שילם החודש ומי עוד לא'],
   ['lidor', 'הכנתי מענה לפנייה חדשה מהאתר', 1]
 ];
-var LU = { i: 0, off: {}, force: null };
-function luTalk(k) { [].forEach.call(document.querySelectorAll('.lu'), function (e) { e.classList.toggle('talk', e.dataset.w === k); }); }
-function luPush(instant) {
-  var box = document.getElementById('lu-feed');
-  if (!box) return;
-  var on = LU_CAST.filter(function (k) { return !LU.off[k]; });
-  if (!on.length) { box.innerHTML = '<div class="lu-card in"><span>הצוות כבוי. מדליקים בלחיצה על המתג.</span></div>'; luTalk(null); return; }
-  var item, tries = 0;
-  if (LU.force) { item = LU_FEED.filter(function (f) { return f[0] === LU.force; })[0]; LU.force = null; }
-  while (!item && tries++ < LU_FEED.length) { var f = LU_FEED[LU.i++ % LU_FEED.length]; if (!LU.off[f[0]]) item = f; }
-  [].forEach.call(box.querySelectorAll('.lu-card:not([data-w])'), function (e) { e.remove(); });
+var LU = { i: 0, off: {}, force: null, run: 0, busy: false, next: 0, who: null, fly: null, card: null };
+var LU_STILL = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+function luTalk(k) {
+  [].forEach.call(document.querySelectorAll('.lu'), function (e) { e.classList.toggle('talk', e.dataset.w === k); });
+  var l = document.querySelector('.lineup'); if (l) l.classList.toggle('speaking', !!k);
+}
+function luCardHtml(item) { return '<img src="' + FACE[item[0]] + '" alt=""><span class="lu-tx"><b>' + LU_NAME[item[0]] + '</b>' + item[1] + (item[2] ? '<span class="lu-ap">מחכה לאישור שלכם</span>' : '') + '</span>'; }
+/* השורות זזות בהחלקה כשמשהו נוסף לשיחה או יורד ממנה */
+function luFlip(box, change) {
   var old = [].slice.call(box.children), tops = old.map(function (e) { return e.getBoundingClientRect().top; });
-  var el = document.createElement('div');
-  el.className = 'lu-card' + (instant ? '' : ' in'); el.dataset.w = item[0];
-  el.innerHTML = '<img src="' + FACE[item[0]] + '" alt=""><span><b>' + LU_NAME[item[0]] + '</b>' + item[1] + (item[2] ? '<span class="lu-ap">מחכה לאישור שלכם</span>' : '') + '</span>';
-  box.appendChild(el);
-  while (box.children.length > 5) box.removeChild(box.firstChild);
-  [].forEach.call(box.children, function (c, i) { c.classList.toggle('old', i < box.children.length - 1); });
+  change();
   old.forEach(function (e, i) {
     if (!e.parentNode) return;
     var d = tops[i] - e.getBoundingClientRect().top;
@@ -848,7 +864,85 @@ function luPush(instant) {
     e.style.transition = 'none'; e.style.transform = 'translateY(' + d + 'px)'; e.getBoundingClientRect();
     e.style.transition = ''; e.style.transform = '';
   });
+}
+function luMarkOld(box) { [].forEach.call(box.children, function (c, i) { c.classList.toggle('old', i < box.children.length - 1); }); }
+function luAdd(box, item, cls, hidden) {
+  [].forEach.call(box.querySelectorAll('.lu-card:not([data-w])'), function (e) { e.remove(); });
+  var el = document.createElement('div');
+  el.className = 'lu-card' + cls; el.dataset.w = item[0];
+  el.innerHTML = luCardHtml(item);
+  if (hidden) el.style.visibility = 'hidden';
+  luFlip(box, function () {
+    box.appendChild(el);
+    while (box.children.length > 5) box.removeChild(box.firstChild);
+    luMarkOld(box);
+  });
+  return el;
+}
+/* עוצר בועה באמצע הדרך, כשהעובד כובה או כשהמסך התחלף, ומחזיר את המקום ששמרנו לה */
+function luStop() {
+  LU.run++; LU.busy = false; LU.who = null;
+  if (LU.fly) LU.fly.remove();
+  var c = LU.card, box = c && c.parentNode;
+  if (box) luFlip(box, function () { c.remove(); luMarkOld(box); });
+  LU.fly = LU.card = null;
+  luTalk(null);
+}
+/* הבועה יוצאת מהפה של העובד עם שלוש נקודות, נפתחת למשפט מעל הראש שלו, ורק אז עוברת למקום שנפתח לה בשיחה */
+function luSay(box, item) {
+  var side = document.querySelector('.login-side'), lu = document.querySelector('.lu[data-w="' + item[0] + '"]');
+  if (!side || !lu) return;
+  var run = ++LU.run, card = luAdd(box, item, '', true);
+  LU.busy = true; LU.who = item[0]; LU.card = card;
+  var sr = side.getBoundingClientRect(), cr = card.getBoundingClientRect(), nr = lu.querySelector('.lu-c').getBoundingClientRect(), fr = lu.querySelector('img').getBoundingClientRect();
+  var cx = fr.left + fr.width / 2 - sr.left, top = nr.top - sr.top - 13, w = cr.width - 44, pad = 12, dotsW = 62, dotsH = 38;
+  var fit = function (bw) { return Math.max(pad, Math.min(sr.width - bw - pad, cx - bw / 2)); };
+  var tail = function (x, bw) { return Math.max(18, Math.min(bw - 18, cx - x)) + 'px'; };
+  var x0 = fit(dotsW), x1 = fit(w);
+  var fly = document.createElement('div');
+  fly.className = 'lu-fly'; fly.setAttribute('aria-hidden', 'true');
+  fly.style.width = dotsW + 'px'; fly.style.height = dotsH + 'px';
+  fly.style.setProperty('--tail', tail(x0, dotsW));
+  fly.style.setProperty('--tw', card.querySelector('.lu-tx').getBoundingClientRect().width + 'px');
+  fly.style.transform = 'translate(' + x0 + 'px,' + (fr.top - sr.top + fr.height * .46 - dotsH) + 'px) scale(.22)';
+  fly.innerHTML = '<div class="lu-card lu-bub">' + luCardHtml(item) + '<span class="lu-dots"><i></i><i></i><i></i></span></div><i class="lu-tail"></i>';
+  side.appendChild(fly); LU.fly = fly;
+  fly.getBoundingClientRect();
   luTalk(item[0]);
+  fly.classList.add('on');
+  fly.style.transform = 'translate(' + x0 + 'px,' + (top - dotsH) + 'px) scale(1)';
+  var step = function (ms, fn) { setTimeout(function () { if (run === LU.run) fn(); }, ms); };
+  step(880, function () {
+    fly.classList.add('open');
+    fly.style.width = w + 'px'; fly.style.height = cr.height + 'px';
+    fly.style.setProperty('--tail', tail(x1, w));
+    fly.style.transform = 'translate(' + x1 + 'px,' + (top - cr.height) + 'px) scale(1)';
+  });
+  step(2250, function () {
+    var s2 = side.getBoundingClientRect(), c2 = card.getBoundingClientRect();
+    fly.classList.add('land');
+    fly.style.width = c2.width + 'px'; fly.style.height = c2.height + 'px';
+    fly.style.transform = 'translate(' + (c2.left - s2.left) + 'px,' + (c2.top - s2.top) + 'px) scale(1)';
+    luTalk(null);
+  });
+  step(2850, function () {
+    card.style.visibility = ''; card.classList.add('fresh');
+    fly.remove();
+    LU.fly = LU.card = null; LU.busy = false; LU.who = null; LU.next = Date.now() + 620;
+  });
+}
+function luPush(instant) {
+  var box = document.getElementById('lu-feed');
+  if (!box) return;
+  var on = LU_CAST.filter(function (k) { return !LU.off[k]; });
+  if (!on.length) { luStop(); box.innerHTML = '<div class="lu-card in"><span>הצוות כבוי. מדליקים בלחיצה על המתג.</span></div>'; return; }
+  if (LU.busy && !instant) return;
+  var item, tries = 0;
+  if (LU.force) { item = LU_FEED.filter(function (f) { return f[0] === LU.force; })[0]; LU.force = null; }
+  while (!item && tries++ < LU_FEED.length) { var f = LU_FEED[LU.i++ % LU_FEED.length]; if (!LU.off[f[0]]) item = f; }
+  if (instant) { luAdd(box, item, ''); return; }
+  if (LU_STILL) { luAdd(box, item, ' in'); luTalk(item[0]); return; }
+  luSay(box, item);
 }
 function luSync() {
   var allOn = LU_CAST.every(function (k) { return !LU.off[k]; }), anyOn = LU_CAST.some(function (k) { return !LU.off[k]; });
@@ -1207,7 +1301,8 @@ function render() {
   document.getElementById('app').innerHTML = html;
   document.getElementById('layer').innerHTML = S.modal ? modalAdd() : S.welcome ? modalWelcome() : '';
   S.enter = false;
-  if (r === 'login') { luPush(true); luPush(true); }
+  luStop();
+  if (r === 'login') { luPush(true); luPush(true); LU.next = Date.now() + 900; }
   if (keep) { var el = document.querySelector('[data-fk="' + keep + '"]'); if (el) el.focus(); }
   ci = document.getElementById('chat-in'); if (ci) ci.value = S.drafts[ci.dataset.t] || '';
   var box = document.getElementById('chatbox'); if (box) box.scrollTop = box.scrollHeight;
@@ -1326,7 +1421,7 @@ var ACT = {
   'chat-chip': function (d) { sendChat('meni', d.text); },
   'ap-worker': function (d) { var a = P().approvals.filter(function (x) { return x.w === d.id; })[0]; S.apSel = a ? a.id : null; go('approvals'); },
   'lu-all': function (d, el) { var on = el.getAttribute('aria-pressed') !== 'true'; LU_CAST.forEach(function (k) { LU.off[k] = !on; }); if (on) LU.force = 'meni'; luSync(); luPush(); },
-  'lu-sw': function (d) { LU.off[d.id] = !LU.off[d.id]; if (!LU.off[d.id]) LU.force = d.id; luSync(); if (!LU.off[d.id] || !LU_CAST.some(function (k) { return !LU.off[k]; })) luPush(); },
+  'lu-sw': function (d) { LU.off[d.id] = !LU.off[d.id]; if (!LU.off[d.id]) { LU.force = d.id; LU.next = 0; } else if (LU.who === d.id) { luStop(); LU.next = Date.now() + 500; } luSync(); if (!LU.off[d.id] || !LU_CAST.some(function (k) { return !LU.off[k]; })) luPush(); },
   'modal-bg': function (d, el, e) { if (e.target === el) { S.modal = false; render(); } }
 };
 document.addEventListener('click', function (e) {
@@ -1368,7 +1463,7 @@ document.addEventListener('submit', function (e) {
     go('chat'); sendChat('meni', qt);
   }
 });
-if (!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) setInterval(function () { if (S.route === 'login' && !document.hidden) luPush(); }, 3300);
+if (!LU_STILL) setInterval(function () { if (S.route === 'login' && !document.hidden && !LU.busy && Date.now() >= LU.next) luPush(); }, 200);
 /* שעון הקוד רץ רק על הטקסט, בלי לצייר מחדש את המסך */
 setInterval(function () {
   Object.keys(S.people).forEach(function (k) { if (S.people[k].secs > 0) S.people[k].secs--; });

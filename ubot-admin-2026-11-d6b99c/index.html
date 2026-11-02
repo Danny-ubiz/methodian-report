@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ממשק הניהול של UBOT</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='13' fill='%230B3440'/%3E%3Cg transform='translate(11 11.6)'%3E%3Cpath d='M0 0H5.63V11.66A7.37 7.37 0 0 0 20.37 11.66V0H26V11.66A13 13 0 0 1 0 11.66Z' fill='%23fff'/%3E%3Ccircle cx='13' cy='3.4' r='3.4' fill='%2319E6C3'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='13' fill='%230B3440'/%3E%3Cg transform='translate(5.5 11.7)'%3E%3Crect y='-.33' width='37' height='24.66' rx='12.33' fill='%2319E6C3'/%3E%3Ccircle cx='24.67' cy='12' r='7.9' fill='%230B3440'/%3E%3C/g%3E%3C/svg%3E">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta property="og:title" content="ממשק הניהול של UBOT">
 <meta property="og:description" content="אב טיפוס, הנתונים לדוגמה">
@@ -16,7 +16,7 @@
 :root {
   --bg: hsl(220 14% 96%); --fg: hsl(222 47% 11%); --muted: hsl(215 16% 47%); --border: hsl(220 13% 91%); --card: #fff; --hover: hsl(220 20% 98%);
   --brand: hsl(172 84% 42%); --brand-deep: hsl(180 85% 24%); --brand-soft: hsl(168 78% 94%); --brand-mid: hsl(168 68% 82%); --brand-ink: hsl(190 70% 18%); --on-brand: hsl(212 58% 11%); --wait: hsl(38 92% 50%);
-  --panel: linear-gradient(135deg, hsl(178 72% 30%) 0%, hsl(200 80% 19%) 100%); --side: linear-gradient(180deg, hsl(190 78% 16%) 0%, hsl(204 70% 12%) 100%); --side-acc: hsl(168 90% 52%); --dot: hsl(172 84% 42%);
+  --panel: linear-gradient(135deg, hsl(178 72% 30%) 0%, hsl(200 80% 19%) 100%); --side: linear-gradient(180deg, hsl(190 78% 16%) 0%, hsl(204 70% 12%) 100%); --side-acc: hsl(168 90% 52%); --side-knob: hsl(196 72% 15%); --dot: hsl(172 84% 42%);
   --side-ink: hsl(212 58% 11%);
   --blue: hsl(217 91% 50%); --blue-soft: hsl(214 95% 95%); --green: hsl(145 63% 32%); --green-soft: hsl(143 70% 94%); --red: hsl(0 72% 48%); --red-soft: hsl(0 86% 96%); --violet: hsl(258 70% 52%); --violet-soft: hsl(258 90% 96%);
   --grad: linear-gradient(135deg, hsl(166 90% 52%) 0%, hsl(182 88% 45%) 100%);
@@ -27,9 +27,9 @@
   --ease: cubic-bezier(.22, .61, .36, 1); --bar: 36px; --top: 64px;
   color-scheme: light;
 }
-html[data-theme="cobalt"] { --brand: hsl(226 100% 56%); --brand-deep: hsl(232 90% 46%); --brand-soft: hsl(226 100% 96.5%); --brand-mid: hsl(226 100% 88%); --brand-ink: hsl(232 72% 32%); --on-brand: #fff; --grad: linear-gradient(135deg, hsl(222 100% 58%) 0%, hsl(234 92% 50%) 100%); --panel: linear-gradient(135deg, hsl(226 90% 50%) 0%, hsl(238 70% 30%) 100%); --side: linear-gradient(180deg, hsl(228 62% 15%) 0%, hsl(232 58% 10%) 100%); --side-acc: hsl(214 100% 72%); --dot: hsl(226 100% 56%); }
-html[data-theme="lime"] { --brand: hsl(80 80% 40%); --brand-deep: hsl(90 70% 24%); --brand-soft: hsl(78 80% 93%); --brand-mid: hsl(78 75% 80%); --brand-ink: hsl(90 65% 18%); --grad: linear-gradient(135deg, hsl(74 92% 58%) 0%, hsl(84 82% 50%) 100%); --panel: linear-gradient(135deg, hsl(215 32% 15%) 0%, hsl(205 30% 22%) 100%); --side: linear-gradient(180deg, hsl(212 40% 13%) 0%, hsl(212 48% 9%) 100%); --side-acc: hsl(74 92% 58%); --dot: hsl(80 84% 44%); }
-html[data-theme="magenta"] { --brand: hsl(332 88% 50%); --brand-deep: hsl(330 84% 38%); --brand-soft: hsl(332 90% 96.5%); --brand-mid: hsl(332 85% 88%); --brand-ink: hsl(330 70% 28%); --on-brand: #fff; --grad: linear-gradient(135deg, hsl(338 90% 47%) 0%, hsl(322 84% 40%) 100%); --panel: linear-gradient(135deg, hsl(328 72% 32%) 0%, hsl(284 52% 15%) 100%); --side: linear-gradient(180deg, hsl(300 40% 15%) 0%, hsl(280 44% 10%) 100%); --side-acc: hsl(336 96% 68%); --dot: hsl(332 88% 50%); }
+html[data-theme="cobalt"] { --brand: hsl(226 100% 56%); --brand-deep: hsl(232 90% 46%); --brand-soft: hsl(226 100% 96.5%); --brand-mid: hsl(226 100% 88%); --brand-ink: hsl(232 72% 32%); --on-brand: #fff; --grad: linear-gradient(135deg, hsl(222 100% 58%) 0%, hsl(234 92% 50%) 100%); --panel: linear-gradient(135deg, hsl(226 90% 50%) 0%, hsl(238 70% 30%) 100%); --side: linear-gradient(180deg, hsl(228 62% 15%) 0%, hsl(232 58% 10%) 100%); --side-acc: hsl(214 100% 72%); --side-knob: hsl(228 62% 14%); --dot: hsl(226 100% 56%); }
+html[data-theme="lime"] { --brand: hsl(80 80% 40%); --brand-deep: hsl(90 70% 24%); --brand-soft: hsl(78 80% 93%); --brand-mid: hsl(78 75% 80%); --brand-ink: hsl(90 65% 18%); --grad: linear-gradient(135deg, hsl(74 92% 58%) 0%, hsl(84 82% 50%) 100%); --panel: linear-gradient(135deg, hsl(215 32% 15%) 0%, hsl(205 30% 22%) 100%); --side: linear-gradient(180deg, hsl(212 40% 13%) 0%, hsl(212 48% 9%) 100%); --side-acc: hsl(74 92% 58%); --side-knob: hsl(212 40% 12%); --dot: hsl(80 84% 44%); }
+html[data-theme="magenta"] { --brand: hsl(332 88% 50%); --brand-deep: hsl(330 84% 38%); --brand-soft: hsl(332 90% 96.5%); --brand-mid: hsl(332 85% 88%); --brand-ink: hsl(330 70% 28%); --on-brand: #fff; --grad: linear-gradient(135deg, hsl(338 90% 47%) 0%, hsl(322 84% 40%) 100%); --panel: linear-gradient(135deg, hsl(328 72% 32%) 0%, hsl(284 52% 15%) 100%); --side: linear-gradient(180deg, hsl(300 40% 15%) 0%, hsl(280 44% 10%) 100%); --side-acc: hsl(336 96% 68%); --side-knob: hsl(300 40% 14%); --dot: hsl(332 88% 50%); }
 
 * { box-sizing: border-box; }
 html, body { height: 100%; }
@@ -70,10 +70,12 @@ svg.i { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor;
 .sidenav { position: sticky; top: var(--bar); height: calc(100vh - var(--bar)); background: var(--side); color: #fff; display: flex; flex-direction: column; }
 .brand { height: var(--top); display: flex; align-items: center; padding-inline: 20px; border-bottom: 1px solid hsl(0 0% 100% / .09); flex: none; }
 .brand .logo { color: #fff; }
-.brand .lg-dot, .white-logo .lg-dot { fill: var(--side-acc); filter: drop-shadow(0 0 4px color-mix(in srgb, var(--side-acc) 70%, transparent)); }
+.brand .lg-pill, .white-logo .lg-pill { fill: var(--side-acc); }
+.brand .lg-knob, .white-logo .lg-knob { fill: var(--side-knob); }
 .logo { display: inline-flex; align-items: center; direction: ltr; color: var(--fg); }
 .lg { display: block; height: 22px; width: auto; }
-.lg-dot { fill: var(--dot); }
+.lg-pill { fill: var(--dot); }
+.lg-knob { fill: #fff; }
 
 .navs { flex: 1; overflow-y: auto; padding: 16px 10px; display: grid; gap: 18px; align-content: start; }
 .navs .all { display: grid; gap: 18px; }
@@ -209,10 +211,12 @@ button.tile:hover { transform: translateY(-2px); box-shadow: var(--sh-up); }
 .lvs button[aria-pressed="true"] { background: var(--grad); color: var(--on-brand); box-shadow: 0 1px 2px color-mix(in srgb, var(--brand-deep) 30%, transparent); }
 .lvs.locked button { cursor: help; }
 .bw.off .lvs { opacity: .55; }
-.sw { position: relative; width: 44px; height: 24px; border-radius: 999px; background: hsl(220 12% 80%); flex: none; transition: background .2s; }
-.sw::after { content: ""; position: absolute; top: 2px; left: 22px; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px hsl(220 20% 20% / .3); transition: left .2s var(--ease); }
-.sw[aria-checked="true"] { background: var(--grad); }
-.sw[aria-checked="true"]::after { left: 2px; }
+/* אותו מתג כמו בלוגו: יחס 1.5, כפתור שהוא 64% מהגובה, אותו צבע ואותו צד */
+.sw { position: relative; width: 36px; height: 24px; border-radius: 999px; background: hsl(220 12% 80%); flex: none; transition: background .2s; }
+.sw::before { content: ""; position: absolute; inset: -8px; }
+.sw::after { content: ""; position: absolute; top: 4.3px; left: 4.3px; width: 15.4px; height: 15.4px; border-radius: 50%; background: #fff; transition: left .2s var(--ease); }
+.sw[aria-checked="true"] { background: var(--dot); }
+.sw[aria-checked="true"]::after { left: 16.3px; }
 .sw:disabled { opacity: .45; cursor: not-allowed; }
 .rowconfirm { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 12px 20px; background: var(--brand-soft); border-bottom: 1px solid var(--brand-mid); }
 .rowconfirm span { flex: 1 1 320px; }
@@ -270,7 +274,7 @@ input.ltr { direction: ltr; text-align: right; }
 .node { display: grid; justify-items: center; gap: 5px; text-align: center; min-width: 0; }
 .node-ic { width: 66px; height: 66px; border-radius: 18px; background: #fff; border: 1px solid var(--border); box-shadow: var(--sh-up); display: grid; place-items: center; }
 .node-ic svg.i { width: 30px; height: 30px; color: hsl(222 25% 30%); }
-.node-ic .mark { display: block; width: 34px; height: auto; color: var(--fg); }
+.node-ic .mark { display: block; width: 42px; height: auto; color: var(--fg); }
 .node b { font-weight: 800; }
 .node small { color: var(--muted); font-size: .82rem; }
 .wire { position: relative; height: 4px; border-radius: 4px; margin-top: -40px; background-image: repeating-linear-gradient(90deg, var(--brand) 0 8px, transparent 8px 16px); background-size: 16px 4px; animation: flow .7s linear infinite; }
@@ -747,10 +751,9 @@ function connect(key, withTeam) {
   p.threads = withTeam ? exampleThreads(p.approvals) : { claude: { unread: 0, items: [] } };
 }
 function face(w, cls) { return '<img class="face ' + (cls || '') + ((P().halted || !w.enabled) && cls !== 'keep' ? ' off-face' : '') + '" src="' + FACE[w.id] + '" alt="">'; }
-var LG_U = '<path d="M0 0H5.63V11.66A7.37 7.37 0 0 0 20.37 11.66V0H26V11.66A13 13 0 0 1 0 11.66Z" fill="currentColor"/><circle class="lg-dot" cx="13" cy="3.4" r="3.4"/>';
-var LG_BOT = '<path d="M36.27 24.2V19.53H41.56Q42.91 19.53 43.56 18.84Q44.22 18.15 44.22 16.83Q44.22 15.52 43.56 14.84Q42.91 14.17 41.56 14.17H36.27V10.55H41.36Q43.89 10.55 45.9 11.16Q47.9 11.77 49.05 13.15Q50.21 14.53 50.21 16.83V17.29Q50.21 19.46 49.19 21.01Q48.17 22.55 46.19 23.38Q44.22 24.2 41.36 24.2ZM31.01 24.2V-0.2H36.92V24.2ZM36.27 13.25V9.63H40.67Q42.02 9.63 42.63 8.96Q43.24 8.28 43.24 7.07Q43.24 5.82 42.63 5.15Q42.02 4.47 40.67 4.47H36.27V-0.2H40.41Q44.62 -0.2 46.92 1.56Q49.22 3.32 49.22 6.58V7.07Q49.22 9.34 48.05 10.7Q46.88 12.07 44.9 12.66Q42.91 13.25 40.41 13.25Z M65.66 24.66Q62.37 24.66 59.94 23.52Q57.5 22.39 55.89 20.53Q54.28 18.67 53.49 16.5Q52.7 14.33 52.7 12.3V11.57Q52.7 9.3 53.53 7.12Q54.35 4.93 55.99 3.16Q57.64 1.38 60.05 0.33Q62.47 -0.72 65.66 -0.72Q68.81 -0.72 71.23 0.33Q73.65 1.38 75.29 3.16Q76.93 4.93 77.77 7.12Q78.61 9.3 78.61 11.57V12.3Q78.61 14.33 77.81 16.5Q77 18.67 75.39 20.53Q73.78 22.39 71.35 23.52Q68.91 24.66 65.66 24.66ZM65.66 18.94Q67.24 18.94 68.48 18.41Q69.73 17.88 70.62 16.93Q71.51 15.98 71.97 14.71Q72.43 13.45 72.43 11.97Q72.43 10.39 71.95 9.11Q71.48 7.82 70.59 6.9Q69.7 5.98 68.45 5.49Q67.2 5 65.66 5Q64.08 5 62.83 5.49Q61.58 5.98 60.69 6.9Q59.81 7.82 59.35 9.11Q58.88 10.39 58.88 11.97Q58.88 13.45 59.35 14.71Q59.81 15.98 60.69 16.93Q61.58 17.88 62.83 18.41Q64.08 18.94 65.66 18.94Z M87.09 24V4.67H93.21V24ZM80.52 5.33V0H99.78V5.33Z" fill="currentColor"/>';
-var LOGO = '<svg class="lg" viewBox="0 -0.8 99.78 25.6" role="img" aria-label="UBOT">' + LG_U + LG_BOT + '</svg>';
-var MARK = '<svg class="mark" viewBox="0 -0.8 26 25.6" aria-hidden="true">' + LG_U + '</svg>';
+var LG_PILL = '<rect class="lg-pill" x="0" y="-.33" width="37" height="24.66" rx="12.33"/><circle class="lg-knob" cx="24.67" cy="12" r="7.9"/>';
+var LOGO = '<svg class="lg" viewBox="0 -0.8 102.67 25.6" role="img" aria-label="UBOT"><g transform="translate(0 0)"><path d="M10.72 24.66Q7.27 24.66 4.88 23.38Q2.5 22.09 1.25 19.74Q0 17.39 0 14.17V0H6.12V14.3Q6.12 15.72 6.66 16.77Q7.2 17.82 8.22 18.38Q9.24 18.94 10.72 18.94Q12.2 18.94 13.22 18.38Q14.24 17.82 14.76 16.78Q15.29 15.75 15.29 14.3V0H21.4V14.17Q21.4 17.39 20.17 19.74Q18.94 22.09 16.55 23.38Q14.17 24.66 10.72 24.66Z" fill="currentColor"/></g><g transform="translate(23.6 0)"><path d="M5.26 24.2V19.53H10.55Q11.9 19.53 12.56 18.84Q13.22 18.15 13.22 16.83Q13.22 15.52 12.56 14.84Q11.9 14.17 10.55 14.17H5.26V10.55H10.36Q12.89 10.55 14.89 11.16Q16.9 11.77 18.05 13.15Q19.2 14.53 19.2 16.83V17.29Q19.2 19.46 18.18 21.01Q17.16 22.55 15.19 23.38Q13.22 24.2 10.36 24.2ZM0 24.2V-0.2H5.92V24.2ZM5.26 13.25V9.63H9.67Q11.01 9.63 11.62 8.96Q12.23 8.28 12.23 7.07Q12.23 5.82 11.62 5.15Q11.01 4.47 9.67 4.47H5.26V-0.2H9.4Q13.61 -0.2 15.91 1.56Q18.21 3.32 18.21 6.58V7.07Q18.21 9.34 17.05 10.7Q15.88 12.07 13.89 12.66Q11.9 13.25 9.4 13.25Z" fill="currentColor"/></g><g transform="translate(45.2 0)"><rect class="lg-pill" x="0" y="-.33" width="37" height="24.66" rx="12.33"/><circle class="lg-knob" cx="24.67" cy="12" r="7.9"/></g><g transform="translate(83.4 0)"><path d="M6.58 24V4.67H12.69V24ZM0 5.33V0H19.27V5.33Z" fill="currentColor"/></g></svg>';
+var MARK = '<svg class="mark" viewBox="0 -0.8 37 25.6" aria-hidden="true">' + LG_PILL + '</svg>';
 function logo() { return '<span class="logo">' + LOGO + '</span>'; }
 function syncText(w) { return w.sync === 'sending' ? 'נשלח למחשב' : w.sync === 'ok' ? 'נקלט במחשב' : w.sync === 'wait' ? 'מחכה למחשב' : ''; }
 

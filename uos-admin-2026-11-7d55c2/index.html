@@ -562,6 +562,196 @@ main.fill { padding: 0; }
 .toast { position: fixed; left: 50%; translate: -50% 0; bottom: 22px; background: var(--fg); color: #fff; border-radius: 10px; padding: 9px 16px; font-weight: 600; font-size: .9rem; z-index: 90; max-width: calc(100% - 32px); text-align: center; box-shadow: var(--sh-up); }
 
 /* נייד */
+/* דשבורד חי: אותה שורת דמויות כמו בכניסה, ולכל עובד בועה עם מה שהוא עושה עכשיו */
+.dhero { position: relative; overflow: hidden; border-radius: var(--r-lg); background: var(--panel); color: #fff; padding: clamp(18px, 2.2vw, 28px) clamp(18px, 2.6vw, 34px) 0; box-shadow: var(--sh-up); }
+.dhero::before { content: ""; position: absolute; width: 520px; height: 520px; border-radius: 50%; top: -250px; inset-inline-end: -150px; background: hsl(0 0% 100% / .06); pointer-events: none; }
+.dhero :focus-visible { outline-color: #fff; }
+.dhero.flat { padding-bottom: clamp(18px, 2.2vw, 28px); }
+.dh-top { position: relative; display: flex; flex-wrap: wrap; gap: 14px 32px; align-items: flex-start; justify-content: space-between; }
+.dh-top > div:first-child { flex: 1 1 340px; min-width: 0; }
+.dh-date { display: block; color: hsl(0 0% 100% / .86); font-size: .88rem; font-weight: 600; margin-bottom: 3px; }
+.dh-top h1 { font-size: clamp(1.7rem, 2.8vw, 2.5rem); color: #fff; }
+.dh-sum { margin-top: 8px; font-size: clamp(1.02rem, 1.25vw, 1.16rem); line-height: 1.4; max-width: 60ch; color: hsl(0 0% 100% / .95); min-height: 2.8em; }
+.dh-side { display: grid; gap: 8px; justify-items: end; }
+.dlive { display: inline-flex; align-items: center; gap: 7px; font-size: .84rem; font-weight: 700; padding: 3px 11px 3px 12px; border-radius: 999px; background: hsl(0 0% 100% / .12); color: #fff; white-space: nowrap; }
+.dlive .dot { background: var(--side-acc); }
+.dlive.bad { background: var(--red); }
+.dlive.bad .dot { background: #fff; }
+.dstats { display: flex; gap: 8px; }
+.dstat { min-width: 98px; padding: 8px 13px; border-radius: 12px; background: hsl(204 70% 10% / .3); border: 1px solid hsl(0 0% 100% / .14); color: #fff; transition: background .15s; }
+button.dstat:hover { background: hsl(204 70% 10% / .46); }
+.dstat b { display: block; font-size: 1.5rem; font-weight: 800; line-height: 1.15; }
+.dstat small { display: block; font-size: .78rem; color: hsl(0 0% 100% / .88); white-space: nowrap; }
+.bump { display: inline-block; animation: d-bump .5s var(--ease); }
+@keyframes d-bump { 40% { transform: scale(1.24); } }
+
+.dline { position: relative; display: flex; align-items: flex-end; justify-content: center; margin-top: -14px; }
+.dw { position: relative; flex: 1 1 0; min-width: 0; max-width: 232px; display: flex; flex-direction: column; align-items: center; transition: transform .38s var(--ease); }
+.dw-bub { width: 100%; min-height: 104px; display: flex; align-items: flex-end; justify-content: center; padding: 0 5px 11px; }
+.dbub { position: relative; width: 100%; max-width: 206px; padding: 8px 11px 9px; border-radius: 14px; background: #fff; color: var(--brand-ink); box-shadow: 0 10px 26px hsl(204 70% 8% / .34); font-size: .9rem; font-weight: 700; line-height: 1.25; text-align: center; transform-origin: 50% 100%; }
+.dbub::after { content: ""; position: absolute; top: 100%; left: 50%; width: 13px; height: 13px; margin: -8px 0 0 -6.5px; border-radius: 3px; background: inherit; transform: rotate(45deg); }
+.dbub .dt { display: block; margin-top: 2px; font-size: .78rem; font-weight: 600; color: var(--muted); }
+.dbub.late { background: hsl(0 90% 97%); color: hsl(0 66% 34%); }
+.dbub .lu-dots { opacity: 0; }
+.dbub.pop { animation: dbub-in .5s cubic-bezier(.3, 1.28, .6, 1) both; }
+.dbub.pop .lu-dots { animation: d-dots .72s both; }
+.dbub.pop .dbub-tx { animation: d-tx .28s .68s both; }
+@keyframes dbub-in { from { opacity: 0; transform: translateY(46px) scale(.22); } to { opacity: 1; transform: none; } }
+@keyframes d-dots { 0%, 85% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes d-tx { from { opacity: 0; } to { opacity: 1; } }
+.d-fly { position: fixed; top: 0; left: 0; z-index: 80; margin: 0; max-width: none; overflow: hidden; pointer-events: none; }
+.d-fly.land { transition: transform .62s cubic-bezier(.45, .05, .2, 1), width .62s cubic-bezier(.45, .05, .2, 1), height .62s cubic-bezier(.45, .05, .2, 1), border-radius .62s, box-shadow .62s; border-radius: 8px; box-shadow: 0 2px 8px hsl(204 70% 8% / .12); }
+.d-fly::after { display: none; }
+
+.dw-who { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; color: #fff; text-align: center; }
+.dw-name { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 1.05rem; line-height: 1.15; }
+.dw-name .dot { display: none; background: var(--side-acc); }
+.dw.is-work .dw-name .dot { display: inline-block; }
+.dw-who:hover .dw-name { text-decoration: underline; text-underline-offset: 3px; }
+.dw-sub { display: block; min-height: 1.3em; font-size: .8rem; color: hsl(0 0% 100% / .88); line-height: 1.3; white-space: nowrap; }
+.dw.is-late .dw-sub { color: hsl(0 100% 88%); font-weight: 700; }
+.dw-pic { display: block; width: 100%; line-height: 0; }
+.dw-pic img { display: block; width: min(100%, 172px); height: auto; margin: 11px auto -14px; transform-origin: 50% 100%; transition: transform .38s var(--ease), filter .38s; }
+.dw.is-work .dw-pic img { transform: translateY(-4px) scale(1.03); }
+.dw.is-idle .dw-pic img { filter: brightness(.84) saturate(.9); }
+.dw.is-late .dw-pic img { filter: brightness(.74) saturate(.8); }
+.dw.is-off .dw-pic img, .dw.is-halt .dw-pic img, .dw.is-quiet .dw-pic img { filter: grayscale(1) brightness(.68); }
+.dw.is-off, .dw.is-halt { transform: translateY(12px); }
+.dw-ap { position: absolute; z-index: 3; bottom: 34px; inset-inline-start: calc(50% + 34px); min-width: 26px; height: 26px; padding: 0 7px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; background: var(--wait); color: hsl(30 80% 12%); font-size: .82rem; font-weight: 800; box-shadow: 0 2px 8px hsl(204 70% 8% / .4); }
+.dw-ap:hover { filter: brightness(1.08); }
+
+.dgrid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start; }
+.dseg { display: inline-flex; background: var(--bg); border-radius: 9px; padding: 3px; gap: 2px; flex: none; }
+.dseg button { padding: 4px 14px; border-radius: 7px; font-size: .88rem; font-weight: 700; color: var(--muted); transition: background .15s, color .15s; }
+.dseg button:hover { color: var(--fg); }
+.dseg button[aria-pressed="true"] { background: #fff; color: var(--fg); box-shadow: var(--sh); }
+
+/* רצועת היום: כל פס הוא עבודה, הזמן זורם מימין לשמאל, והקו הוא עכשיו */
+.tlx { --who: 92px; --sum: 158px; padding: 10px 20px 12px; }
+.tl-row { display: grid; grid-template-columns: var(--who) minmax(0, 1fr) var(--sum); gap: 12px; align-items: center; padding-block: 5px; }
+.tl-who { display: flex; align-items: center; gap: 8px; min-width: 0; font-weight: 700; }
+.tl-who:hover b { color: var(--brand-deep); }
+.tl-who b { font-weight: 700; }
+.tl-lane { position: relative; height: 32px; border-radius: 4px; background: var(--bg); }
+.tl-lane.off { background: repeating-linear-gradient(135deg, var(--bg) 0 6px, hsl(220 13% 87%) 6px 8px); }
+.tlx:not(.noline) .tl-lane::after { content: ""; position: absolute; top: -5px; bottom: -5px; inset-inline-start: var(--now); width: 2px; margin-inline-start: -1px; background: var(--fg); opacity: .5; pointer-events: none; }
+.tl-b { position: absolute; top: 4px; bottom: 4px; min-width: 5px; border-radius: 4px; background: var(--brand); box-shadow: 0 0 0 1px var(--card); }
+.tl-b:hover { filter: brightness(.86); }
+.tl-b.run { min-width: 8px; background-color: var(--brand-deep); background-image: repeating-linear-gradient(135deg, hsl(0 0% 100% / .38) 0 5px, transparent 5px 10px); background-size: 200% 100%; animation: tl-run 1.4s linear infinite; }
+@keyframes tl-run { to { background-position: -40px 0; } }
+.tl-miss { position: absolute; top: 50%; width: 16px; height: 16px; margin-top: -8px; transform: translateX(50%); border-radius: 50%; background: var(--red); box-shadow: 0 0 0 2px var(--card); }
+.tl-note { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 600; color: var(--muted); pointer-events: none; }
+.tl-lane.off .tl-note { color: hsl(215 25% 30%); }
+.tl-hours { position: relative; height: 22px; font-size: .76rem; color: var(--muted); }
+.tl-hours span { position: absolute; top: 2px; transform: translateX(50%); }
+.tl-hours span.first { transform: none; }
+.tl-hours span.last { transform: translateX(100%); }
+.tl-now { position: absolute; top: 0; z-index: 2; inset-inline-start: var(--now); transform: translateX(50%); padding: 0 6px; border-radius: 5px; background: var(--fg); color: #fff; font-weight: 700; line-height: 1.5; }
+.tlx.noline .tl-now { display: none; }
+.tl-sum { min-width: 0; line-height: 1.25; }
+.tl-sum b { display: block; font-weight: 800; font-size: .92rem; }
+.tl-sum small { display: block; color: var(--muted); font-size: .78rem; }
+.d-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; padding: 10px 20px 14px; border-top: 1px solid var(--border); font-size: .8rem; color: var(--muted); }
+.d-foot > span { display: inline-flex; align-items: center; gap: 6px; }
+.d-foot i { flex: none; display: inline-block; }
+.lg-work { width: 18px; height: 10px; border-radius: 3px; background: var(--brand); }
+.lg-miss { width: 10px; height: 10px; border-radius: 50%; background: var(--red); }
+.lg-off { width: 18px; height: 10px; border-radius: 3px; background: repeating-linear-gradient(135deg, var(--bg) 0 3px, hsl(220 13% 78%) 3px 5px); }
+.d-foot .sp { margin-inline-start: auto; }
+
+/* השבוע: גוון אחד, כהה יותר כשנעשה יותר, והמספר כתוב בתוך הריבוע */
+.wk { --who: 92px; --sum: 158px; padding: 10px 20px 12px; display: grid; gap: 5px; }
+.wk-row { display: grid; grid-template-columns: var(--who) repeat(7, minmax(0, 1fr)) var(--sum); gap: 5px; align-items: center; }
+.wk-d { text-align: center; font-size: .78rem; font-weight: 600; color: var(--muted); }
+.wk-d.today { color: var(--fg); font-weight: 800; }
+.wk-c { height: 36px; border-radius: 4px; display: grid; place-items: center; font-weight: 700; font-size: .88rem; color: var(--fg); background: var(--bg); font-variant-numeric: tabular-nums; }
+.wk-c.l1 { background: color-mix(in srgb, var(--brand) 18%, #fff); }
+.wk-c.l2 { background: color-mix(in srgb, var(--brand) 38%, #fff); }
+.wk-c.l3 { background: color-mix(in srgb, var(--brand) 66%, #fff); }
+.wk-c.l4 { background: var(--brand-deep); color: #fff; }
+.wk-c.today { outline: 2px solid var(--fg); outline-offset: 1px; }
+.wk-sum { margin-inline-start: 7px; min-width: 0; line-height: 1.25; }
+.wk-sum b { display: block; font-weight: 800; font-size: .92rem; }
+.wk-sum small { display: block; color: var(--muted); font-size: .78rem; }
+
+/* מה קרה לאחרונה */
+.frow { display: flex; align-items: center; gap: 10px; padding: 9px 18px; border-bottom: 1px solid var(--border); transition: transform .42s var(--ease); }
+.frow:last-child { border-bottom: 0; }
+.frow-none { padding: 18px; color: var(--muted); font-size: .9rem; }
+.frow .tx { flex: 1; min-width: 0; font-size: .9rem; line-height: 1.3; }
+.frow .tx b { font-weight: 800; }
+.frow .tx small { display: block; color: var(--muted); font-size: .78rem; }
+.frow time { color: var(--muted); font-size: .8rem; font-variant-numeric: tabular-nums; }
+.frow.fresh { animation: frow-in 1.1s var(--ease); }
+@keyframes frow-in { from { background: var(--brand-soft); } to { background: transparent; } }
+.d-tip { position: fixed; z-index: 90; max-width: 260px; padding: 5px 10px; border-radius: 8px; background: var(--fg); color: #fff; font-size: .8rem; font-weight: 600; line-height: 1.3; pointer-events: none; transform: translate(-50%, calc(-100% - 8px)); box-shadow: var(--sh-up); }
+
+/* תצוגת מנהל: שורה לכל אדם */
+.da-row { display: grid; grid-template-columns: minmax(150px, 1fr) auto minmax(220px, 2fr) 74px 112px 92px 18px; gap: 14px; align-items: center; width: 100%; padding: 14px 20px; border-bottom: 1px solid var(--border); transition: background .15s; }
+.da-row:last-child { border-bottom: 0; }
+.da-row:hover { background: var(--hover); }
+.da-who { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.da-who b { display: block; font-weight: 800; line-height: 1.25; }
+.da-who small { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: .8rem; white-space: nowrap; }
+.da-faces { display: flex; gap: 8px; min-height: 36px; align-items: center; min-width: 136px; }
+.rf { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; object-position: top center; background: var(--brand-soft); box-shadow: 0 0 0 2px #fff, 0 0 0 4px hsl(220 13% 86%); }
+.rf.work { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--brand); animation: rf-on 1.8s ease-in-out infinite; }
+@keyframes rf-on { 50% { box-shadow: 0 0 0 2px #fff, 0 0 0 6px var(--brand); } }
+.rf.late { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--red); }
+.rf.off, .rf.halt, .rf.quiet { filter: grayscale(1); opacity: .6; }
+.da-now { min-width: 0; display: grid; gap: 2px; font-size: .9rem; line-height: 1.3; }
+.da-now b { font-weight: 800; }
+.da-now .t { color: var(--muted); font-size: .82rem; white-space: nowrap; }
+.da-bad { color: var(--red); font-weight: 700; }
+.da-n b { display: block; font-size: 1.3rem; font-weight: 800; line-height: 1.1; }
+.da-n small, .da-wk small { display: block; color: var(--muted); font-size: .76rem; white-space: nowrap; }
+.mb { display: flex; align-items: flex-end; gap: 2px; height: 28px; margin-bottom: 2px; }
+.mb i { flex: 1; min-width: 6px; border-radius: 2px 2px 0 0; background: color-mix(in srgb, var(--brand) 48%, #fff); }
+.mb i.today { background: var(--brand-deep); }
+.mb i.zero { background: var(--border); }
+.da-ap { justify-self: start; }
+.da-go { color: var(--muted); }
+.da-go svg.i { width: 16px; height: 16px; }
+
+@media (max-width: 1180px) { .dgrid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 1100px) {
+  .da-row { grid-template-columns: minmax(0, 1fr) auto auto 18px; grid-template-areas: "who n wk go" "faces faces faces faces" "now now now now" "ap ap ap ap"; }
+  .da-who { grid-area: who; } .da-n { grid-area: n; } .da-wk { grid-area: wk; width: 104px; } .da-go { grid-area: go; }
+  .da-faces { grid-area: faces; } .da-now { grid-area: now; } .da-ap { grid-area: ap; }
+}
+@media (max-width: 1040px) {
+  .dline { display: grid; gap: 0; margin-top: 12px; padding-bottom: 6px; }
+  .dw { max-width: none; display: grid; grid-template-columns: 62px minmax(0, 1fr); column-gap: 12px; grid-template-areas: "pic who" "pic bub"; align-items: center; padding-block: 10px; border-top: 1px solid hsl(0 0% 100% / .14); transform: none !important; }
+  .dw-pic { grid-area: pic; width: 62px; align-self: start; }
+  .dw-pic img { width: 62px; height: 62px; margin: 0; border-radius: 50%; object-fit: cover; object-position: top center; background: hsl(0 0% 100% / .14); transform: none !important; }
+  .dw-who { grid-area: who; flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; text-align: start; }
+  .dw-bub { grid-area: bub; min-height: 0; padding: 0; justify-content: flex-start; }
+  .dbub { max-width: none; margin-top: 7px; text-align: start; }
+  .dbub:empty { display: none; }
+  .dbub::after { top: 12px; left: auto; inset-inline-start: 0; margin: 0 -6px 0 0; }
+  .dw-ap { bottom: auto; top: 8px; inset-inline-start: auto; inset-inline-end: 0; }
+}
+@media (max-width: 720px) {
+  .dh-side { justify-items: stretch; width: 100%; }
+  .dlive { justify-self: start; }
+  .dstats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .dstat { min-width: 0; padding: 7px 10px; }
+  .dstat small { white-space: normal; line-height: 1.15; }
+  .da-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "who go" "faces faces" "now now" "n wk" "ap ap"; }
+  .da-wk { justify-self: end; width: 128px; }
+  .da-go { justify-self: end; }
+  .tl-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "who sum" "lane lane"; gap: 4px 12px; padding-block: 7px; }
+  .tl-row .tl-who { grid-area: who; } .tl-row .tl-sum { grid-area: sum; text-align: end; } .tl-row .tl-lane, .tl-row .tl-hours { grid-area: lane; }
+  .tl-row.ax { grid-template-areas: "lane lane"; }
+  .tl-row.ax > span:not(.tl-hours) { display: none; }
+  .tl-hours .opt { display: none; }
+  .tl-sum small { max-width: 200px; }
+  .wk-row { grid-template-columns: 34px repeat(7, minmax(0, 1fr)); gap: 4px; }
+  .wk-who b, .wk-row.hd .wk-sum { display: none; }
+  .wk-sum { grid-column: 2 / -1; margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 0 8px; align-items: baseline; }
+  .wk-c { height: 32px; font-size: .84rem; }
+  .d-foot .sp { margin-inline-start: 0; }
+}
 @media (max-width: 1100px) {
   .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .board-th { display: none; }
@@ -640,6 +830,7 @@ main.fill { padding: 0; }
 <div id="app"></div>
 <div id="layer"></div>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<div class="d-tip" id="d-tip" hidden></div>
 
 <script>
 /* אב טיפוס בלבד: כל המצב בזיכרון של הדף, ואין אף קריאה לשרת */
@@ -653,6 +844,7 @@ var L = {
   bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
   mail: '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
   lock: '<rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+  down: '<path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/>',
   left: '<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>',
   right: '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
   upleft: '<path d="M7 17V7h10"/><path d="M17 17 7 7"/>',
@@ -686,17 +878,20 @@ var LV = {
 };
 function exampleTeam() {
   return [
-    { id: 'meni', name: 'מני', title: 'מנהל הצוות', scope: 'מקבל מכם משימות, מחלק לצוות ובודק כל תוצר', level: 2, enabled: true, hb: 'לפני דקה', run: 'בלי לוח זמנים, רץ כשמבקשים', next: 'כשתפתחו את קלוד',
-      days: [3,5,0,4,6,2,0,0,5,7,3,4,6,4], blockedDay: -1, lessons: [2, 0],
+    { id: 'meni', name: 'מני', title: 'מנהל הצוות', scope: 'מקבל מכם משימות, מחלק לצוות ובודק כל תוצר', level: 2, enabled: true, hb: 'לפני דקה', run: 'בלי לוח זמנים, רץ כשמבקשים', next: 'כשתכתבו לו',
+      days: [6,7,8,5,0,1,6,7,6,8,5,0,1,8], blockedDay: -1, lessons: [2, 0],
       log: [['היום 10:12', 'הופעל', 'ok'], ['אתמול 16:40', 'בקשת אישור: מחיקת טיוטות', 'ask'], ['אתמול 16:38', 'הופעל', 'ok']] },
     { id: 'pesi', name: 'פסי', title: 'אחראית הסושיאל', scope: 'תוכן קבוע ברשתות, מהתכנון ועד ההעלאה', level: 2, enabled: true, hb: 'לפני 3 דק׳', run: 'ראשון עד חמישי ב-09:00', next: 'מחר ב-09:00',
-      days: [2,2,0,2,3,2,0,0,2,2,3,2,2,3], blockedDay: 5, lessons: [3, 1],
+      days: [3,2,3,3,0,0,3,3,3,3,4,0,0,3], blockedDay: 5, lessons: [3, 1],
       log: [['היום 09:04', 'בקשת אישור: פוסט לשבוע הבא', 'ask'], ['היום 09:00', 'הריצה של הבוקר התחילה', 'ok'], ['לפני שבוע', 'ניסיון הפעלה נחסם, כי העובד היה כבוי', 'stop']] },
     { id: 'oz', name: 'עוז', title: 'עוזר אישי', scope: 'יומן, מיילים והכנה לכל פגישה', level: 3, enabled: true, hb: 'אתמול ב-17:12', late: '07:30', run: 'כל בוקר ב-07:30', next: 'מחר ב-07:30',
-      days: [1,2,1,1,2,1,1,1,2,1,2,1,2,0], blockedDay: -1, lessons: [1, 0],
+      days: [4,3,5,4,2,2,3,5,4,4,5,3,2,0], blockedDay: -1, lessons: [1, 0],
       log: [['היום 07:30', 'הריצה של הבוקר לא התחילה', 'stop'], ['אתמול 17:12', 'בקשת אישור: תשובה במייל ללקוח', 'ask'], ['אתמול 07:30', 'הריצה של הבוקר התחילה', 'ok']] },
+    { id: 'gabi', name: 'גבי', title: 'אחראית הגבייה', scope: 'מי שילם, מי עוד לא, ותזכורות מוכנות לשליחה', level: 2, enabled: true, hb: 'לפני דקה', run: 'ראשון עד חמישי ב-08:00', next: 'מחר ב-08:00',
+      days: [3,3,2,4,1,0,3,3,3,3,4,2,0,3], blockedDay: -1, lessons: [2, 0],
+      log: [['היום 08:15', 'הריצה של הבוקר התחילה', 'ok'], ['אתמול 10:20', 'הופעלה', 'ok']] },
     { id: 'lidor', name: 'לידור', title: 'אחראי פניות ולידים', scope: 'מענה בכל שעה, סינון ותשאול מקדים', level: 1, enabled: false, hb: 'אתמול ב-17:40', run: 'בלי לוח זמנים, רץ כשמגיעה פנייה', next: 'כשתדליקו אותו',
-      days: [4,3,0,5,2,4,0,0,3,6,2,1,0,0], blockedDay: -1, lessons: [0, 0],
+      days: [5,7,6,5,0,2,5,6,6,7,5,0,3,0], blockedDay: -1, lessons: [0, 0],
       log: [['אתמול 17:40', 'כובה מהאתר', 'stop'], ['אתמול 12:05', 'הופעל', 'ok']] }
   ];
 }
@@ -757,17 +952,60 @@ function newCode() {
   for (var i = 0; i < 8; i++) { s += abc[Math.floor(Math.random() * abc.length)]; if (i === 3) s += '-'; }
   return s;
 }
+/* מה כל עובד עושה: רשימה קבועה של עבודות לכל עובד. לאתר מגיעים שם העבודה, המצב, המשך והמונים, ואף פעם לא טקסט חופשי או שם של לקוח */
+var WORK = {
+  meni: { f: 0, units: [['משימה אחת', 'משימות', 18], ['בדיקה אחת', 'בדיקות', 9]],
+    jobs: [['מחלק משימה לצוות', 'חילק משימה לצוות', 0], ['בודק תוצר של הצוות', 'בדק תוצר של הצוות', 1]] },
+  pesi: { f: 1, units: [['פוסט אחד', 'פוסטים', 7], ['תוכנית שבוע אחת', 'תוכניות שבוע', 1], ['בדיקת תגובות אחת', 'בדיקות תגובות', 5]],
+    jobs: [['מכינה פוסט לשבוע הבא', 'הכינה פוסט לשבוע הבא', 0], ['מתכננת את הפוסטים של השבוע', 'תכננה את הפוסטים של השבוע', 1], ['בודקת תגובות בעמוד', 'בדקה תגובות בעמוד', 2]] },
+  oz: { f: 0, units: [['סידור יומן אחד', 'סידורי יומן', 4], ['סיכום פגישה אחד', 'סיכומי פגישה', 5], ['טיוטה אחת', 'טיוטות', 14]],
+    jobs: [['מסדר את היומן של מחר', 'סידר את היומן של מחר', 0], ['מכין סיכום לפגישה', 'הכין סיכום לפגישה', 1], ['מכין טיוטה למייל', 'הכין טיוטה למייל', 2]] },
+  gabi: { f: 1, units: [['בדיקה אחת', 'בדיקות חשבוניות', 9], ['תזכורת אחת', 'תזכורות', 6]],
+    jobs: [['בודקת חשבוניות פתוחות', 'בדקה חשבוניות פתוחות', 0], ['מכינה תזכורת על חשבונית', 'הכינה תזכורת על חשבונית', 1]] },
+  lidor: { f: 0, units: [['פנייה אחת', 'פניות', 21], ['סינון אחד', 'סינונים', 6]],
+    jobs: [['עונה לפנייה חדשה', 'ענה לפנייה חדשה', 0], ['מסנן פניות שנכנסו', 'סינן פניות שנכנסו', 1]] }
+};
+/* העבודות של הבוקר: דקה מתחילת היום, משך בדקות ומספר העבודה */
+var RUNS = {
+  meni: [[482, 6, 0], [520, 4, 1], [552, 8, 0], [595, 5, 1], [605, 4, 0], [612, 9, 0], [648, 6, 1], [680, 5, 0]],
+  pesi: [[540, 14, 0], [580, 22, 1], [630, 12, 2]],
+  oz: [[450, 8, 0], [560, 16, 1], [640, 10, 2]],
+  gabi: [[495, 10, 0], [530, 18, 0], [620, 12, 1]],
+  lidor: [[470, 5, 0], [505, 6, 1], [590, 4, 0], [660, 7, 0]]
+};
+var RUNNING = { pesi: 4, gabi: 7 };
+/* שעון אחד לכל הדוגמה. שנייה אמיתית היא 20 שניות כאן, כדי שאפשר יהיה לראות תנועה */
+var DAY = { start: 420, end: 1140, t0: 702, m: 702 };
+function hhmm(m) { m = Math.floor(m); var h = Math.floor(m / 60), n = m % 60; return (h < 10 ? '0' : '') + h + ':' + (n < 10 ? '0' : '') + n; }
+function seedDay(p) {
+  var shift = p.shift || 0, rows = [];
+  p.workers.forEach(function (w) {
+    var W = WORK[w.id], total = w.days.slice(7, 13).reduce(function (a, b) { return a + b; }, 0), weights = W.units.reduce(function (a, u) { return a + u[2]; }, 0), left = total;
+    w.runs = p.quiet || w.late || !w.enabled ? [] : RUNS[w.id].map(function (r) { return [r[0] + shift, r[1], r[2]]; }).filter(function (r) { return r[0] + r[1] < DAY.m; });
+    w.dayN = W.units.map(function () { return 0; });
+    w.weekN = W.units.map(function (u, i) { var n = i === W.units.length - 1 ? left : Math.round(total * u[2] / weights); left -= n; return n; });
+    w.runs.forEach(function (r) { var job = W.jobs[r[2]]; w.dayN[job[2]]++; rows.push({ w: w.id, text: job[1], at: hhmm(r[0] + r[1]), m: r[0] + r[1], p: p.name }); });
+    w.days[13] = w.runs.length;
+    w.lastEnd = w.runs.length ? w.runs[w.runs.length - 1][0] + w.runs[w.runs.length - 1][1] : null;
+    w.st = 'idle'; w.jobI = 0; w.nextAt = DAY.m + 1 + Math.random() * 5;
+    if (!p.quiet && !w.late && w.enabled && RUNNING[w.id]) { w.st = 'work'; w.start = DAY.m - 3; w.endAt = DAY.m + RUNNING[w.id]; }
+  });
+  p.feed = rows.sort(function (a, b) { return b.m - a.m; }).slice(0, 8);
+}
 var S = {
   role: 'shir', viewing: 'shir', reporting: true, zero: false, route: 'login', more: false, theme: 'teal',
   thread: 'meni', threadOpen: false, typing: null, drafts: {}, welcome: false, stepsHidden: false,
-  justConnected: false, pendingLevel: null, fixing: null, apSel: null, modal: false, discon: false, enter: true,
+  dRange: 'day', silentAt: null, justConnected: false, pendingLevel: null, fixing: null, apSel: null, modal: false, discon: false, enter: true,
   people: {
     shir: (function () { var p = blankPerson('שיר', 'shir@example.co.il', 'none', '7KQ4-M2XP', 582); p.computer = 'DESKTOP-SHIR'; p.os = 'Windows'; return p; })(),
     noriqa: blankPerson('נוריקה', 'noriqa@example.co.il', 'waiting', 'H3TZ-9RWC', 410),
-    ojoni: blankPerson("אוג'וני", 'ojoni@example.co.il', 'invite', 'P8ND-4VXK', 600)
+    ojoni: blankPerson("אוג'וני", 'ojoni@example.co.il', 'invite', 'P8ND-4VXK', 600),
+    fresh: blankPerson('אדם חדש', 'new@example.co.il', 'waiting', 'K5WB-7HYT', 480)
   }
 };
 var isMgr = function () { return S.role === 'danny'; };
+function rep(p) { return S.reporting && !(p || P()).quiet; }
+function since(p) { return (p || P()).quiet || S.silentAt || 'אתמול ב-19:12'; }
 var P = function () { return S.people[S.viewing]; };
 var worker = function (id) { return P().workers.filter(function (w) { return w.id === id; })[0]; };
 function connect(key, withTeam) {
@@ -776,7 +1014,21 @@ function connect(key, withTeam) {
   if (!p.computer) { p.computer = 'LAPTOP-' + (p.mail.split('@')[0] || 'NEW').toUpperCase().slice(0, 8); p.os = 'Windows'; }
   p.workers = withTeam ? exampleTeam() : []; p.approvals = withTeam ? exampleApprovals() : []; p.done = []; p.spoke = false;
   p.threads = withTeam ? exampleThreads() : { meni: { unread: 0, items: [] } };
+  seedDay(p);
 }
+function demoPerson(key, ids, shift, quiet) {
+  var p = S.people[key];
+  p.status = 'connected'; p.computer = key.toUpperCase() + '-PC'; p.os = 'Windows'; p.shift = shift; p.quiet = quiet || null; p.done = []; p.spoke = false; p.threads = exampleThreads();
+  p.workers = exampleTeam().filter(function (w) { return ids.indexOf(w.id) >= 0; }).map(function (w, i) {
+    delete w.late; w.enabled = true; w.blockedDay = -1;
+    w.days = w.days.map(function (d, j) { var r = Math.abs(j + i + shift) % 3; return Math.max(0, d + (d && r === 0 ? 1 : d > 1 && r === 1 ? -1 : 0)); });
+    return w;
+  });
+  p.approvals = exampleApprovals().filter(function (a) { return ids.indexOf(a.w) >= 0 && a.w !== 'meni'; });
+  seedDay(p);
+}
+demoPerson('noriqa', ['meni', 'oz', 'gabi'], 23);
+demoPerson('ojoni', ['meni', 'lidor'], -15, 'אתמול ב-19:12');
 function face(w, cls) { return '<img class="face ' + (cls || '') + ((P().halted || !w.enabled) && cls !== 'keep' ? ' off-face' : '') + '" src="' + FACE[w.id] + '" alt="">'; }
 var LG_PILL = '<rect class="lg-pill" x="0" y="-.33" width="37" height="24.66" rx="12.33"/><circle class="lg-knob" cx="24.67" cy="12" r="7.9"/>';
 var LOGO = '<svg class="lg" viewBox="0 -0.8 83.02 25.6" role="img" aria-label="UOS"><g transform="translate(0 0)"><path d="M10.72 24.66Q7.27 24.66 4.88 23.38Q2.5 22.09 1.25 19.74Q0 17.39 0 14.17V0H6.12V14.3Q6.12 15.72 6.66 16.77Q7.2 17.82 8.22 18.38Q9.24 18.94 10.72 18.94Q12.2 18.94 13.22 18.38Q14.24 17.82 14.76 16.78Q15.29 15.75 15.29 14.3V0H21.4V14.17Q21.4 17.39 20.17 19.74Q18.94 22.09 16.55 23.38Q14.17 24.66 10.72 24.66Z" fill="currentColor"/></g><g transform="translate(23.6 0)"><rect class="lg-pill" x="0" y="-.33" width="37" height="24.66" rx="12.33"/><circle class="lg-knob" cx="24.67" cy="12" r="7.9"/></g><g transform="translate(62.8 0)"><path d="M10.26 24.66Q6.9 24.66 4.62 23.61Q2.33 22.55 1.17 20.73Q0 18.9 0 16.54H5.92Q5.92 17.39 6.39 18.1Q6.87 18.81 7.82 19.2Q8.78 19.59 10.26 19.59Q11.54 19.59 12.44 19.27Q13.35 18.94 13.82 18.35Q14.3 17.75 14.3 16.93Q14.3 15.88 13.41 15.3Q12.53 14.73 10.42 14.56L8.88 14.43Q5.16 14.1 2.96 12.1Q0.76 10.09 0.76 6.77Q0.76 4.41 1.86 2.73Q2.96 1.05 4.96 0.16Q6.97 -0.72 9.7 -0.72Q12.66 -0.72 14.71 0.26Q16.77 1.25 17.85 3.04Q18.94 4.83 18.94 7.2H13.02Q13.02 6.41 12.62 5.75Q12.23 5.1 11.49 4.72Q10.75 4.34 9.7 4.34Q8.71 4.34 8.04 4.65Q7.36 4.96 7.02 5.52Q6.67 6.08 6.67 6.77Q6.67 7.69 7.3 8.35Q7.92 9.01 9.47 9.14L11.01 9.27Q13.71 9.5 15.78 10.44Q17.85 11.38 19.04 12.99Q20.22 14.6 20.22 16.93Q20.22 19.27 19.02 21.01Q17.82 22.75 15.6 23.7Q13.38 24.66 10.26 24.66Z" fill="currentColor"/></g></svg>';
@@ -786,8 +1038,8 @@ function syncText(w) { return w.sync === 'sending' ? 'נשלח למחשב' : w.s
 
 /* סרגל אב הטיפוס */
 function renderProto() {
-  var cur = S.route.indexOf('worker-') === 0 ? 'worker' : S.route;
-  var chips = [['login', 'כניסה'], ['connect', 'חיבור'], ['team', 'הצוות'], ['chat', 'מני'], ['worker', 'כרטיס עובד'], ['approvals', 'תור אישורים'], ['people', 'אנשים']];
+  var cur = S.route.indexOf('worker-') === 0 ? 'worker' : S.route === 'dash-one' ? 'dash' : S.route;
+  var chips = [['login', 'כניסה'], ['connect', 'חיבור'], ['dash', 'דשבורד'], ['team', 'הצוות'], ['chat', 'מני'], ['worker', 'כרטיס עובד'], ['approvals', 'תור אישורים'], ['people', 'אנשים']];
   function mode(key, opts) {
     return '<div class="mode" role="group">' + opts.map(function (o) {
       return '<button data-act="seg" data-k="' + key + '" data-v="' + o[0] + '" aria-pressed="' + (String(S[key]) === String(o[0])) + '">' + o[1] + '</button>';
@@ -801,7 +1053,7 @@ function renderProto() {
     (S.more ? '<div class="pop"><div><span class="lbl">מי נכנס</span>' + mode('role', [['shir', 'שיר'], ['danny', 'דני, מנהל']]) + '</div>' +
       '<div><span class="lbl">צבע המותג</span>' + mode('theme', [['teal', 'טורקיז'], ['cobalt', 'כחול'], ['magenta', 'מג׳נטה'], ['lime', 'ליים']]) + '</div>' +
       '<div><span class="lbl">המחשב</span>' + mode('reporting', [['true', 'מדווח'], ['false', 'לא מדווח']]) + '</div>' +
-      '<div><span class="lbl">עובדים אחרי החיבור</span>' + mode('zero', [['false', 'ארבעה'], ['true', 'אף אחד']]) + '</div></div>' : '') + '</div>';
+      '<div><span class="lbl">עובדים אחרי החיבור</span>' + mode('zero', [['false', 'חמישה'], ['true', 'אף אחד']]) + '</div></div>' : '') + '</div>';
 }
 
 /* מעטפת */
@@ -814,12 +1066,12 @@ function shell(content, fill) {
   var teamLabel = isMgr() ? 'הצוות של ' + esc(p.name) : 'הצוות';
   var unread = Object.keys(p.threads || {}).reduce(function (n, k) { return n + (p.threads[k].unread || 0); }, 0);
   var navs = '<div class="navs"><div class="all"><section><small>העבודה שלי</small><ul>' +
-    (isMgr() ? '' : nv('chat', 'שיחה עם מני', 'chat', unread, r === 'chat')) + nv('team', teamLabel, 'users', 0, onTeam) + nv('approvals', 'תור האישורים', 'checks', p.approvals.length, r === 'approvals') + '</ul></section>' +
+    nv('dash', 'דשבורד', 'activity', 0, r === 'dash' || r === 'dash-one') + (isMgr() ? '' : nv('chat', 'שיחה עם מני', 'chat', unread, r === 'chat')) + nv('team', teamLabel, 'users', 0, onTeam) + nv('approvals', 'תור האישורים', 'checks', p.approvals.length, r === 'approvals') + '</ul></section>' +
     (isMgr() ? '<section><small>ניהול</small><ul>' + nv('people', 'אנשים', 'people', 0, r === 'people') + '</ul></section>' : '') +
     '<section><small>המערכת</small><ul>' + nv('connect', 'חיבור המחשב', 'plug', 0, r === 'connect') + '</ul></section></div></div>';
   var pc = isMgr() ? '<span class="pcchip">בעל החשבון</span>'
     : p.status !== 'connected' ? '<span class="pcchip"><span class="dot wait"></span>המחשב עוד לא מחובר</span>'
-    : S.reporting ? '<span class="pcchip"><span class="dot live"></span><bdi>' + p.computer + '</bdi></span>'
+    : rep() ? '<span class="pcchip"><span class="dot live"></span><bdi>' + p.computer + '</bdi></span>'
     : '<span class="pcchip"><span class="dot bad"></span><bdi>' + p.computer + '</bdi> לא מדווח</span>';
   var who = isMgr() ? 'דני' : esc(p.name);
   return '<div class="shell"><aside class="sidenav"><div class="brand">' + logo() + '</div>' + navs +
@@ -968,10 +1220,10 @@ function viewLogin() {
 /* חיבור */
 function flowAside() {
   return '<aside class="card card-b"><div class="flowbox"><div class="flowh"><span class="fi" style="background:var(--brand-soft);color:var(--brand-deep)">' + I('activity') + '</span>מה עובר לאתר</div><ul class="flow">' +
-    ['שמות העובדים והתפקידים שלהם', 'מי דלוק, מי כבוי ובאיזו דרגה', 'מתי כל עובד פעל בפעם האחרונה', 'כשעובד מבקש אישור: מה הוא רוצה לעשות', 'ההודעות שתכתבו לעובדים והתשובות שלהם'].map(function (t) { return '<li>' + I('check') + t + '</li>'; }).join('') + '</ul></div>' +
+    ['שמות העובדים והתפקידים שלהם', 'מי דלוק, מי כבוי ובאיזו דרגה', 'מה כל עובד עושה עכשיו: שם העבודה, כמה זמן וכמה עבודות נעשו', 'כשעובד מבקש אישור: מה הוא רוצה לעשות', 'ההודעות שתכתבו לעובדים והתשובות שלהם'].map(function (t) { return '<li>' + I('check') + t + '</li>'; }).join('') + '</ul></div>' +
     '<div class="flowbox"><div class="flowh"><span class="fi" style="background:var(--green-soft);color:var(--green)">' + I('lock') + '</span>מה נשאר במחשב שלכם</div><ul class="flow">' +
     ['הקבצים והידע של העובדים', 'החיבורים למייל ולמערכות שלכם', 'המנוי והחשבון שלכם בקלוד'].map(function (t) { return '<li>' + I('check') + t + '</li>'; }).join('') + '</ul></div>' +
-    '<p class="fine" style="text-align:start;margin-top:14px">כשהמחשב כבוי או שקלוד סגור, העובדים לא פועלים, והודעה שתכתבו תחכה עד שיחזרו.</p></aside>';
+    '<p class="fine" style="text-align:start;margin-top:14px">העובדים רצים רק כשהמחשב דלוק ומחובר לרשת, ולכן הוא צריך להישאר דלוק. הודעה שתכתבו כשהוא לא זמין תחכה עד שיחזור.</p></aside>';
 }
 function stage(ok, p) {
   return '<div class="stage' + (ok ? ' ok' : '') + '"><div class="node"><span class="node-ic">' + I('laptop') + '</span><b>' + (isMgr() ? 'המחשב של ' + esc(p.name) : 'המחשב שלכם') + '</b><small>' + (ok ? '<bdi>' + p.computer + '</bdi>' : 'כאן נמצאים העובדים') + '</small></div>' +
@@ -983,32 +1235,31 @@ function viewConnect() {
   if (p.status === 'connected') return viewConnected(p);
   var m = Math.floor(p.secs / 60), s = p.secs % 60, timer = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
   var lead = isMgr() ? 'אפשר לעשות את זה יחד בשיחה, או לשלוח הזמנה למייל. אחרי הכניסה יופיע שם אותו הקוד.'
-    : 'העובדים רצים על המחשב שלכם ועל החשבון שלכם בקלוד. אחרי שנחבר את המחשב תוכלו לדבר איתם כאן, להדליק ולכבות אותם ולאשר את מה שהכינו, גם מהטלפון.';
+    : 'העובדים רצים על המחשב שלכם ועל המנוי שלכם בקלוד. אחרי החיבור מדברים איתם כאן, מדליקים ומכבים אותם ומאשרים את מה שהכינו, גם מהטלפון.';
   return '<div class="' + pageClass() + '">' + (isMgr() ? '<button class="back" data-act="go" data-to="people">' + I('right') + 'לכל האנשים</button>' : '') +
     '<div><h1>' + (isMgr() ? 'חיבור המחשב של ' + esc(p.name) : 'חיבור המחשב') + '</h1><p class="lead">' + lead + '</p></div>' +
     '<div class="conn"><section class="card">' + stage(false, p) +
     '<div class="waitline"><span class="dot wait"></span><span>מחכים למחשב</span><button class="btn sim sm" data-act="simconnect">הדמיה: המחשב התחבר</button></div>' +
     '<div class="steps">' +
-    '<div class="step"><span class="n">1</span><div class="body"><h3>פותחים את קלוד במחשב</h3><p>בתיקייה שבה העובדים נמצאים.</p></div></div>' +
-    '<div class="step"><span class="n">2</span><div class="body"><h3>מדביקים את הפקודה הזאת בשיחה עם קלוד</h3>' +
-      '<div class="cmd"><span class="code" id="cmd">/uos:connect ' + p.code + '</span><button class="btn pri sm" data-act="copy">' + I('copy') + '<span id="copylbl">העתקה</span></button></div>' +
-      '<div class="meta"><span class="tm">' + I('clock') + 'הקוד תקף עוד <bdi class="num" id="timer">' + timer + '</bdi></span><button class="tlink" data-act="newcode">קוד חדש</button>' + (isMgr() ? '<button class="tlink" data-act="toast" data-msg="באב הטיפוס לא נשלח כלום">שליחת הזמנה אל <bdi>' + esc(p.mail) + '</bdi></button>' : '') + '</div>' +
-      '<div class="chatmock"><div class="q">/uos:connect ' + p.code + '</div><div>המחשב מחובר ל-UOS. מעכשיו האתר יודע מי העובדים, באיזו דרגה הם ומתי פעלו. הקבצים והחיבורים נשארים אצלכם.</div></div>' +
-      '<p class="muted" style="font-size:.86rem">קלוד לא מכיר את הפקודה? סימן שהתוסף של UOS עוד לא מותקן. אנחנו מתקינים אותו איתכם בשיחה קצרה, ואז חוזרים לכאן.</p></div></div>' +
-    '<div class="step"><span class="n">3</span><div class="body"><h3>חוזרים לכאן</h3><p>המסך הזה יתעדכן לבד ברגע שהמחשב יתחבר.</p></div></div>' +
+    '<div class="step"><span class="n">1</span><div class="body"><h3>מתקינים את UOS על המחשב שתמיד דלוק</h3><p>העובדים רצים עליו גם כשאתם לא לידו, ולכן הוא צריך להישאר דלוק ומחובר לרשת.</p><button class="btn line sm" style="margin-top:8px;width:fit-content" data-act="toast" data-msg="באב הטיפוס לא מורידים כלום">' + I('down') + 'הורדה</button></div></div>' +
+    '<div class="step"><span class="n">2</span><div class="body"><h3>מדביקים בהתקנה את הקוד הזה</h3>' +
+      '<div class="cmd"><span class="code" id="cmd">' + p.code + '</span><button class="btn pri sm" data-act="copy">' + I('copy') + '<span id="copylbl">העתקה</span></button></div>' +
+      '<div class="meta"><span class="tm">' + I('clock') + 'הקוד תקף עוד <bdi class="num" id="timer">' + timer + '</bdi></span><button class="tlink" data-act="newcode">קוד חדש</button>' + (isMgr() ? '<button class="tlink" data-act="toast" data-msg="באב הטיפוס לא נשלח כלום">שליחת הזמנה אל <bdi>' + esc(p.mail) + '</bdi></button>' : '') + '</div></div></div>' +
+    '<div class="step"><span class="n">3</span><div class="body"><h3>נכנסים פעם אחת לחשבון שלכם בקלוד</h3><p>ההתקנה פותחת את חלון הכניסה של Anthropic. הפרטים לא עוברים דרכנו, והמנוי נשאר שלכם.</p></div></div>' +
+    '<div class="step"><span class="n">4</span><div class="body"><h3>חוזרים לכאן</h3><p>המסך הזה יתעדכן לבד ברגע שהמחשב יתחבר.</p></div></div>' +
     '</div></section>' + flowAside() + '</div></div>';
 }
 function viewConnected(p) {
   var n = p.workers.length;
   if (S.justConnected) {
     var faces = p.workers.map(function (w, i) { return '<div style="animation-delay:' + (.1 + i * .09) + 's">' + '<img class="face" src="' + FACE[w.id] + '" alt="">' + w.name + '<small>' + w.title + '</small></div>'; }).join('');
-    return '<div class="' + pageClass() + '"><div><h1>המחשב התחבר</h1><p class="lead"><bdi>' + p.computer + '</bdi>, ' + p.os + '. ' + (n ? 'מצאנו בו ארבעה עובדים.' : 'עוד אין בו עובדים, ואפשר לבנות את הראשון עכשיו.') + '</p></div>' +
+    return '<div class="' + pageClass() + '"><div><h1>המחשב התחבר</h1><p class="lead"><bdi>' + p.computer + '</bdi>, ' + p.os + '. ' + (n ? 'מצאנו בו ' + ['', 'עובד אחד', 'שני עובדים', 'שלושה עובדים', 'ארבעה עובדים', 'חמישה עובדים'][n] + '.' : 'עוד אין בו עובדים, ואפשר לבנות את הראשון עכשיו.') + '</p></div>' +
       '<section class="card">' + stage(true, p) + (n ? '<div class="okfaces">' + faces + '</div>' : '') +
       '<div class="okcta"><button class="btn pri" data-act="after-connect">' + (n ? 'לצוות' : 'לבניית העובד הראשון') + I('left') + '</button></div></section></div>';
   }
   return '<div class="' + pageClass() + '"><div><h1>חיבור המחשב</h1><p class="lead">המחשב הזה מחובר ל-UOS: הוא מעדכן את האתר במה שהעובדים עושים, וכשאתם מכבים עובד או משנים לו דרגה, זה עובר אליו.</p></div>' +
-    '<div class="conn"><section class="card">' + stage(S.reporting, p) + '<div class="card-b"><dl class="kv"><dt>מחשב</dt><dd><bdi>' + p.computer + '</bdi>, ' + p.os + '</dd>' +
-    '<dt>גרסת התוסף</dt><dd class="num">0.1.0</dd><dt>מחובר מאז</dt><dd>היום ב-10:12</dd><dt>דיווח אחרון</dt><dd>' + (S.reporting ? 'לפני דקה' : 'היום ב-19:12') + '</dd></dl>' +
+    '<div class="conn"><section class="card">' + stage(rep(), p) + '<div class="card-b"><dl class="kv"><dt>מחשב</dt><dd><bdi>' + p.computer + '</bdi>, ' + p.os + '</dd>' +
+    '<dt>גרסת UOS במחשב</dt><dd class="num">0.1.0</dd><dt>מחובר מאז</dt><dd>היום ב-10:12</dd><dt>דיווח אחרון</dt><dd>' + (rep() ? 'לפני דקה' : since()) + '</dd></dl>' +
     '<div style="margin-top:14px">' + (S.discon ? '<div class="confirm"><b>לנתק את <bdi>' + p.computer + '</bdi>?</b><span>העובדים ימשיכו לרוץ במחשב לפי המצב האחרון, אבל לא תראו אותם כאן ולא תוכלו לדבר איתם או לכבות אותם מכאן.</span><div class="row"><button class="btn redline sm" data-act="discon-yes">לנתק</button><button class="btn line sm" data-act="discon-no">ביטול</button></div></div>'
       : '<button class="btn line" data-act="discon">ניתוק המחשב</button>') + '</div></div></section>' + flowAside() + '</div></div>';
 }
@@ -1045,24 +1296,23 @@ function viewTeam() {
     return '<div class="' + pageClass() + '">' + back + hd + '<section class="card"><div class="empty"><span class="eic">' + I('plug') + '</span><b>המחשב עוד לא מחובר</b><p>אחרי החיבור העובדים יופיעו כאן.</p><button class="btn pri" style="margin-top:6px" data-act="go" data-to="connect">לחיבור המחשב' + I('left') + '</button></div></section></div>';
   }
   if (!p.workers.length) {
-    return '<div class="' + pageClass() + '">' + back + hd + '<section class="card"><div class="empty"><span class="eic">' + I('users') + '</span><b>עוד אין עובדים</b><p>כתבו בקלוד את הפקודה הזאת. קלוד ישאל אתכם עד שמונה שאלות על העבודה שלכם ויבנה את העובד הראשון, וכשהוא מוכן הוא יופיע כאן לבד.</p>' +
-      '<div class="cmd" style="margin-top:8px;width:min(400px,100%)"><span class="code">/uos:setup</span><button class="btn pri sm" data-act="copy-text" data-text="/uos:setup">' + I('copy') + 'העתקה</button></div></div></section></div>';
+    return '<div class="' + pageClass() + '">' + back + hd + '<section class="card"><div class="empty"><span class="eic">' + I('users') + '</span><b>עוד אין עובדים</b><p>מני ישאל אתכם עד שמונה שאלות על העבודה שלכם ויבנה את העובד הראשון, וכשהוא מוכן הוא יופיע כאן לבד.</p><button class="btn pri" style="margin-top:6px" data-act="toast" data-msg="באב הטיפוס זה לא נפתח">להתחיל עם מני' + I('left') + '</button></div></section></div>';
   }
   var onN = p.workers.filter(function (w) { return w.enabled; }).length, offW = p.workers.filter(function (w) { return !w.enabled; });
-  var lateW = p.workers.filter(function (w) { return w.late && w.enabled && !p.halted && S.reporting; });
+  var lateW = p.workers.filter(function (w) { return w.late && w.enabled && !p.halted && rep(); });
   var oldest = p.approvals.length ? p.approvals[p.approvals.length - 1].when : '';
   var tiles = '<div class="tiles">' +
     tile('accent', 'users', 'עובדים דלוקים', p.halted ? '0 <small>מתוך ' + p.workers.length + '</small>' : onN + ' <small>מתוך ' + p.workers.length + '</small>', p.halted ? 'הצוות עצר' : (offW.length ? offW.map(function (w) { return w.name; }).join(', ') + ' כבוי' : 'כולם פועלים')) +
     tile('blue', 'inbox', 'מחכה לאישור שלכם', p.approvals.length, p.approvals.length ? 'הישן ביותר מ' + oldest : 'אין מה לאשר', ['go', 'approvals']) +
     tile(lateW.length ? 'red' : 'green', lateW.length ? 'alert' : 'clock', 'לא רצו בזמן', lateW.length, lateW.length ? lateW[0].name + ', הריצה של ' + lateW[0].late : 'כולם בזמן', lateW.length ? ['open', '', lateW[0].id] : null) +
-    tile(S.reporting ? 'green' : 'red', 'laptop', 'המחשב', S.reporting ? 'מחובר' : 'לא מדווח', S.reporting ? 'דיווח אחרון לפני דקה' : 'מאז 19:12', ['go', 'connect']) + '</div>';
+    tile(rep() ? 'green' : 'red', 'laptop', 'המחשב', rep() ? 'מחובר' : 'לא מדווח', rep() ? 'דיווח אחרון לפני דקה' : 'מאז ' + since() + '', ['go', 'connect']) + '</div>';
   var alerts = '';
   if (p.halted) alerts += '<div class="alert solid">' + I('stop') + '<b>כל הצוות עצר</b><span>אף עובד לא יפעל עד שתפעילו את הצוות מחדש.</span></div>';
-  if (!S.reporting) alerts += '<div class="alert red">' + I('alert') + '<b>המחשב לא מדווח מאז 19:12</b><span>הוא כבוי או שקלוד סגור. העובדים לא פועלים עד שהוא יחזור, ומה שתשנו כאן ייכנס לתוקף אז.</span></div>';
+  if (!rep()) alerts += '<div class="alert red">' + I('alert') + '<b>המחשב לא מדווח מאז ' + since() + '</b><span>הוא כבוי או מנותק מהרשת. העובדים לא פועלים עד שהוא יחזור, ומה שתשנו כאן ייכנס לתוקף אז.</span></div>';
 
   var rows = p.workers.map(function (w) {
-    var off = p.halted || !w.enabled, late = w.late && !off && S.reporting, sy = syncText(w);
-    var hb = p.halted ? ['off', 'עצר עם כל הצוות'] : !w.enabled ? ['off', 'כבוי'] : !S.reporting ? ['off', 'לא דיווח מאז 19:12'] : late ? ['bad', 'הריצה של ' + w.late + ' לא התחילה'] : ['ok', '<span class="hb-lab">פעילות אחרונה </span>' + w.hb];
+    var off = p.halted || !w.enabled, late = w.late && !off && rep(), sy = syncText(w);
+    var hb = p.halted ? ['off', 'עצר עם כל הצוות'] : !w.enabled ? ['off', 'כבוי'] : !rep() ? ['off', 'לא דיווח מאז ' + since() + ''] : late ? ['bad', 'הריצה של ' + w.late + ' לא התחילה'] : ['ok', '<span class="hb-lab">פעילות אחרונה </span>' + w.hb];
     var dotc = hb[0] === 'ok' ? 'dot live' : hb[0] === 'bad' ? 'dot bad' : 'dot off';
     var row = '<div class="bw' + (off ? ' off' : '') + (late ? ' late' : '') + '">' +
       '<button class="bw-who" data-act="open" data-id="' + w.id + '" data-fk="o' + w.id + '">' + face(w) + '<span style="min-width:0"><b>' + w.name + '</b><small>' + w.title + '</small></span></button>' +
@@ -1087,12 +1337,12 @@ function viewTeam() {
     var w = worker(a.w);
     return '<button class="lrow" data-act="ap-open" data-id="' + a.id + '">' + face(w, 'keep') + '<span class="tx"><b>' + a.title + '</b><small>' + w.name + ', ' + a.when + '</small></span><span class="pill ' + a.tone + '">' + a.tag + '</span></button>';
   }).join('');
-  var feedRows = [['meni', 'הופעל', 'היום 10:12'], ['pesi', 'בקשת אישור: פוסט לשבוע הבא', 'היום 09:04'], ['pesi', 'הריצה של הבוקר התחילה', 'היום 09:00'], ['oz', 'הריצה של הבוקר לא התחילה', 'היום 07:30']].map(function (f) {
-    var w = worker(f[0]); return w ? '<div class="lrow">' + face(w, 'keep s') + '<span class="tx"><b style="font-weight:600">' + w.name + ': ' + f[1] + '</b></span><time>' + f[2] + '</time></div>' : '';
+  var feedRows = (p.feed || []).slice(0, 4).map(function (f) {
+    var w = worker(f.w); return w ? '<div class="lrow">' + face(w, 'keep s') + '<span class="tx"><b style="font-weight:600">' + w.name + ' ' + f.text + '</b></span><time>' + f.at + '</time></div>' : '';
   }).join('');
   var two = '<div class="two"><section class="card"><div class="card-h"><div><h2>מחכה לאישור שלכם</h2><small>לחצו על פריט כדי לראות אותו ולהחליט</small></div><button class="link" data-act="go" data-to="approvals">לכל התור' + I('upleft') + '</button></div>' +
     (ap || '<div class="empty"><span class="eic">' + I('checks') + '</span><b>אין מה לאשר</b><p>כשעובד יכין משהו שצריך אישור, הוא יופיע כאן.</p></div>') + '</section>' +
-    '<section class="card"><div class="card-h"><div><h2>מה קרה היום</h2><small>מי פעל ומתי, בלי התוכן עצמו</small></div></div>' + feedRows + '</section></div>';
+    '<section class="card"><div class="card-h"><div><h2>מה קרה היום</h2><small>מי עשה מה ומתי, בלי התוכן עצמו</small></div><button class="link" data-act="go" data-to="dash">לדשבורד' + I('upleft') + '</button></div>' + feedRows + '</section></div>';
   return '<div class="' + pageClass() + '">' + back + hd + (alerts ? '<div style="display:grid;gap:8px">' + alerts + '</div>' : '') + quickBox() + firstSteps(p) + tiles + board + two + '</div>';
 }
 
@@ -1113,18 +1363,25 @@ function chart(w) {
     '<circle cx="' + last[0] + '" cy="' + last[1] + '" r="5.5" style="fill:var(--brand)" stroke="#fff" stroke-width="2.5"/></svg>' +
     '<div class="chartf"><span>לפני שבועיים</span><span>היום</span></div>';
 }
+function workerDone(p, w) {
+  var W = WORK[w.id], total = w.days.slice(7).reduce(function (a, b) { return a + b; }, 0);
+  var now = dState(p, w) === 'work' ? 'עכשיו: ' + jobOf(w)[0] + ', ' + mins(DAY.m - w.start) : dSub(p, w);
+  var runs = w.runs.slice(-5).reverse().map(function (r) { return '<li><span class="d ok"></span><span>' + W.jobs[r[2]][1] + '</span><time>' + hhmm(r[0]) + '</time></li>'; }).join('');
+  return '<section class="card"><div class="card-h"><div><h2>מה נעשה היום והשבוע</h2><small>' + now + '</small></div></div><div class="card-b" style="display:grid;gap:10px"><div class="mstats"><div class="mstat"><b class="num">' + w.days[13] + '</b><small>עבודות היום</small></div><div class="mstat"><b class="num">' + total + '</b><small>עבודות השבוע</small></div></div>' +
+    '<small class="muted">השבוע: ' + (dTally(w, w.weekN.map(function (n, i) { return n + w.dayN[i]; })) || 'עוד אין') + '</small></div>' + (runs ? '<ul class="tl">' + runs + '</ul>' : '') + '</section>';
+}
 function viewWorker(id) {
   var p = P(), w = worker(id);
   if (!w) return viewTeam();
   var off = p.halted || !w.enabled, sy = syncText(w);
-  var late = w.late && !off && S.reporting;
+  var late = w.late && !off && rep();
   var sub = sy || (off ? 'לא יפעל עד שתדליקו אותו' : 'בפעם הבאה: ' + w.next);
-  var hbPill = !S.reporting ? '<span class="pill gray">לא דיווח מאז 19:12</span>' : late ? '<span class="pill red"><span class="dot bad"></span>הריצה של ' + w.late + ' לא התחילה</span>' : off ? '<span class="pill gray">כבוי</span>' : '<span class="pill green"><span class="dot"></span>פעילות אחרונה ' + w.hb + '</span>';
+  var hbPill = !rep() ? '<span class="pill gray">לא דיווח מאז ' + since() + '</span>' : late ? '<span class="pill red"><span class="dot bad"></span>הריצה של ' + w.late + ' לא התחילה</span>' : off ? '<span class="pill gray">כבוי</span>' : '<span class="pill green"><span class="dot"></span>פעילות אחרונה ' + w.hb + '</span>';
   var rungs = [1, 2, 3, 4].map(function (n) {
     return '<button class="rung' + (n < w.level ? ' past' : '') + '" data-act="level" data-id="' + w.id + '" data-n="' + n + '" data-fk="c' + n + '" aria-pressed="' + (w.level === n) + '"' + (isMgr() ? ' aria-disabled="true"' : '') + '><span class="n num">' + n + '</span><b>' + LV[n][0] + '</b><small>' + LV[n][1] + '</small></button>';
   }).join('');
   var pending = S.pendingLevel && S.pendingLevel.w === w.id ? '<div class="rowconfirm" style="border-top:1px solid var(--brand-mid);border-bottom:0;border-radius:0 0 var(--r-lg) var(--r-lg)" aria-live="polite"><span><b>להעלות את ' + w.name + ' לדרגה ' + S.pendingLevel.n + '?</b> שליחה ללקוח, תשלום, מחיקה ופרסום ימשיכו לחכות לאישור שלכם.</span><button class="btn pri sm" data-act="level-yes" data-fk="ly">להעלות</button><button class="btn line sm" data-act="level-no">ביטול</button></div>' : '';
-  var hbTxt = !S.reporting ? ['לא דיווח מאז 19:12', 'bad'] : late ? ['הריצה של ' + w.late + ' לא התחילה', 'bad'] : ['פעילות אחרונה ' + w.hb, ''];
+  var hbTxt = !rep() ? ['לא דיווח מאז ' + since() + '', 'bad'] : late ? ['הריצה של ' + w.late + ' לא התחילה', 'bad'] : ['פעילות אחרונה ' + w.hb, ''];
   var note = isMgr() ? 'את הדרגה קובע מי שהעובד שלו. אתם יכולים לכבות אותו.' : 'את הדרגה מעלים רק אתם, אחרי שראיתם שהעובד כבר כמעט לא צריך תיקונים.';
   return '<div class="' + pageClass() + '"><button class="back" data-act="go" data-to="team">' + I('right') + 'לכל הצוות</button>' +
     '<section class="card" style="overflow:hidden"><header class="wh' + (off ? ' isoff' : '') + '"><img class="port" src="' + FACE[w.id] + '" alt=""><div class="txt"><h1>' + w.name + '</h1><div class="tt">' + w.title + '</div><p class="muted">' + w.scope + '</p><div class="pills"><span class="pill accent">דרגה ' + w.level + '</span>' + hbPill + '</div>' + (isMgr() ? '' : (w.id === 'meni' ? '<button class="btn pri sm" style="margin-top:12px" data-act="chat-open">' + I('chat') + 'שיחה עם מני</button>' : '<button class="btn pri sm" style="margin-top:12px" data-act="ap-worker" data-id="' + w.id + '">' + I('inbox') + 'האישורים של ' + w.name + '</button>')) + '</div>' +
@@ -1132,7 +1389,283 @@ function viewWorker(id) {
     '<section class="card"><div class="card-h"><div><h2>דרגה</h2><small>' + note + '</small></div></div><div class="ladder">' + rungs + '</div>' + pending + '</section>' +
     '<div class="wgrid"><div style="display:grid;gap:20px"><section class="card"><div class="card-h"><div><h2>פעילות</h2><small>לוח זמנים: ' + w.run + '</small></div></div><div class="card-b"><div class="hbbig ' + hbTxt[1] + '">' + hbTxt[0] + '</div>' + chart(w) + '</div></section>' +
     '<section class="card"><div class="card-h"><div><h2>יומן הלמידה</h2><small>התיקונים עצמם נשארים במחשב שלכם, וכאן רואים רק כמה יש</small></div></div><div class="card-b" style="display:grid;gap:10px"><div class="mstats"><div class="mstat"><b class="num">' + w.lessons[0] + '</b><small>תיקונים נרשמו</small></div><div class="mstat"><b class="num">' + w.lessons[1] + '</b><small>הפכו לכלל קבוע</small></div></div><small class="muted">תיקון שחוזר שלוש פעמים הופך לכלל קבוע.</small></div></section></div>' +
-    '<div style="display:grid;gap:20px"><section class="card"><div class="card-h"><div><h2>מה קרה לאחרונה</h2></div></div><ul class="tl">' + w.log.map(function (l) { return '<li><span class="d ' + l[2] + '"></span><span>' + l[1] + '</span><time>' + l[0] + '</time></li>'; }).join('') + '</ul></section></div></div></div>';
+    '<div style="display:grid;gap:20px">' + workerDone(p, w) + '<section class="card"><div class="card-h"><div><h2>מה קרה לאחרונה</h2></div></div><ul class="tl">' + w.log.map(function (l) { return '<li><span class="d ' + l[2] + '"></span><span>' + l[1] + '</span><time>' + l[0] + '</time></li>'; }).join('') + '</ul></section></div></div></div>';
+}
+
+/* דשבורד חי: מה כל עובד עושה עכשיו, ומה נעשה היום ובשבוע. הציור הראשון בונה את המסך, ואחריו מעדכנים רק את מה שהשתנה */
+function dashOn() { return S.route === 'dash' || S.route === 'dash-one'; }
+function dAll() { return S.route === 'dash' && isMgr(); }
+function patch(el, html) { if (el && el._h !== html) { el.innerHTML = html; el._h = html; return true; } return false; }
+function mins(n) { n = Math.max(0, Math.floor(n)); return n < 1 ? 'פחות מדקה' : n === 1 ? 'דקה' : n === 2 ? 'שתי דקות' : n + ' דקות'; }
+function pct(m) { return ((Math.min(m, DAY.end) - DAY.start) / (DAY.end - DAY.start) * 100).toFixed(2); }
+function names(a) { return a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' ו' + a[a.length - 1]; }
+function fm(w, male, female) { return WORK[w.id].f ? female : male; }
+function jobOf(w) { return WORK[w.id].jobs[w.jobI]; }
+function dOrder(p) { return LU_CAST.map(function (k) { return p.workers.filter(function (w) { return w.id === k; })[0]; }).filter(Boolean); }
+function dState(p, w) { return !rep(p) ? 'quiet' : p.halted ? 'halt' : !w.enabled ? 'off' : w.st === 'work' ? 'work' : w.late ? 'late' : 'idle'; }
+function dCount(p) { return p.workers.reduce(function (n, w) { return n + w.days[13]; }, 0); }
+function dMinutes(p) { return p.workers.reduce(function (n, w) { return n + w.runs.reduce(function (m, r) { return m + r[1]; }, 0) + (w.st === 'work' && rep(p) ? DAY.m - w.start : 0); }, 0); }
+function dHours(n) { n = Math.floor(n); var m = n % 60; return Math.floor(n / 60) + ':' + (m < 10 ? '0' : '') + m; }
+function dSub(p, w) {
+  var s = dState(p, w);
+  return s === 'quiet' ? 'לא ידוע' : s === 'halt' ? fm(w, 'עצר עם הצוות', 'עצרה עם הצוות') : s === 'off' ? fm(w, 'כבוי', 'כבויה') : s === 'work' ? 'באמצע עבודה' : s === 'late' ? fm(w, 'לא התחיל בזמן', 'לא התחילה בזמן')
+    : w.lastEnd === null ? 'מחכה לעבודה הבאה' : fm(w, 'סיים', 'סיימה') + ' לפני ' + mins(DAY.m - w.lastEnd);
+}
+function dBubble(p, w, pop) {
+  var s = dState(p, w);
+  if (s === 'work') return '<div class="dbub' + (pop ? ' pop' : '') + '"><span class="lu-dots"><i></i><i></i><i></i></span><span class="dbub-tx">' + jobOf(w)[0] + '<span class="dt" data-tm>' + mins(DAY.m - w.start) + '</span></span></div>';
+  if (s === 'late') return '<div class="dbub late">הריצה של ' + w.late + ' לא התחילה</div>';
+  return '';
+}
+function dSum(p) {
+  if (!rep(p)) return 'המחשב אמור להיות דלוק כל הזמן, והוא לא מדווח מאז ' + since(p) + '. עד שהוא יחזור אי אפשר לדעת מה הצוות עושה.';
+  if (p.halted) return 'כל הצוות עצר, ואף עובד לא יפעל עד שתפעילו אותו מחדש.';
+  var by = function (s) { return dOrder(p).filter(function (w) { return dState(p, w) === s; }); };
+  var nm = function (w) { return w.name; }, work = by('work'), late = by('late'), off = by('off'), out = [];
+  out.push(work.length ? names(work.map(nm)) + ' באמצע עבודה.' : 'כרגע אף אחד לא באמצע עבודה.');
+  late.forEach(function (w) { out.push(w.name + fm(w, ' לא התחיל', ' לא התחילה') + ' את הריצה של ' + w.late + '.'); });
+  if (off.length) out.push(names(off.map(nm)) + (off.length > 1 ? ' כבויים.' : fm(off[0], ' כבוי.', ' כבויה.')));
+  return out.join(' ');
+}
+function dLive(ok) { return '<span class="dlive' + (ok ? '' : ' bad') + '"><span class="dot ' + (ok ? 'live' : '') + '"></span>' + (ok ? 'מתעדכן חי' : 'לא מדווח') + '</span>'; }
+function dStat(n, lab) { return '<div class="dstat"><b class="num">' + n + '</b><small>' + lab + '</small></div>'; }
+function dStats(p) {
+  return dStat(dCount(p), 'עבודות היום') + dStat(dHours(dMinutes(p)), 'שעות עבודה היום') +
+    '<button class="dstat" data-act="go" data-to="approvals"><b class="num">' + p.approvals.length + '</b><small>מחכה לאישור</small></button>';
+}
+function dColumn(p, w) {
+  var n = p.approvals.filter(function (a) { return a.w === w.id; }).length;
+  return '<div class="dw is-' + dState(p, w) + '" data-w="' + w.id + '"><div class="dw-bub">' + dBubble(p, w) + '</div>' +
+    '<button class="dw-who" data-act="open" data-id="' + w.id + '"><span class="dw-name"><span class="dot live"></span>' + w.name + '</span><span class="dw-sub">' + dSub(p, w) + '</span></button>' +
+    '<button class="dw-pic" data-act="open" data-id="' + w.id + '" tabindex="-1" aria-hidden="true"><img src="' + FACE[w.id] + '" alt=""></button>' +
+    (n ? '<button class="dw-ap num" data-act="ap-worker" data-id="' + w.id + '" aria-label="' + plural(n, 'אישור אחד מחכה', 'אישורים מחכים') + ' אצל ' + w.name + '" data-tip="מחכה לאישור שלכם">' + n + '</button>' : '') + '</div>';
+}
+function plural(n, one, many) { return n === 1 ? one : n + ' ' + many; }
+function dTally(w, arr) { return WORK[w.id].units.map(function (u, i) { return arr[i] ? plural(arr[i], u[0], u[1]) : ''; }).filter(Boolean).join(', '); }
+function dLane(p, w) {
+  var W = WORK[w.id], html = '', span = DAY.end - DAY.start, off = !w.enabled, s = dState(p, w);
+  w.runs.forEach(function (r) {
+    html += '<i class="tl-b" style="inset-inline-start:' + pct(r[0]) + '%;width:' + (r[1] / span * 100).toFixed(2) + '%" data-tip="' + W.jobs[r[2]][1] + ', ' + hhmm(r[0]) + ' עד ' + hhmm(r[0] + r[1]) + '"></i>';
+  });
+  if (w.st === 'work') html += '<i class="tl-b run" data-run="' + w.id + '" style="inset-inline-start:' + pct(w.start) + '%;width:' + ((DAY.m - w.start) / span * 100).toFixed(2) + '%" data-tip="' + jobOf(w)[0] + ', מ-' + hhmm(w.start) + '"></i>';
+  if (w.late && !off) {
+    var t = w.late.split(':');
+    html += '<i class="tl-miss" style="inset-inline-start:' + pct(+t[0] * 60 + +t[1]) + '%" data-tip="הריצה של ' + w.late + ' לא התחילה"></i>';
+  }
+  if (!w.runs.length && w.st !== 'work') html += '<span class="tl-note">' + (s === 'quiet' ? 'אין דיווח מהיום' : off ? fm(w, 'כבוי', 'כבויה') : s === 'late' ? fm(w, 'עוד לא עבד היום', 'עוד לא עבדה היום') : 'עוד אין עבודות היום') + '</span>';
+  return html;
+}
+function dLaneSum(w) {
+  var n = w.days[13];
+  return n ? '<b class="num">' + plural(n, 'עבודה אחת', 'עבודות') + '</b><small>' + dTally(w, w.dayN) + '</small>' : '<small>אין עבודות היום</small>';
+}
+function dDay(p) {
+  var hours = [7, 9, 11, 13, 15, 17, 19].map(function (h, i, a) {
+    return '<span class="num' + (i === 0 ? ' first' : i === a.length - 1 ? ' last' : '') + (i % 2 ? ' opt' : '') + '" data-h="' + pct(h * 60) + '" style="inset-inline-start:' + pct(h * 60) + '%' + (Math.abs(+pct(h * 60) - +pct(DAY.m)) < 7 ? ';visibility:hidden' : '') + '">' + (h < 10 ? '0' : '') + h + ':00</span>';
+  }).join('');
+  return '<div class="tl-row ax"><span></span><div class="tl-hours">' + hours + '<span class="tl-now num" id="d-nowlab">' + hhmm(DAY.m) + '</span></div><span></span></div>' + dOrder(p).map(function (w) {
+    return '<div class="tl-row"><button class="tl-who" data-act="open" data-id="' + w.id + '"><img class="face s" src="' + FACE[w.id] + '" alt=""><b>' + w.name + '</b></button>' +
+      '<div class="tl-lane' + (w.enabled ? '' : ' off') + '" id="tl-' + w.id + '">' + dLane(p, w) + '</div><div class="tl-sum" id="tls-' + w.id + '">' + dLaneSum(w) + '</div></div>';
+  }).join('');
+}
+var WK_DAYS = [['ב׳', 'יום שני'], ['ג׳', 'יום שלישי'], ['ד׳', 'יום רביעי'], ['ה׳', 'יום חמישי'], ['ו׳', 'יום שישי'], ['ש׳', 'שבת'], ['היום', 'היום']];
+function dWeek(p) {
+  var team = dOrder(p), max = 1;
+  team.forEach(function (w) { w.days.slice(7).forEach(function (d) { if (d > max) max = d; }); });
+  var lv = function (n) { var r = n / max; return !n ? 0 : r < .3 ? 1 : r < .55 ? 2 : r < .85 ? 3 : 4; };
+  var head = '<div class="wk-row hd"><span></span>' + WK_DAYS.map(function (d, i) { return '<span class="wk-d' + (i === 6 ? ' today' : '') + '">' + d[0] + '</span>'; }).join('') + '<span class="wk-sum"></span></div>';
+  return head + team.map(function (w) {
+    var total = w.days.slice(7).reduce(function (a, b) { return a + b; }, 0);
+    var cells = w.days.slice(7).map(function (n, i) { return '<span class="wk-c l' + lv(n) + (i === 6 ? ' today' : '') + '" data-tip="' + w.name + ', ' + WK_DAYS[i][1] + ': ' + (n ? plural(n, 'עבודה אחת', 'עבודות') : 'בלי עבודות') + '">' + (n || '') + '</span>'; }).join('');
+    return '<div class="wk-row"><button class="tl-who wk-who" data-act="open" data-id="' + w.id + '"><img class="face s" src="' + FACE[w.id] + '" alt=""><b>' + w.name + '</b></button>' + cells +
+      '<div class="wk-sum"><b class="num">' + plural(total, 'עבודה אחת', 'עבודות') + '</b><small>' + dTally(w, w.weekN.map(function (n, i) { return n + w.dayN[i]; })) + '</small></div></div>';
+  }).join('');
+}
+function dBody(p) { return S.dRange === 'week' ? '<div class="wk">' + dWeek(p) + '</div>' : '<div class="tlx' + (rep(p) ? '' : ' noline') + '" style="--now:' + pct(DAY.m) + '%">' + dDay(p) + '</div>'; }
+function dFoot() {
+  return S.dRange === 'week' ? '<div class="d-foot"><span>שבעת הימים האחרונים. ככל שהריבוע כהה יותר, נעשו באותו יום יותר עבודות.</span></div>'
+    : '<div class="d-foot"><span><i class="lg-work"></i>עבודה</span><span><i class="lg-miss"></i>ריצה שלא התחילה</span><span><i class="lg-off"></i>כבוי</span><span class="sp">באב הטיפוס הזמן רץ מהר פי 20</span></div>';
+}
+var FEED_NONE = '<div class="frow-none">עוד אין פעילות היום.</div>';
+function dFeedRow(f, all) {
+  return '<div class="frow"><img class="face s" src="' + FACE[f.w] + '" alt=""><span class="tx"><b>' + LU_NAME[f.w] + '</b> ' + f.text + (all ? '<small>אצל ' + esc(f.p) + '</small>' : '') + '</span><time>' + f.at + '</time></div>';
+}
+function dHead(sum, side, back, flat) {
+  return back + '<section class="dhero' + (flat ? ' flat' : '') + '" id="d-hero"><div class="dh-top"><div><span class="dh-date">יום ראשון, 1 בנובמבר, <bdi class="num" id="d-clock">' + hhmm(DAY.m) + '</bdi></span><h1>מה כל אחד עושה עכשיו</h1><p class="dh-sum" id="d-sum">' + esc(sum) + '</p></div>' + side + '</div>';
+}
+function viewDash() {
+  if (dAll()) return viewDashAll();
+  var p = P(), back = isMgr() ? '<button class="back" data-act="go" data-to="dash">' + I('right') + 'לכל האנשים</button>' : '';
+  var hd = '<div class="head"><div><h1>מה כל אחד עושה עכשיו</h1></div></div>';
+  if (p.status !== 'connected') return '<div class="' + pageClass() + '">' + back + hd + '<section class="card"><div class="empty"><span class="eic">' + I('plug') + '</span><b>המחשב עוד לא מחובר</b><p>אחרי החיבור תראו כאן מה כל עובד עושה.</p><button class="btn pri" style="margin-top:6px" data-act="go" data-to="connect">לחיבור המחשב' + I('left') + '</button></div></section></div>';
+  if (!p.workers.length) return '<div class="' + pageClass() + '">' + back + hd + '<section class="card"><div class="empty"><span class="eic">' + I('users') + '</span><b>עוד אין עובדים</b><p>כשמני יבנה את העובד הראשון, תראו כאן מה הוא עושה.</p></div></section></div>';
+  var side = '<div class="dh-side"><span id="d-live">' + dLive(rep(p)) + '</span><div class="dstats" id="d-stats">' + dStats(p) + '</div></div>';
+  var seg = '<div class="dseg" role="group" aria-label="טווח"><button data-act="d-range" data-v="day" aria-pressed="' + (S.dRange !== 'week') + '">היום</button><button data-act="d-range" data-v="week" aria-pressed="' + (S.dRange === 'week') + '">השבוע</button></div>';
+  return '<div class="' + pageClass() + '">' + dHead(dSum(p), side, back) + '<div class="dline" id="d-line">' + dOrder(p).map(function (w) { return dColumn(p, w); }).join('') + '</div></section>' +
+    '<div class="dgrid"><section class="card"><div class="card-h"><div><h2>' + (S.dRange === 'week' ? 'מה נעשה השבוע' : 'מה נעשה היום') + '</h2><small>' + (S.dRange === 'week' ? 'כמה עבודות עשה כל עובד בכל יום' : 'כל פס הוא עבודה אחת. עוברים עליו או לוחצים כדי לראות מה נעשה בו') + '</small></div>' + seg + '</div><div id="d-body">' + dBody(p) + '</div>' + dFoot() + '</section>' +
+    '<section class="card"><div class="card-h"><div><h2>מה קרה לאחרונה</h2><small>מי עשה מה ומתי, בלי התוכן עצמו</small></div></div><div id="d-feed">' + ((p.feed || []).map(function (f) { return dFeedRow(f, false); }).join('') || FEED_NONE) + '</div></section></div></div>';
+}
+
+/* תצוגת מנהל */
+function dPeople() { return Object.keys(S.people).map(function (k) { return S.people[k]; }); }
+function dAllSum() {
+  var ppl = dPeople().filter(function (p) { return p.status === 'connected'; });
+  var busy = ppl.filter(function (p) { return rep(p) && !p.halted && p.workers.some(function (w) { return w.st === 'work' && w.enabled; }); });
+  var quiet = ppl.filter(function (p) { return !rep(p); }), out = [];
+  out.push(busy.length ? 'אצל ' + names(busy.map(function (p) { return p.name; })) + ' יש עובדים באמצע עבודה.' : 'כרגע אף עובד לא באמצע עבודה.');
+  quiet.forEach(function (p) { out.push('המחשב של ' + p.name + ' לא מדווח מאז ' + since(p) + '.'); });
+  return out.join(' ');
+}
+function dAllStats() {
+  var ppl = dPeople().filter(function (p) { return p.status === 'connected'; }), sum = function (fn) { return ppl.reduce(function (n, p) { return n + fn(p); }, 0); };
+  return dStat(sum(function (p) { return rep(p) && !p.halted ? p.workers.filter(function (w) { return w.st === 'work' && w.enabled; }).length : 0; }), 'באמצע עבודה') +
+    dStat(sum(dCount), 'עבודות היום') + dStat(sum(function (p) { return p.approvals.length; }), 'מחכה לאישור');
+}
+function dTipState(p, w) { var s = dState(p, w); return s === 'work' ? jobOf(w)[0] : s === 'late' ? 'הריצה של ' + w.late + ' לא התחילה' : dSub(p, w).replace(/ לפני .*/, ''); }
+function dAllFaces(p) { return dOrder(p).map(function (w) { var s = dState(p, w); return '<img class="rf ' + s + '" src="' + FACE[w.id] + '" alt="' + w.name + '" data-tip="' + w.name + ': ' + dTipState(p, w) + '">'; }).join(''); }
+function dAllNow(p) {
+  if (p.status !== 'connected') return '<span class="muted">עוד לא חובר מחשב</span>';
+  if (!rep(p)) return '<span class="da-bad">המחשב לא מדווח מאז ' + since(p) + '</span>';
+  if (p.halted) return '<span class="da-bad">הצוות עצר</span>';
+  if (!p.workers.length) return '<span class="muted">עוד אין עובדים</span>';
+  var work = dOrder(p).filter(function (w) { return w.st === 'work' && w.enabled; }), late = dOrder(p).filter(function (w) { return dState(p, w) === 'late'; });
+  var rows = work.slice(0, 2).map(function (w) { return '<span><b>' + w.name + '</b> ' + jobOf(w)[0] + ' <span class="t">' + mins(DAY.m - w.start) + '</span></span>'; });
+  if (work.length > 2) rows.push('<span class="t">ועוד ' + (work.length - 2) + '</span>');
+  late.forEach(function (w) { rows.push('<span class="da-bad">' + w.name + ': הריצה של ' + w.late + ' לא התחילה</span>'); });
+  return rows.join('') || '<span class="muted">אף עובד לא באמצע עבודה</span>';
+}
+function dAllN(p) { return p.status === 'connected' ? '<b class="num">' + dCount(p) + '</b><small>עבודות היום</small>' : ''; }
+function dAllWeek(p) {
+  if (p.status !== 'connected' || !p.workers.length) return '';
+  var days = [7, 8, 9, 10, 11, 12, 13].map(function (i) { return p.workers.reduce(function (n, w) { return n + w.days[i]; }, 0); }), max = Math.max.apply(null, days.concat(1)), total = days.reduce(function (a, b) { return a + b; }, 0);
+  return '<div class="mb">' + days.map(function (n, i) { return '<i class="' + (n ? '' : 'zero') + (i === 6 ? ' today' : '') + '" style="height:' + (n ? Math.max(12, n / max * 100) : 7).toFixed(0) + '%" data-tip="' + WK_DAYS[i][1] + ': ' + (n ? plural(n, 'עבודה אחת', 'עבודות') : 'בלי עבודות') + '"></i>'; }).join('') + '</div><small class="num">' + total + ' השבוע</small>';
+}
+function dAllAp(p) { return p.status === 'connected' && p.approvals.length ? '<span class="pill accent num">' + plural(p.approvals.length, 'אישור אחד', 'אישורים') + '</span>' : ''; }
+function viewDashAll() {
+  var side = '<div class="dh-side"><span id="d-live">' + dLive(true) + '</span><div class="dstats" id="d-stats">' + dAllStats() + '</div></div>';
+  var rows = Object.keys(S.people).map(function (k) {
+    var p = S.people[k], c = p.status === 'connected', ok = c && rep(p);
+    return '<button class="da-row" data-act="dash-person" data-k="' + k + '"><span class="da-who"><span class="ini">' + esc(p.name.slice(0, 1)) + '</span><span style="min-width:0"><b>' + esc(p.name) + '</b><small data-part="pc"><span class="dot ' + (!c ? 'wait' : ok ? 'live' : 'bad') + '"></span>' + (!c ? 'מחכה לחיבור' : ok ? 'המחשב מדווח' : 'המחשב לא מדווח') + '</small></span></span>' +
+      '<span class="da-faces" data-part="faces">' + (c ? dAllFaces(p) : '') + '</span><span class="da-now" data-part="now">' + dAllNow(p) + '</span><span class="da-n" data-part="n">' + dAllN(p) + '</span><span class="da-wk" data-part="wk">' + dAllWeek(p) + '</span><span class="da-ap" data-part="ap">' + dAllAp(p) + '</span><span class="da-go">' + I('left') + '</span></button>';
+  }).join('');
+  var feed = dPeople().reduce(function (a, p) { return a.concat(p.status === 'connected' ? p.feed || [] : []); }, []).sort(function (a, b) { return b.m - a.m; }).slice(0, 8);
+  return '<div class="' + pageClass() + '">' + dHead(dAllSum(), side, '', true) + '</section>' +
+    '<section class="card" style="overflow:hidden"><div class="card-h"><div><h2>כל אחד והצוות שלו</h2><small>מכאן רואים שם עבודה, זמן ומספרים. השיחות והתוכן נשארים אצל כל אדם</small></div></div><div id="d-rows">' + rows + '</div></section>' +
+    '<section class="card"><div class="card-h"><div><h2>מה קרה לאחרונה</h2><small>מי עשה מה ומתי, בלי התוכן עצמו</small></div></div><div id="d-feed">' + (feed.map(function (f) { return dFeedRow(f, true); }).join('') || FEED_NONE) + '</div></section></div>';
+}
+function dPaintAll() {
+  patch(document.getElementById('d-stats'), dAllStats());
+  var sum = document.getElementById('d-sum'); if (sum) sum.textContent = dAllSum();
+  [].forEach.call(document.querySelectorAll('.da-row'), function (row) {
+    var p = S.people[row.dataset.k], c = p.status === 'connected', part = function (n) { return row.querySelector('[data-part="' + n + '"]'); };
+    if (c) patch(part('faces'), dAllFaces(p));
+    patch(part('now'), dAllNow(p)); patch(part('n'), dAllN(p)); patch(part('wk'), dAllWeek(p)); patch(part('ap'), dAllAp(p));
+  });
+}
+
+/* עדכונים במקום, בלי לצייר את המסך מחדש */
+function dPaintWorker(p, w, pop) {
+  var el = document.querySelector('.dw[data-w="' + w.id + '"]');
+  if (el) { el.className = 'dw is-' + dState(p, w); el.querySelector('.dw-bub').innerHTML = dBubble(p, w, pop); el.querySelector('.dw-sub').textContent = dSub(p, w); }
+  var lane = document.getElementById('tl-' + w.id), lsum = document.getElementById('tls-' + w.id);
+  if (lane) lane.innerHTML = dLane(p, w);
+  if (lsum) lsum.innerHTML = dLaneSum(w);
+}
+/* הבועה של העובד עוברת למקום שנפתח לה ברשימה, כמו במסך הכניסה */
+function dFeedAdd(f, all, ghost, from) {
+  var list = document.getElementById('d-feed');
+  if (!list) return;
+  var none = list.querySelector('.frow-none'); if (none) none.remove();
+  var box = document.createElement('div'); box.innerHTML = dFeedRow(f, all);
+  var el = box.firstChild, flying = ghost && !LU_STILL && from.bottom > 0 && from.top < window.innerHeight;
+  if (flying) el.style.visibility = 'hidden';
+  luFlip(list, function () { list.insertBefore(el, list.firstChild); while (list.children.length > 8) list.removeChild(list.lastChild); });
+  var to = el.getBoundingClientRect(), done = function () { el.style.visibility = ''; el.classList.add('fresh'); };
+  if (!flying || to.top > window.innerHeight - 20 || to.bottom < 0) { done(); return; }
+  ghost.className = 'dbub d-fly'; ghost.setAttribute('aria-hidden', 'true');
+  ghost.style.width = from.width + 'px'; ghost.style.height = from.height + 'px'; ghost.style.transform = 'translate(' + from.left + 'px,' + from.top + 'px)';
+  document.body.appendChild(ghost); ghost.getBoundingClientRect();
+  ghost.classList.add('land');
+  ghost.style.width = to.width + 'px'; ghost.style.height = to.height + 'px'; ghost.style.transform = 'translate(' + to.left + 'px,' + to.top + 'px)';
+  setTimeout(function () { ghost.remove(); done(); }, 640);
+}
+function dBump() { var b = document.querySelector('#d-stats .dstat b'); if (b) { b.classList.remove('bump'); b.getBoundingClientRect(); b.classList.add('bump'); } }
+function dEvent(p, w, kind, row) {
+  if (!dashOn()) return;
+  if (dAll()) { dPaintAll(); if (row) { dFeedAdd(row, true); dBump(); } return; }
+  if (p !== P()) return;
+  var old = kind === 'end' ? document.querySelector('.dw[data-w="' + w.id + '"] .dbub') : null, from = old && old.getBoundingClientRect(), ghost = old && old.cloneNode(true);
+  dPaintWorker(p, w, kind === 'start');
+  var sum = document.getElementById('d-sum'); if (sum) sum.textContent = dSum(p);
+  patch(document.getElementById('d-stats'), dStats(p));
+  if (row) {
+    if (S.dRange === 'week') patch(document.getElementById('d-body'), dBody(p));
+    dFeedAdd(row, false, ghost, from); dBump();
+  }
+}
+function dHoursNear() {
+  var now = +pct(DAY.m);
+  [].forEach.call(document.querySelectorAll('.tl-hours span[data-h]'), function (e) { e.style.visibility = Math.abs(+e.dataset.h - now) < 7 ? 'hidden' : ''; });
+}
+function dTick() {
+  if (!dashOn()) return;
+  var clock = document.getElementById('d-clock'); if (clock) clock.textContent = hhmm(DAY.m);
+  if (dAll()) { dPaintAll(); return; }
+  var p = P();
+  if (p.status !== 'connected' || !rep(p)) return;
+  var tlx = document.querySelector('.tlx'), lab = document.getElementById('d-nowlab');
+  if (tlx) tlx.style.setProperty('--now', pct(DAY.m) + '%');
+  if (lab) lab.textContent = hhmm(DAY.m);
+  dHoursNear();
+  p.workers.forEach(function (w) {
+    var el = document.querySelector('.dw[data-w="' + w.id + '"]');
+    if (!el) return;
+    el.querySelector('.dw-sub').textContent = dSub(p, w);
+    var t = el.querySelector('[data-tm]'); if (t && w.st === 'work') t.textContent = mins(DAY.m - w.start);
+    var run = document.querySelector('[data-run="' + w.id + '"]'); if (run && w.st === 'work') run.style.width = ((DAY.m - w.start) / (DAY.end - DAY.start) * 100).toFixed(2) + '%';
+  });
+  patch(document.getElementById('d-stats'), dStats(p));
+}
+
+/* שעון הדוגמה: העובדים מתחילים ומסיימים עבודות גם כשהמסך הזה לא פתוח */
+function simStart(p, w) {
+  w.jobI = (w.jobI + 1) % WORK[w.id].jobs.length;
+  w.st = 'work'; w.start = DAY.m; w.endAt = DAY.m + 3.5 + Math.random() * 3;
+  dEvent(p, w, 'start');
+}
+function simEnd(p, w, counted) {
+  var job = jobOf(w), row = null;
+  w.st = 'idle'; w.nextAt = DAY.m + 1.5 + Math.random() * 3;
+  if (counted) {
+    w.runs.push([w.start, Math.max(1, DAY.m - w.start), w.jobI]); w.dayN[job[2]]++; w.days[13]++; w.lastEnd = DAY.m;
+    row = { w: w.id, text: job[1], at: hhmm(DAY.m), m: DAY.m, p: p.name };
+    p.feed = [row].concat(p.feed || []).slice(0, 8);
+  }
+  dEvent(p, w, counted ? 'end' : 'stop', row);
+}
+function simTick() {
+  if (document.hidden) return;
+  DAY.m += 1 / 3;
+  if (DAY.m > 1110) { DAY.m = DAY.t0; dPeople().forEach(function (p) { if (p.status === 'connected') seedDay(p); }); if (dashOn()) render(); return; }
+  dPeople().forEach(function (p) {
+    if (p.status !== 'connected' || !rep(p)) return;
+    p.workers.forEach(function (w) {
+      var can = w.enabled && !p.halted;
+      if (w.st === 'work') { if (!can) simEnd(p, w, false); else if (DAY.m >= w.endAt) simEnd(p, w, true); }
+      else if (can && !w.late && DAY.m >= w.nextAt) simStart(p, w);
+    });
+  });
+  dTick();
+}
+/* תווית למעבר עכבר, ובנייד בלחיצה */
+function dTipFor(e) {
+  var tip = document.getElementById('d-tip'), t = e.target && e.target.closest ? e.target.closest('[data-tip]') : null;
+  if (!tip) return;
+  if (!t) { tip.hidden = true; return; }
+  tip.textContent = t.dataset.tip; tip.hidden = false;
+  var r = t.getBoundingClientRect(), half = tip.offsetWidth / 2;
+  tip.style.left = Math.max(half + 8, Math.min(window.innerWidth - half - 8, r.left + r.width / 2)) + 'px';
+  tip.style.top = r.top + 'px';
 }
 
 /* תור האישורים */
@@ -1168,7 +1701,7 @@ function viewApprovals() {
 }
 function afterApprove(a) {
   var w = worker(a.w);
-  if (!S.reporting) return 'אושר. זה יבוצע כשהמחשב יחזור לדווח.';
+  if (!rep()) return 'אושר. זה יבוצע כשהמחשב יחזור לדווח.';
   return 'אושר ונשלח ל' + w.name + '. מני יעדכן אתכם בשיחה כשזה יבוצע.';
 }
 
@@ -1176,7 +1709,7 @@ function afterApprove(a) {
 function paras(t) { return t.split(/\n\s*\n/).map(function (x) { return '<p>' + esc(x) + '</p>'; }).join(''); }
 function csDot(w) {
   var off = P().halted || !w.enabled;
-  return off || !S.reporting ? 'dot off' : w.late ? 'dot bad' : 'dot live';
+  return off || !rep() ? 'dot off' : w.late ? 'dot bad' : 'dot live';
 }
 function csTeamRow(w) {
   var p = P(), n = p.approvals.filter(function (a) { return a.w === w.id; }).length, off = p.halted || !w.enabled;
@@ -1198,9 +1731,9 @@ function csMsg(it, id) {
 function csPic() { return '<img class="face s" src="' + FACE.meni + '" alt="">'; }
 function viewThread() {
   var p = P(), id = 'meni', th = p.threads.meni, w = worker('meni');
-  var state = w.title + ', ' + (p.halted ? 'עצר עם כל הצוות' : !w.enabled ? 'כבוי' : !S.reporting ? 'לא דיווח מאז 19:12' : 'פעילות אחרונה ' + w.hb);
+  var state = w.title + ', ' + (p.halted ? 'עצר עם כל הצוות' : !w.enabled ? 'כבוי' : !rep() ? 'לא דיווח מאז ' + since() + '' : 'פעילות אחרונה ' + w.hb);
   var head = '<header class="cs-h"><span class="cs-av">' + face(w) + '<span class="' + csDot(w) + '"></span></span><div><b>מני</b><small>' + state + '</small></div><button class="btn line sm" data-act="open" data-id="meni">לכרטיס</button></header>';
-  var bn = S.reporting ? '' : '<div class="cs-bn"><div class="alert red">' + I('alert') + '<b>המחשב לא מדווח מאז 19:12</b><span>אפשר לכתוב, וההודעה תגיע כשהמחשב יחזור.</span></div></div>';
+  var bn = rep() ? '' : '<div class="cs-bn"><div class="alert red">' + I('alert') + '<b>המחשב לא מדווח מאז ' + since() + '</b><span>אפשר לכתוב, וההודעה תגיע כשהמחשב יחזור.</span></div></div>';
   var body = th.items.map(function (it) { return csMsg(it, id); }).join('');
   if (!body && S.typing !== id) body = '<p class="cs-empty">עוד לא כתבתם כאן. כתבו למני מה צריך, והוא יחלק את זה לצוות.</p>';
   if (S.typing === id) body += '<div class="m-row w"><div class="m w"><span class="td" aria-label="מקליד"><i></i><i></i><i></i></span></div>' + csPic() + '</div>';
@@ -1241,9 +1774,9 @@ function later(tid, text, noteText) {
 }
 function sendChat(tid, text) {
   var p = P(), th = p.threads[tid];
-  th.items.push({ t: 'me', text: text, at: 'עכשיו', st: S.reporting ? 'ok' : 'wait' });
+  th.items.push({ t: 'me', text: text, at: 'עכשיו', st: rep() ? 'ok' : 'wait' });
   p.spoke = true;
-  if (!S.reporting) { render(); return; }
+  if (!rep()) { render(); return; }
   var known = REPLY[text] || text === 'מה נשאר פתוח להיום?', to = known ? null : routeFor(text);
   if (to && !to.enabled) later(tid, 'זה שייך ל' + to.name + ', והמתג כרגע כבוי. תדליקו אותו בעמוד הצוות ואעביר.');
   else if (to) later(tid, 'קיבלתי, אני מעביר את זה ל' + to.name + '. כשזה יהיה מוכן, זה יחכה לכם בתור האישורים.', 'מני העביר את המשימה ל' + to.name);
@@ -1271,7 +1804,7 @@ function viewPeople() {
     var stack = c && p.workers.length ? '<span class="stack">' + p.workers.map(function (w) { return '<img class="face" src="' + FACE[w.id] + '" alt="' + w.name + '" title="' + w.name + '">'; }).join('') + '</span>' : '<span class="muted">' + (c ? 'עוד אין' : '-') + '</span>';
     var act = (c ? 'לצוות' : p.status === 'invite' ? 'לחיבור' : 'לקוד החיבור');
     return '<button class="pgrid" data-act="person" data-k="' + k + '"><span class="pname"><span class="ini">' + esc(p.name.slice(0, 1)) + '</span><span style="min-width:0"><b>' + esc(p.name) + '</b><small><bdi>' + esc(p.mail) + '</bdi></small></span></span>' +
-      '<span>' + st + '</span><span class="hide-m">' + stack + '</span><span class="hide-m num">' + (c ? p.approvals.length : '-') + '</span><span class="hide-m muted">' + (c ? (S.reporting ? 'לפני דקה' : 'היום ב-19:12') : '-') + '</span><span class="pact hide-m">' + act + I('left') + '</span></button>';
+      '<span>' + st + '</span><span class="hide-m">' + stack + '</span><span class="hide-m num">' + (c ? p.approvals.length : '-') + '</span><span class="hide-m muted">' + (c ? (rep(p) ? 'לפני דקה' : since(p)) : '-') + '</span><span class="pact hide-m">' + act + I('left') + '</span></button>';
   }).join('');
   return '<div class="' + pageClass() + '"><div class="head"><div><h1>אנשים</h1><p class="lead">כל אדם מחבר את המחשב שלו ומנהל את הצוות שלו. מכאן רואים את כולם, ואפשר לכבות עובד של כל אחד. את הדרגה מעלה רק מי שהעובד שלו.</p></div>' +
     '<button class="btn pri" data-act="add-person">' + I('plus') + 'חיבור אדם חדש</button></div>' +
@@ -1294,6 +1827,7 @@ function render() {
   if (r === 'login') html = viewLogin();
   else if (r === 'connect') html = shell(viewConnect());
   else if (r === 'approvals') html = shell(viewApprovals());
+  else if (r === 'dash' || r === 'dash-one') html = shell(viewDash());
   else if (r === 'chat') html = shell(viewChat(), chatFull());
   else if (r === 'people') html = shell(viewPeople());
   else if (r.indexOf('worker-') === 0) html = shell(viewWorker(r.slice(7)));
@@ -1326,8 +1860,8 @@ function copy(text) {
 function syncFlow(w) {
   w.sync = 'sending'; render();
   setTimeout(function () {
-    w.sync = S.reporting ? 'ok' : 'wait'; render();
-    if (S.reporting) setTimeout(function () { w.sync = null; render(); }, 2200);
+    w.sync = rep() ? 'ok' : 'wait'; render();
+    if (rep()) setTimeout(function () { w.sync = null; render(); }, 2200);
   }, 900);
 }
 function settle(id, result, tone, note) {
@@ -1369,6 +1903,7 @@ var ACT = {
     else {
       S[k] = v === 'true';
       if (k === 'reporting' && S[k]) flushWaiting();
+      if (k === 'reporting' && !S[k]) S.silentAt = hhmm(DAY.m);
     }
     render();
   },
@@ -1401,6 +1936,8 @@ var ACT = {
   'level-yes': function () { var w = worker(S.pendingLevel.w); w.level = S.pendingLevel.n; S.pendingLevel = null; syncFlow(w); },
   'level-no': function () { S.pendingLevel = null; render(); },
   halt: function () { var p = P(); p.halted = !p.halted; render(); },
+  'd-range': function (d) { S.dRange = d.v; render(); },
+  'dash-person': function (d) { S.viewing = d.k; go(P().status === 'connected' ? 'dash-one' : 'connect'); },
   'ap-open': function (d) { S.apSel = d.id; go('approvals'); },
   'ap-sel': function (d) { S.apSel = d.id; S.fixing = null; S.lastNote = null; render(); },
   approve: function (d) { settle(d.id, 'אושר', 'green', afterApprove); },
@@ -1439,12 +1976,12 @@ document.addEventListener('submit', function (e) {
   e.preventDefault();
   var f = e.target, kind = f.dataset.form;
   if (kind === 'login') {
-    if (isMgr()) { if (S.people.shir.status !== 'connected') connect('shir', !S.zero); go('people'); return; }
+    if (isMgr()) { if (S.people.shir.status !== 'connected') connect('shir', !S.zero); go('dash'); return; }
     /* הדגמה: הכניסה נפתחת על צוות מלא, כי מי שמקבל קישור לא יכול לחבר מחשב. את מסך החיבור רואים בסרגל למעלה */
     S.viewing = 'shir'; if (P().status !== 'connected') connect('shir', !S.zero); go('team');
   } else if (kind === 'fix') {
     var fixText = document.getElementById('fix-in').value.trim(), fixA = P().approvals.filter(function (x) { return x.id === f.dataset.id; })[0];
-    if (fixText && P().threads[fixA.w]) P().threads[fixA.w].items.push({ t: 'me', text: fixText, at: 'עכשיו', st: S.reporting ? 'ok' : 'wait' });
+    if (fixText && P().threads[fixA.w]) P().threads[fixA.w].items.push({ t: 'me', text: fixText, at: 'עכשיו', st: rep() ? 'ok' : 'wait' });
     settle(f.dataset.id, 'הוחזר לתיקון', 'accent', function () { return 'הוחזר לתיקון. הגרסה החדשה תחכה כאן.'; });
   } else if (kind === 'person') {
     var name = document.getElementById('np-name').value.trim(), mail = document.getElementById('np-mail').value.trim();
@@ -1470,10 +2007,15 @@ setInterval(function () {
   var t = document.getElementById('timer');
   if (t && S.route === 'connect') { var s = P().secs, m = Math.floor(s / 60); s = s % 60; t.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s; }
 }, 1000);
+setInterval(simTick, 1000);
+document.addEventListener('mouseover', dTipFor);
+document.addEventListener('click', dTipFor);
+window.addEventListener('scroll', function () { var t = document.getElementById('d-tip'); if (t) t.hidden = true; }, true);
 /* כתובת עם מסך מסוים פותחת אותו ישר */
 (function () {
   var h = (location.hash || '').replace('#', '');
   if (h === 'people') S.role = 'danny';
+  if (h === 'dash-all') { S.role = 'danny'; h = 'dash'; }
   if (h && h !== 'login') { if (h !== 'connect') connect('shir', true); S.route = h; }
   render();
 })();

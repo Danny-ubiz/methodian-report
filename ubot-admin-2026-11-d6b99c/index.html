@@ -1302,7 +1302,8 @@ document.addEventListener('submit', function (e) {
   var f = e.target, kind = f.dataset.form;
   if (kind === 'login') {
     if (isMgr()) { if (S.people.shir.status !== 'connected') connect('shir', !S.zero); go('people'); return; }
-    S.viewing = 'shir'; go(P().status === 'connected' ? 'team' : 'connect');
+    /* הדגמה: הכניסה נפתחת על צוות מלא, כי מי שמקבל קישור לא יכול לחבר מחשב. את מסך החיבור רואים בסרגל למעלה */
+    S.viewing = 'shir'; if (P().status !== 'connected') connect('shir', !S.zero); go('team');
   } else if (kind === 'fix') {
     var fixText = document.getElementById('fix-in').value.trim(), fixA = P().approvals.filter(function (x) { return x.id === f.dataset.id; })[0];
     if (fixText && P().threads[fixA.w]) P().threads[fixA.w].items.push({ t: 'me', text: fixText, at: 'עכשיו', st: S.reporting ? 'ok' : 'wait' });

@@ -490,7 +490,7 @@ M4380 15219 c-47 -11 -128 -33 -180 -49 -58 -18 -130 -32 -185 -35 -105 -8
       <div>
         <span class="eyebrow">טיוטה לבחירה, 3 בנובמבר 2026</span>
         <h1 id="introH">ספר המותג של UBOT</h1>
-        <p class="lead">דני ביקש לבחור כיוון למיתוג של UBOT, מערכת הצ'אטבוטים שלנו. כאן אוחדו שתי הטיוטות מאתמול לספר אחד: שישה צבעים, שישה סמלים וחמישה משפטים. UBOT יושב היום על אותו זהב של יוביז, ו-UOS עבר לטורקיז עם מתג, ולכן הצבעים שקרובים אליו מסומנים. בוחרים למעלה צבע וסמל, וכל העמוד מתחלף לפיהם.</p>
+        <p class="lead">דני ביקש לבחור כיוון למיתוג של UBOT, מערכת הצ'אטבוטים שלנו. כאן אוחדו שתי הטיוטות מאתמול לספר אחד: שישה צבעים, שישה סמלים וחמישה משפטים. UBOT יושב היום על אותו זהב של יוביז, ו-UOS עבר לתכלת, שחור וכתום עם מתג, ולכן הצבעים שקרובים אליו מסומנים. נוריקה בחרה ב-3 בנובמבר פטרול וליים עם השיחה, והפטרול הוכחל לפי הבקשה שלה. בוחרים למעלה צבע וסמל, וכל העמוד מתחלף לפיהם.</p>
         <p class="quiet">כתב מני, העוזר של דני. ההמלצות בעמוד הן שלי ולא של דני, ושום דבר עוד לא השתנה במערכת.</p>
       </div>
       <aside class="taken" aria-labelledby="takenH">
@@ -598,7 +598,7 @@ M4380 15219 c-47 -11 -128 -33 -180 -49 -58 -18 -130 -32 -185 -35 -105 -8
         </div>
       </div>
     </section>
-    <p class="foot">כל מה שבעמוד הוא הצעה לבחירה. הספר מאחד את שני הספרים מ-2 בנובמבר 2026. הסמל הזהב נלקח מקובץ הלוגו הרשמי של יוביז, הצבעים והמתג של UOS מהמסך החי שלו ב-3 בנובמבר, והצבע של בוטומט מדף הבית שלהם.</p>
+    <p class="foot">כל מה שבעמוד הוא הצעה לבחירה. הספר מאחד את שני הספרים מ-2 בנובמבר 2026. הסמל הזהב נלקח מקובץ הלוגו הרשמי של יוביז, הצבעים והמתג של UOS מספר המותג של נוריקה, והצבע של בוטומט מדף הבית שלהם.</p>
   </div>
 </main>
 
@@ -612,46 +612,46 @@ const $ = (s, r = document) => r.querySelector(s);
 const PALETTES = [
   { id:'fuchsia', name:'פוקסיה', duo:'פוקסיה ולילה',
     desc:'הצבע היחיד שרחוק מכל מה שתפוס: מיוביז, מ-UOS, מ-UDO, מוואטסאפ ומבוטומט. הוא בולט ונשאר קריא על לבן.',
-    risk:'הוא חזק למסכים שעובדים בהם שעות, ומכללה או מוסד ציבורי עלולים להרגיש שזה הרבה. בבורר הצבעים הניסיוני של UOS יש גם מג׳נטה, אבל הצבע ש-UOS יושב עליו הוא טורקיז.',
+    risk:'הוא חזק למסכים שעובדים בהם שעות, ומכללה או מוסד ציבורי עלולים להרגיש שזה הרבה.',
     primary:'#D6127A', on:'#FFFFFF', deep:'#A80B5F', tint:'#FDE8F3', night:'#24091B', second:'#FF9AD0', secondName:'ורוד בהיר', secondUse:'הדגשות קטנות',
     markFg:'#FFFFFF', markFgD:'#24091B', brandShape:'#FFFFFF', brandSmile:'#D6127A', dotL:'#24091B', dotD:'#FF9AD0', dotB:'#24091B',
     dPrimary:'#F0409A', dOn:'#24091B', dDeep:'#FF7CBF', dBg:'#1C0A14', dCard:'#2D1321', dLine:'#4E263B', dSoft:'#CDB3C3', dTint:'#4A1A33',
     lBg:'#FEF4F9', lLine:'#F2DCE8', lSoft:'#6F5966' },
   { id:'coral', name:'אלמוג', duo:'אלמוג וכחול לילה',
     desc:'הכי חם מבין הצבעים, ולכן הכי קרוב לאופי של יוביז בלי להיות יוביז. הכחול הכהה מאזן אותו. האלמוג הופיע בשני הספרים ואוחד לאחד.',
-    risk:'הוא כמעט אותו צבע כמו כפתור המחיקה. אם בוחרים בו, אני מכהה את האדום כדי שלא יתבלבלו ביניהם.',
+    risk:'הוא כמעט הכתום של UOS וכמעט כפתור המחיקה. אם בוחרים בו, צריך להכהות את האדום, וה-UOS נשאר קרוב.',
     primary:'#FF5F45', on:'#1B1006', deep:'#C2371F', tint:'#FFE9E4', night:'#152347', second:'#152347', secondName:'כחול לילה', secondUse:'כותרות ומשטחים כהים',
     markFg:'#FFFFFF', markFgD:'#FFFFFF', brandShape:'#FFFFFF', brandSmile:'#E8452C', dotL:'#152347', dotD:'#FFFFFF', dotB:'#152347',
     dPrimary:'#FF7A63', dOn:'#1B1006', dDeep:'#FF9A88', dBg:'#0E1730', dCard:'#18244A', dLine:'#2E3C68', dSoft:'#AAB5D2', dTint:'#3A2340',
     lBg:'#F6F5F7', lLine:'#E5E3E9', lSoft:'#5E6377' },
   { id:'sky', name:'תכלת', duo:'תכלת ולילה',
     desc:'תכלת בהיר על לילה כהה. נראה הכי טכנולוגי מבין הצבעים, ועובד טוב על רקע כהה.',
-    risk:'הוא באמצע הדרך לטורקיז של UOS, אז שני המוצרים יישבו באותה משפחה של כחול ירקרק.',
+    risk:'הוא כמעט התכלת של UOS. בכיוון הזה שני המוצרים ייראו כמעט אותו דבר.',
     primary:'#19C2F0', on:'#071E2B', deep:'#0A7196', tint:'#E3F7FD', night:'#071E2B', second:'#A6E8FA', secondName:'תכלת בהיר', secondUse:'סימון והדגשות',
     markFg:'#FFFFFF', markFgD:'#071E2B', brandShape:'#071E2B', brandSmile:'#19C2F0', dotL:'#071E2B', dotD:'#FFFFFF', dotB:'#FFFFFF',
     dPrimary:'#2FCBF5', dOn:'#071E2B', dDeep:'#6FDCF8', dBg:'#071E2B', dCard:'#0E2C3C', dLine:'#21445A', dSoft:'#A5BECA', dTint:'#11384B',
     lBg:'#F1FAFD', lLine:'#D5E8EF', lSoft:'#4A6573' },
   { id:'peach', name:'פטרול ואפרסק', duo:'פטרול ואפרסק',
     desc:'פטרול רציני עם אפרסק חם בהדגשות. הכפתורים כהים וקריאים.',
-    risk:'הפטרול קרוב לטורקיז העמוק של UOS.',
+    risk:'הפטרול כמעט זהה לתכלת הכהה ש-UOS משתמש בו לטקסט.',
     primary:'#0B6B7E', on:'#FFFFFF', deep:'#0B6B7E', tint:'#E3F2F4', night:'#0A2329', second:'#FF9166', secondName:'אפרסק', secondUse:'מסלול שני בסמל וכפתור על כהה',
     markFg:'#FFFFFF', markFgD:'#0A2329', brandShape:'#FFFFFF', brandSmile:'#0B6B7E', dotL:'#FF9166', dotD:'#FF9166', dotB:'#FF9166',
     dPrimary:'#38B2C9', dOn:'#0A2329', dDeep:'#7FD3E3', dBg:'#0A2329', dCard:'#123640', dLine:'#24505B', dSoft:'#A9C0C5', dTint:'#164552',
     lBg:'#F1F7F8', lLine:'#D8E6E9', lSoft:'#4F666C' },
   { id:'turquoise', name:'טורקיז', duo:'טורקיז ולילה',
     desc:'צבע נקי ורגוע שמתאים גם למכללה וגם לעסק קטן.',
-    risk:'הוא כמעט הטורקיז של UOS. בכיוון הזה שני המוצרים ייראו כמעט אותו דבר.',
+    risk:'הוא קרוב לתכלת של UOS, ושני המוצרים יישבו באותה משפחה.',
     primary:'#00B5BD', on:'#04272B', deep:'#00727A', tint:'#DDF5F6', night:'#06282D', second:'#FF7A59', secondName:'אלמוג', secondUse:'הדגשות קטנות',
     markFg:'#FFFFFF', markFgD:'#06282D', brandShape:'#FFFFFF', brandSmile:'#00858C', dotL:'#FF7A59', dotD:'#FF8F73', dotB:'#06282D',
     dPrimary:'#25D0D8', dOn:'#04272B', dDeep:'#5FE0E6', dBg:'#071D21', dCard:'#0D2B31', dLine:'#21454C', dSoft:'#A0BCC0', dTint:'#123C43',
     lBg:'#F1F7F8', lLine:'#DBE6E8', lSoft:'#56696E' },
   { id:'petrol', name:'פטרול וליים', duo:'פטרול וליים',
-    desc:'הכי רציני מבין הצבעים. הכפתורים כהים וקריאים, והליים מופיע רק בהדגשות.',
-    risk:'הפטרול כמעט זהה למשטחים הכהים של UOS, והליים קרוב לירוק של וואטסאפ וללימון של UDO.',
-    primary:'#0B5563', on:'#FFFFFF', deep:'#0B5563', tint:'#E0EFEF', night:'#07262D', second:'#A6F03C', secondName:'ליים', secondUse:'הדגשות קטנות',
-    markFg:'#A6F03C', markFgD:'#07262D', brandShape:'#A6F03C', brandSmile:'#07262D', dotL:'#8CDB1E', dotD:'#FFFFFF', dotB:'#A6F03C',
-    dPrimary:'#A6F03C', dOn:'#07262D', dDeep:'#BDF56C', dBg:'#061C21', dCard:'#0C2D34', dLine:'#1F4751', dSoft:'#9DBAC0', dTint:'#16434C',
-    lBg:'#F2F6F6', lLine:'#DAE6E7', lSoft:'#55696F' }
+    desc:'הכי רציני מבין הצבעים. פטרול כחלחל ונקי, הכפתורים כהים וקריאים, והליים מופיע רק בהדגשות. נוריקה בחרה בו, וביקשה שהפטרול יהיה כחלחל יותר ופחות עכור.',
+    risk:'הליים קרוב לירוק של וואטסאפ וללימון של UDO. הפטרול עדיין באותה משפחה של התכלת הכהה של UOS, אבל ההכחלה הרחיקה אותו ממנה.',
+    primary:'#0A5280', on:'#FFFFFF', deep:'#0A5280', tint:'#E2EDF6', night:'#071E2D', second:'#A6F03C', secondName:'ליים', secondUse:'הדגשות קטנות',
+    markFg:'#A6F03C', markFgD:'#071E2D', brandShape:'#A6F03C', brandSmile:'#071E2D', dotL:'#8CDB1E', dotD:'#FFFFFF', dotB:'#A6F03C',
+    dPrimary:'#A6F03C', dOn:'#071E2D', dDeep:'#BDF56C', dBg:'#061621', dCard:'#0C2434', dLine:'#1F3C51', dSoft:'#9DB2C0', dTint:'#16374C',
+    lBg:'#F3F6FA', lLine:'#DCE4EE', lSoft:'#566577' }
 ];
 const P_BY = Object.fromEntries(PALETTES.map(p => [p.id, p]));
 
@@ -691,15 +691,15 @@ const S_BY = Object.fromEntries(SYMBOLS.map(s => [s.id, s]));
 /* מה כבר תפוס. כל צבע מגיע מהמקור שלו, ואלה הצבעים שהטבלה מודדת מולם */
 const TAKEN = [
   { who:'יוביז', what:'זהב', hex:['#F5B424'] },
-  { who:'UOS', what:'טורקיז ופטרול כהה, ומתג במקום ה-O', hex:['#11C5AD','#0E434E'] },
+  { who:'UOS', what:'תכלת, שחור וכתום, ומתג במקום ה-O', hex:['#1FB0CC','#0D1117','#FF6B35'] },
   { who:'UDO', what:'סגול ולימון', hex:['#6A4CFF','#FFE14A'] },
   { who:'וואטסאפ', what:'ירוק', hex:['#25D366'] },
   { who:'בוטומט, המתחרה', what:'כחול', hex:['#0A7CFF'] },
   { who:'כפתור המחיקה במערכת', what:'אדום', hex:['#EF4444'] }
 ];
 const OCCUPIED = [
-  { name:'הזהב של יוביז', hex:'#F5B424' }, { name:'הטורקיז של UOS', hex:'#11C5AD' }, { name:'הטורקיז העמוק של UOS', hex:'#097171' },
-  { name:'הפטרול הכהה של UOS', hex:'#0E434E' }, { name:'הסגול של UDO', hex:'#6A4CFF' }, { name:'הלימון של UDO', hex:'#FFE14A' },
+  { name:'הזהב של יוביז', hex:'#F5B424' }, { name:'התכלת של UOS', hex:'#1FB0CC' }, { name:'התכלת הכהה של UOS', hex:'#0A6F86' },
+  { name:'הכתום של UOS', hex:'#FF6B35' }, { name:'הסגול של UDO', hex:'#6A4CFF' }, { name:'הלימון של UDO', hex:'#FFE14A' },
   { name:'הירוק של וואטסאפ', hex:'#25D366' }, { name:'הכחול של בוטומט', hex:'#0A7CFF' }, { name:'האדום של המחיקה', hex:'#EF4444' }
 ];
 /* המשפט מתחת לשם: המשפט שיש היום במערכת, וארבעת המשפטים שהספר השני הציע */
@@ -854,7 +854,7 @@ function flow(p, sym, dark) {
 }
 
 /* ---------- רינדור לפי הבחירה ---------- */
-const state = { p:'fuchsia', s:'talk', line:'today', dark:false };
+const state = { p:'petrol', s:'talk', line:'today', dark:false };
 function renderPickers() {
   $('#pickP').innerHTML = PALETTES.map(p => `<button type="button" class="opt" data-p="${p.id}" aria-pressed="${state.p===p.id}" aria-label="${p.name}" title="${p.name}"><i class="dot" style="background:${p.primary}"></i><span class="nm">${p.name}</span></button>`).join('');
   const P = P_BY[state.p];
@@ -903,8 +903,8 @@ function renderSymbols() {
   </button>`).join('')}</div></div>`).join('');
   const dudu = '<svg viewBox="4 4 92 92" aria-hidden="true"><path fill="#6A4CFF" d="M50 10A40 40 0 0 1 90 50A40 40 0 0 1 50 90H18A8 8 0 0 1 10 82V50A40 40 0 0 1 50 10z"/><ellipse cx="38.5" cy="45" rx="5.4" ry="7.400" fill="#FFE14A"/><ellipse cx="61.5" cy="45" rx="5.4" ry="7.400" fill="#FFE14A"/><path d="M38 60.500Q50 70.500 62 60.500" fill="none" stroke="#FFE14A" stroke-width="6" stroke-linecap="round"/></svg>';
   const gold = '<svg viewBox="34 17 1845 1842" aria-hidden="true"><use href="#u-sq" fill="#F5B424"/><use href="#u-sm" fill="#FFFFFF"/></svg>';
-  /* המתג של UOS: המידות והצבעים נלקחו מהקוד של המסך החי שלו */
-  const uos = '<svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" rx="15" fill="#0C1B2C"/><rect x="11.5" y="17.67" width="37" height="24.66" rx="12.33" fill="#16F3C7"/><circle cx="36.17" cy="30" r="7.9" fill="#0B3342"/></svg>';
+  /* המתג של UOS, מ-uos-mark.svg בספר המותג של נוריקה: תכלת, ידית שחורה בצד שמאל */
+  const uos = '<svg viewBox="0 -23 146 146" aria-hidden="true"><rect width="146" height="100" rx="50" fill="#1FB0CC"/><circle cx="50" cy="50" r="35.5" fill="#0D1117"/></svg>';
   $('#famRow').innerHTML = `<figure>${gold}<figcaption>יוביז</figcaption></figure><figure>${uos}<figcaption>UOS</figcaption></figure><figure>${dudu}<figcaption>UDO</figcaption></figure><figure>${markSvg(P,state.s,dmode()?'dark':'light')}<figcaption class="now">UBOT</figcaption></figure>`;
 }
 const dmode = () => { const t=document.documentElement.getAttribute('data-theme'); return t==='dark' || (t!=='light' && matchMedia('(prefers-color-scheme: dark)').matches); };
